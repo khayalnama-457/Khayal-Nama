@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Khayalnama — Urdu literature, poetry, philosophy and wisdom.">
+<title>Khayalnama | خیال نامہ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--surface:#fff;--soft:#f5f1e8;--gold:#a77b32;--gold-dark:#805b20;--ink:#292720;--muted:#777267;--border:rgba(167,123,50,.24);--shadow:0 12px 35px rgba(43,35,20,.07)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--ink);font-family:"Playfair Display",serif;overflow-x:hidden}a{text-decoration:none;color:inherit}button,select,input,textarea{font:inherit}
+header{height:82px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.96);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(14px);direction:ltr}
+.brand{display:flex;align-items:center;gap:12px;min-width:0;direction:ltr;flex-shrink:0}
+.logo-image{width:55px;height:55px;object-fit:contain;border-radius:8px}.logo-fallback{width:55px;height:55px;border:1px dashed var(--gold);border-radius:8px;display:grid;place-items:center;color:var(--gold);font:10px Arial;text-align:center;flex-shrink:0}
+.brand-text{font:700 19px "Playfair Display",serif;letter-spacing:2px;color:var(--gold-dark);white-space:nowrap}
+.header-actions{display:flex;align-items:center;gap:14px;direction:ltr;flex-shrink:0}.home-link{font:13px "Playfair Display",serif;color:var(--muted)}
+.language-select{border:1px solid var(--border);background:#fff;color:var(--gold-dark);padding:10px 12px;border-radius:6px;cursor:pointer;font:13px Arial}
+.menu-btn{width:42px;height:42px;border:1px solid var(--border);background:#fff;color:var(--gold-dark);font:23px Arial;border-radius:6px;cursor:pointer}
+.overlay{position:fixed;inset:0;background:rgba(20,18,14,.45);z-index:200;opacity:0;visibility:hidden;transition:.25s}.overlay.active{opacity:1;visibility:visible}
+.sidebar{position:fixed;top:0;right:-330px;width:300px;max-width:86%;height:100vh;background:#fff;border-left:2px solid var(--gold);z-index:201;padding:25px;transition:.35s;overflow-y:auto;direction:ltr}.sidebar.active{right:0}
+.sidebar-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;direction:ltr}.sidebar-top h2{font:700 18px "Playfair Display",serif;color:var(--gold-dark);letter-spacing:2px}
+.close-btn{border:0;background:none;font:30px Arial;color:var(--gold-dark);cursor:pointer}.sidebar a{display:block;padding:14px 8px;border-bottom:1px solid var(--border);font:15px "Playfair Display",serif;color:var(--ink)}.sidebar a:hover{color:var(--gold-dark);padding-left:15px}
+.hero{min-height:530px;display:grid;place-items:center;text-align:center;padding:75px 20px;background:radial-gradient(ellipse at center,#f2e8d4 0%,#fbfaf7 68%);border-bottom:1px solid var(--border)}.hero-content{max-width:850px}
+.hero-tag{font:11px "Playfair Display",serif;letter-spacing:4px;color:var(--gold-dark);margin-bottom:24px}.hero h1{font-size:clamp(40px,8vw,78px);letter-spacing:5px;color:#8e682b;font-weight:500}
+.hero-urdu{font:clamp(34px,7vw,52px)/2 "Noto Nastaliq Urdu",serif;color:var(--gold-dark);margin:12px 0}
+.hero-description{color:#686257;line-height:2.1;margin:18px 0 30px;font-size:16px}.primary-btn{display:inline-block;background:var(--gold);color:#fff;padding:14px 25px;border-radius:3px;font-size:12px;letter-spacing:1px;transition:.25s;border:0;cursor:pointer}.primary-btn:hover{background:var(--gold-dark);transform:translateY(-2px)}
+.section{padding:76px 8%}.section.alt{background:#f5f2eb}.section-heading{text-align:center;margin-bottom:40px}.section-heading .small{font-size:11px;letter-spacing:3px;color:var(--gold-dark)}.section-heading h2{font-size:34px;font-weight:500;margin:12px 0;color:#373329}.gold-line{height:2px;width:52px;background:var(--gold);margin:16px auto}.section-heading p{font:14px/1.9 "Noto Sans Devanagari",sans-serif;color:var(--muted)}
+.thought-box{max-width:850px;margin:auto;text-align:center;background:#fff;border:1px solid var(--border);box-shadow:var(--shadow);padding:42px 24px;border-radius:5px}
+.thought-box .urdu{font:27px/2.4 "Noto Nastaliq Urdu",serif;color:var(--gold-dark);direction:rtl}.thought-box .hindi{font:18px/2 "Noto Sans Devanagari",sans-serif}.thought-box .english{font-style:italic;color:var(--muted);line-height:1.8}
+.read-link{display:inline-block;color:var(--gold-dark);font-size:12px;letter-spacing:1px;margin-top:22px;border-bottom:1px solid var(--gold);padding-bottom:5px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:20px}.card{background:#fff;border:1px solid var(--border);padding:27px 23px;border-radius:5px;box-shadow:var(--shadow);transition:.25s}.card:hover{transform:translateY(-3px);border-color:var(--gold)}
+.card-number{font-size:11px;letter-spacing:2px;color:var(--gold-dark)}.card h3{font-size:21px;font-weight:500;margin:17px 0 10px}.card .urdu{font:23px/2.2 "Noto Nastaliq Urdu",serif;direction:rtl;color:var(--gold-dark)}.card p{font:13px/1.9 "Noto Sans Devanagari",sans-serif;color:var(--muted);margin-top:9px}
+.card-link{display:inline-block;margin-top:18px;font-size:12px;color:var(--gold-dark);letter-spacing:.7px}.writer-card{text-align:center;padding:27px 18px}
+.writer-dates{font-family:"Noto Sans Devanagari",sans-serif;font-size:12px!important;
+ color:var(--muted);line-height:1.9!important;margin:8px 0 12px!important}
+.writer-more{display:inline-block;margin-top:8px;padding:9px 15px;border:1px solid var(--gold);
+ border-radius:3px;color:var(--gold-dark);font-size:11px;letter-spacing:.5px;transition:.2s}
+.writer-more:hover{background:var(--gold);color:#fff}
+html[lang="ur"] .writer-dates,html[lang="ur"] .writer-more{
+ font-family:"Noto Nastaliq Urdu",serif;line-height:2.3!important;letter-spacing:0}
+.writer-photo,.writer-placeholder{width:112px;height:112px;border-radius:50%;object-fit:cover;border:3px solid #e4d2ad;padding:3px;background:#fff;display:grid;place-items:center;margin:0 auto 17px}.writer-placeholder{border:2px dashed var(--gold);color:var(--gold-dark);font:12px Arial;background:var(--soft)}
+.word-box{max-width:850px;margin:auto;padding:30px;border:1px solid var(--border);background:#fff;box-shadow:var(--shadow);display:flex;justify-content:space-between;align-items:center;gap:20px;border-radius:5px}.word-box .urdu{font:36px "Noto Nastaliq Urdu";color:var(--gold-dark);direction:rtl}.word-box h3{font-size:21px;margin:8px 0}.word-box p{font-size:13px;color:var(--muted);line-height:1.8}
+footer{background:#f0ece3;border-top:1px solid var(--border);padding:52px 8% 22px}.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px;margin-bottom:35px}footer h3{color:var(--gold-dark);font-size:17px;margin-bottom:15px}footer p,footer a{display:block;color:#746e62;font-size:13px;line-height:2.3}footer a:hover{color:var(--gold-dark)}.copyright{text-align:center;border-top:1px solid var(--border);padding-top:20px;color:#8a8479;font-size:12px}
+/* Social actions are added to every homepage content card. */
+.post-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px;padding-top:14px;border-top:1px solid var(--border);font-family:Arial,sans-serif}
+.action-btn{border:1px solid var(--border);background:#fff;color:#6e624e;padding:8px 11px;border-radius:20px;font:12px Arial,sans-serif;cursor:pointer;transition:.2s}
+.action-btn:hover,.action-btn.liked{background:#f7eee0;color:var(--gold-dark);border-color:var(--gold)}.action-btn .count{font-weight:bold;margin-left:3px}
+.comments-panel{display:none;margin-top:14px;text-align:left}.comments-panel.open{display:block}.comment-form{display:flex;gap:8px;margin-bottom:10px}.comment-form input{min-width:0;flex:1;border:1px solid var(--border);border-radius:5px;padding:10px;font:13px Arial,sans-serif}.comment-form button{border:0;border-radius:5px;background:var(--gold);color:white;padding:0 13px;font:12px Arial,sans-serif;cursor:pointer}
+.comment-list{list-style:none}.comment-list li{padding:8px 10px;margin-top:6px;background:#faf8f3;border-radius:5px;font:13px/1.6 Arial,sans-serif;overflow-wrap:anywhere}.comment-note{font:11px/1.6 Arial,sans-serif;color:var(--muted);margin-top:7px}
+.notice{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#292720;color:#fff;padding:11px 17px;border-radius:25px;font:13px Arial,sans-serif;z-index:500;opacity:0;pointer-events:none;transition:.25s}.notice.show{opacity:1}
+html[lang="hi"] body,html[lang="hi"] .section-heading p,html[lang="hi"] .card p,html[lang="hi"] .thought-box .hindi{font-family:"Noto Sans Devanagari",sans-serif}
+html[lang="ur"] body{font-family:"Noto Nastaliq Urdu",serif}
+html[lang="ur"] .brand-text{font:600 17px/1.8 "Noto Nastaliq Urdu",serif;letter-spacing:0;white-space:nowrap}
+html[lang="ur"] header,html[lang="ur"] .brand,html[lang="ur"] .header-actions,html[lang="ur"] .sidebar-top{direction:ltr}
+html[lang="ur"] .home-link,html[lang="ur"] .sidebar a,html[lang="ur"] .sidebar-top h2{font-family:"Noto Nastaliq Urdu",serif;letter-spacing:0;line-height:2.2}
+html[lang="ur"] .sidebar a{text-align:right;direction:rtl}
+html[lang="ur"] .hero-tag,html[lang="ur"] .hero-description,html[lang="ur"] .section-heading,html[lang="ur"] .card,html[lang="ur"] footer,html[lang="ur"] .word-box{line-height:2.3}
+html[lang="ur"] .section-heading h2,html[lang="ur"] .section-heading p,html[lang="ur"] .card h3,html[lang="ur"] .card p,html[lang="ur"] footer p,html[lang="ur"] footer a,html[lang="ur"] footer h3,html[lang="ur"] .word-box h3{font-family:"Noto Nastaliq Urdu",serif;letter-spacing:0;line-height:2.5}
+html[lang="ur"] .thought-box .urdu,html[lang="ur"] .card .urdu,html[lang="ur"] .word-box .urdu{direction:rtl;text-align:right}
+html[lang="ur"] .post-actions,html[lang="ur"] .comment-form,html[lang="ur"] .comment-list,html[lang="ur"] .comment-note{font-family:Arial,sans-serif;direction:ltr}
+@media(max-width:650px){header{height:72px;padding:0 4%}.brand{gap:7px}.brand-text{font-size:15px;letter-spacing:1px}.logo-image,.logo-fallback{width:43px;height:43px}.home-link{display:none}.header-actions{gap:8px}.language-select{padding:9px 7px;font-size:12px}.menu-btn{width:39px;height:39px}.hero{min-height:480px}.section{padding:60px 5%}.section-heading h2{font-size:28px}.thought-box{padding:30px 17px}.thought-box .urdu{font-size:23px}.word-box{flex-direction:column;text-align:center}.footer-grid{gap:22px}html[lang="ur"] .brand-text{font-size:14px;max-width:105px;white-space:normal;text-align:center}}
+</style>
+</head>
+<body>
+<header>
+ <a class="brand" href="index.html" aria-label="Khayalnama home">
+  <img class="logo-image" src="assets/logo.png" alt="Khayalnama logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+  <span class="logo-fallback" style="display:none">YOUR<br>LOGO</span>
+  <span class="brand-text" id="brandText">KHAYALNAMA</span>
+ </a>
+ <div class="header-actions">
+  <a class="home-link" href="index.html" data-i18n="home">HOME</a>
+  <select class="language-select" id="languageSelect" aria-label="Choose language"><option value="en">English</option><option value="hi">हिन्दी</option><option value="ur">اردو</option></select>
+  <button class="menu-btn" onclick="openMenu()" aria-label="Open menu">☰</button>
+ </div>
+</header>
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<aside class="sidebar" id="sidebar">
+ <div class="sidebar-top"><h2>KHAYALNAMA</h2><button class="close-btn" onclick="closeMenu()" aria-label="Close menu">×</button></div>
+ <nav>
+  <a href="index.html" data-i18n="home">Home</a><a href="pages/poetry.html" data-i18n="poetry">Poetry</a><a href="pages/aqwal.html" data-i18n="quotes">Aqwal</a><a href="pages/philosophy.html" data-i18n="philosophy">Philosophy</a><a href="pages/writers.html" data-i18n="writers">Writers</a><a href="pages/dictionary.html" data-i18n="dictionary">Urdu Dictionary</a><a href="pages/articles.html" data-i18n="articles">Articles</a><a href="pages/history.html" data-i18n="history">History & Culture</a><a href="pages/about.html" data-i18n="about">About Us</a>
+ </nav>
+</aside>
+
+<section class="hero">
+ <div class="hero-content"><div class="hero-tag" data-i18n="heroTag">A JOURNEY THROUGH WORDS & WISDOM</div><h1 id="heroTitle">KHAYALNAMA</h1><div class="hero-urdu" id="heroUrdu">خیال نامہ</div><p class="hero-description" data-i18n="heroDesc">Where words become feelings, and thoughts become wisdom.</p><a href="pages/poetry.html" class="primary-btn" data-i18n="exploreLiterature">EXPLORE LITERATURE →</a></div>
+</section>
+
+<section class="section">
+ <div class="section-heading"><div class="small" data-i18n="reflection">A MOMENT OF REFLECTION</div><h2 data-i18n="thoughtTitle">Thought of the Day</h2><div class="gold-line"></div><p data-i18n="todayThought">Today's thought</p></div>
+ <div class="thought-box post" data-post-id="thought-today" data-post-title="Thought of the Day">
+  <div class="urdu" data-i18n="thoughtUr">انسان کی سوچ ہی اس کی اصل پہچان ہے</div><p class="hindi" data-i18n="thoughtHi">इंसान की सोच ही उसकी असली पहचान है।</p><p class="english" data-i18n="thoughtEn">A person's thinking is their true identity.</p><a href="pages/aqwal.html" class="read-link" data-i18n="moreThoughts">EXPLORE MORE THOUGHTS →</a>
+ </div>
+</section>
+
+<section class="section alt">
+ <div class="section-heading"><div class="small" data-i18n="beautyWords">THE BEAUTY OF WORDS</div><h2 data-i18n="poetryTitle">Poetry & Shayari</h2><div class="gold-line"></div><p data-i18n="poetrySub">Feelings hidden in words</p></div>
+ <div class="grid">
+  <div class="card post" data-post-id="poetry-love" data-post-title="Love"><div class="card-number">01</div><div class="urdu" data-i18n="poem1Ur">محبت ایک احساس ہے</div><h3 data-i18n="poem1Title">Love</h3><p data-i18n="poem1Desc">Love is a beautiful feeling.</p></div>
+  <div class="card post" data-post-id="poetry-life" data-post-title="Life"><div class="card-number">02</div><div class="urdu" data-i18n="poem2Ur">زندگی ایک سفر ہے</div><h3 data-i18n="poem2Title">Life</h3><p data-i18n="poem2Desc">Life is a remarkable journey.</p></div>
+  <div class="card post" data-post-id="poetry-silence" data-post-title="Silence"><div class="card-number">03</div><div class="urdu" data-i18n="poem3Ur">خاموشی بھی ایک زبان ہے</div><h3 data-i18n="poem3Title">Silence</h3><p data-i18n="poem3Desc">Silence is also a language.</p></div>
+ </div><div style="text-align:center"><a href="pages/poetry.html" class="read-link" data-i18n="allPoetry">EXPLORE ALL POETRY →</a></div>
+</section>
+
+<section class="section">
+ <div class="section-heading"><div class="small" data-i18n="legends">LEGENDS OF LITERATURE</div><h2 data-i18n="writersTitle">Famous Poets & Writers</h2><div class="gold-line"></div><p data-i18n="writersSub">Great voices of Urdu literature</p></div>
+ <div class="grid">
+  <div class="card writer-card post" data-post-id="writer-ghalib" data-post-title="Mirza Ghalib">
+   <img class="writer-photo" src="assets/ghalib.jpg" alt="Mirza Ghalib" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="writer-placeholder" style="display:none">PHOTO</div>
+   <h3 data-i18n="ghalib">Mirza Ghalib</h3><p data-i18n="ghalibNative">Urdu poet</p>
+   <p class="writer-dates" data-i18n="ghalibDates">Born: 27 December 1797<br>Died: 15 February 1869</p>
+   <a class="writer-more" href="pages/writers/ghalib.html" data-i18n="writerExplore">EXPLORE MORE →</a>
+  </div>
+  <div class="card writer-card post" data-post-id="writer-iqbal" data-post-title="Allama Iqbal">
+   <img class="writer-photo" src="assets/iqbal.jpg" alt="Allama Iqbal" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="writer-placeholder" style="display:none">PHOTO</div>
+   <h3 data-i18n="iqbal">Allama Iqbal</h3><p data-i18n="iqbalNative">Urdu poet and philosopher</p>
+   <p class="writer-dates" data-i18n="iqbalDates">Born: 9 November 1877<br>Died: 21 April 1938</p>
+   <a class="writer-more" href="pages/writers/iqbal.html" data-i18n="writerExplore">EXPLORE MORE →</a>
+  </div>
+  <div class="card writer-card post" data-post-id="writer-faiz" data-post-title="Faiz Ahmed Faiz">
+   <img class="writer-photo" src="assets/faiz.jpg" alt="Faiz Ahmed Faiz" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="writer-placeholder" style="display:none">PHOTO</div>
+   <h3 data-i18n="faiz">Faiz Ahmed Faiz</h3><p data-i18n="faizNative">Urdu poet</p>
+   <p class="writer-dates" data-i18n="faizDates">Born: 13 February 1911<br>Died: 20 November 1984</p>
+   <a class="writer-more" href="pages/writers/faiz.html" data-i18n="writerExplore">EXPLORE MORE →</a>
+  </div>
+  <div class="card writer-card post" data-post-id="writer-meer" data-post-title="Mir Taqi Mir">
+   <img class="writer-photo" src="assets/meer.jpg" alt="Mir Taqi Mir" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="writer-placeholder" style="display:none">PHOTO</div>
+   <h3 data-i18n="meer">Mir Taqi Mir</h3><p data-i18n="meerNative">Classical Urdu poet</p>
+   <p class="writer-dates" data-i18n="meerDates">Born: 1723<br>Died: 20 September 1810</p>
+   <a class="writer-more" href="pages/writers/meer.html" data-i18n="writerExplore">EXPLORE MORE →</a>
+  </div>
+ </div><div style="text-align:center"><a href="pages/writers.html" class="read-link" data-i18n="discoverWriters">DISCOVER ALL WRITERS →</a></div>
+</section>
+
+<section class="section alt">
+ <div class="section-heading"><div class="small" data-i18n="beyond">BEYOND ORDINARY THINKING</div><h2 data-i18n="philosophyTitle">Philosophy & Wisdom</h2><div class="gold-line"></div><p data-i18n="philosophySub">Explore the depth of ideas and life</p></div>
+ <div class="grid">
+  <div class="card post" data-post-id="philosophy-psychology" data-post-title="Human Psychology"><div class="card-number">01</div><h3 data-i18n="humanPsych">Human Psychology</h3><p data-i18n="humanPsychDesc">Understand human behaviour, thought and psychology.</p><a href="pages/philosophy.html" class="card-link" data-i18n="explore">EXPLORE →</a></div>
+  <div class="card post" data-post-id="philosophy-existence" data-post-title="Life & Existence"><div class="card-number">02</div><h3 data-i18n="existence">Life & Existence</h3><p data-i18n="existenceDesc">Questions about life, existence and consciousness.</p><a href="pages/philosophy.html" class="card-link" data-i18n="explore">EXPLORE →</a></div>
+  <div class="card post" data-post-id="philosophy-wisdom" data-post-title="Wisdom"><div class="card-number">03</div><h3 data-i18n="wisdom">Wisdom</h3><p data-i18n="wisdomDesc">A world of knowledge, experience and reflection.</p><a href="pages/philosophy.html" class="card-link" data-i18n="explore">EXPLORE →</a></div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="section-heading"><div class="small" data-i18n="newWord">LEARN A NEW WORD</div><h2 data-i18n="dictionaryTitle">Urdu Dictionary</h2><div class="gold-line"></div><p data-i18n="threeLanguages">One word, three languages</p></div>
+ <div class="word-box post" data-post-id="dictionary-self-respect" data-post-title="خودداری"><div><div class="urdu">خودداری</div><h3 data-i18n="selfRespect">Self-respect</h3><p data-i18n="selfRespectHi">Hindi: आत्मसम्मान</p><p data-i18n="selfRespectEn">English: Self-respect</p></div><a href="pages/dictionary.html" class="primary-btn" data-i18n="exploreDictionary">EXPLORE DICTIONARY →</a></div>
+</section>
+
+<section class="section alt">
+ <div class="section-heading"><div class="small" data-i18n="knowledgeIdeas">KNOWLEDGE & IDEAS</div><h2 data-i18n="latestArticles">Latest Articles</h2><div class="gold-line"></div><p data-i18n="articlesSub">Literature, history and ideas</p></div>
+ <div class="grid">
+  <div class="card post" data-post-id="article-urdu-literature" data-post-title="The journey of Urdu literature"><div class="card-number" data-i18n="literature">LITERATURE</div><h3 data-i18n="article1">The journey of Urdu literature</h3><p data-i18n="article1Desc">An introduction to the evolution and rich tradition of Urdu literature.</p><a href="pages/articles.html" class="card-link" data-i18n="readArticle">READ ARTICLE →</a></div>
+  <div class="card post" data-post-id="article-human-thought" data-post-title="Human beings and their thoughts"><div class="card-number" data-i18n="philosophy">PHILOSOPHY</div><h3 data-i18n="article2">Human beings and their thoughts</h3><p data-i18n="article2Desc">A journey to understand human ideas and behaviour.</p><a href="pages/articles.html" class="card-link" data-i18n="readArticle">READ ARTICLE →</a></div>
+  <div class="card post" data-post-id="article-history-poetry" data-post-title="A history of poetry"><div class="card-number" data-i18n="history">HISTORY</div><h3 data-i18n="article3">A history of poetry</h3><p data-i18n="article3Desc">The poetic tradition and its changing forms.</p><a href="pages/history.html" class="card-link" data-i18n="readMore">READ MORE →</a></div>
+ </div>
+</section>
+
+<footer><div class="footer-grid">
+ <div><h3>KHAYALNAMA</h3><p class="brand-urdu">خیال نامہ</p><p data-i18n="footerIntro">A digital world of Urdu literature, poetry and philosophy.</p></div>
+ <div><h3 data-i18n="exploreHeading">Explore</h3><a href="pages/poetry.html" data-i18n="poetry">Poetry</a><a href="pages/aqwal.html" data-i18n="quotes">Aqwal</a><a href="pages/writers.html" data-i18n="writers">Writers</a><a href="pages/dictionary.html" data-i18n="dictionary">Dictionary</a></div>
+ <div><h3 data-i18n="discoverHeading">Discover</h3><a href="pages/philosophy.html" data-i18n="philosophy">Philosophy</a><a href="pages/articles.html" data-i18n="articles">Articles</a><a href="pages/history.html" data-i18n="history">History & Culture</a><a href="pages/about.html" data-i18n="about">About Us</a></div>
+ <div><h3 data-i18n="ourVision">Our Vision</h3><p data-i18n="visionText">Preserving words, sharing wisdom and celebrating literature.</p></div>
+ </div><div class="copyright">© 2026 KHAYALNAMA. <span data-i18n="rights">All Rights Reserved.</span></div>
+</footer>
+<div class="notice" id="notice" role="status" aria-live="polite"></div>
+
+<script>
+const translations={
+en:{home:"HOME",poetry:"Poetry",quotes:"Quotes",philosophy:"Philosophy",writers:"Writers",dictionary:"Urdu Dictionary",articles:"Articles",history:"History & Culture",about:"About Us",heroTag:"A JOURNEY THROUGH WORDS & WISDOM",heroDesc:"Where words become feelings, and thoughts become wisdom.",exploreLiterature:"EXPLORE LITERATURE →",reflection:"A MOMENT OF REFLECTION",thoughtTitle:"Thought of the Day",todayThought:"Today's thought",thoughtUr:"انسان کی سوچ ہی اس کی اصل پہچان ہے",thoughtHi:"इंसान की सोच ही उसकी असली पहचान है।",thoughtEn:"A person's thinking is their true identity.",moreThoughts:"EXPLORE MORE THOUGHTS →",beautyWords:"THE BEAUTY OF WORDS",poetryTitle:"Poetry & Shayari",poetrySub:"Feelings hidden in words",poem1Ur:"محبت ایک احساس ہے",poem1Title:"Love",poem1Desc:"Love is a beautiful feeling.",poem2Ur:"زندگی ایک سفر ہے",poem2Title:"Life",poem2Desc:"Life is a remarkable journey.",poem3Ur:"خاموشی بھی ایک زبان ہے",poem3Title:"Silence",poem3Desc:"Silence is also a language.",allPoetry:"EXPLORE ALL POETRY →",legends:"LEGENDS OF LITERATURE",writersTitle:"Famous Poets & Writers",writersSub:"Great voices of Urdu literature",ghalib:"Mirza Ghalib",ghalibNative:"Urdu poet",ghalibDates:"Born: 27 December 1797<br>Died: 15 February 1869",iqbal:"Allama Iqbal",iqbalNative:"Urdu poet and philosopher",iqbalDates:"Born: 9 November 1877<br>Died: 21 April 1938",faiz:"Faiz Ahmed Faiz",faizNative:"Urdu poet",faizDates:"Born: 13 February 1911<br>Died: 20 November 1984",meer:"Mir Taqi Mir",meerNative:"Classical Urdu poet",meerDates:"Born: 1723<br>Died: 20 September 1810",writerExplore:"EXPLORE MORE →",discoverWriters:"DISCOVER ALL WRITERS →",beyond:"BEYOND ORDINARY THINKING",philosophyTitle:"Philosophy & Wisdom",philosophySub:"Explore the depth of ideas and life",humanPsych:"Human Psychology",humanPsychDesc:"Understand human behaviour, thought and psychology.",existence:"Life & Existence",existenceDesc:"Questions about life, existence and consciousness.",wisdom:"Wisdom",wisdomDesc:"A world of knowledge, experience and reflection.",explore:"EXPLORE →",newWord:"LEARN A NEW WORD",dictionaryTitle:"Urdu Dictionary",threeLanguages:"One word, three languages",selfRespect:"Self-respect",selfRespectHi:"Hindi: आत्मसम्मान",selfRespectEn:"English: Self-respect",exploreDictionary:"EXPLORE DICTIONARY →",knowledgeIdeas:"KNOWLEDGE & IDEAS",latestArticles:"Latest Articles",articlesSub:"Literature, history and ideas",literature:"LITERATURE",article1:"The journey of Urdu literature",article1Desc:"An introduction to the evolution and rich tradition of Urdu literature.",article2:"Human beings and their thoughts",article2Desc:"A journey to understand human ideas and behaviour.",article3:"A history of poetry",article3Desc:"The poetic tradition and its changing forms.",readArticle:"READ ARTICLE →",readMore:"READ MORE →",footerIntro:"A digital world of Urdu literature, poetry and philosophy.",exploreHeading:"Explore",discoverHeading:"Discover",ourVision:"Our Vision",visionText:"Preserving words, sharing wisdom and celebrating literature.",rights:"All Rights Reserved.",like:"♡ Like",liked:"♥ Liked",comment:"Comment",share:"Share",writeComment:"Write a comment…",send:"Post",commentNote:"Comments and likes are saved only in this browser for preview. Public comments need a secure database.",noComments:"No comments yet.",shared:"Share link copied.",shareError:"Could not share this item."},
+hi:{home:"मुखपृष्ठ",poetry:"कविता एवं शायरी",quotes:"अनमोल विचार",philosophy:"दर्शन",writers:"शायर एवं लेखक",dictionary:"उर्दू शब्दकोश",articles:"लेख",history:"इतिहास एवं संस्कृति",about:"हमारे बारे में",heroTag:"शब्दों और विचारों का एक सफ़र",heroDesc:"जहाँ शब्द एहसास बनते हैं और विचार ज्ञान।",exploreLiterature:"साहित्य की दुनिया में प्रवेश करें →",reflection:"आत्मचिंतन का एक पल",thoughtTitle:"आज का विचार",todayThought:"आज का ख़याल",thoughtUr:"انسان کی سوچ ہی اس کی اصل پہچان ہے",thoughtHi:"इंसान की सोच ही उसकी असली पहचान है।",thoughtEn:"इंसान की सोच ही उसकी असली पहचान है।",moreThoughts:"और विचार पढ़ें →",beautyWords:"शब्दों की सुंदरता",poetryTitle:"कविता और शायरी",poetrySub:"शब्दों में छिपे एहसास",poem1Ur:"محبت ایک احساس ہے",poem1Title:"प्रेम",poem1Desc:"प्रेम एक सुंदर एहसास है।",poem2Ur:"زندگی ایک سفر ہے",poem2Title:"जीवन",poem2Desc:"जीवन एक अनोखा सफ़र है।",poem3Ur:"خاموشی بھی ایک زبان ہے",poem3Title:"मौन",poem3Desc:"मौन भी एक भाषा है।",allPoetry:"सभी रचनाएँ पढ़ें →",legends:"साहित्य के महान व्यक्तित्व",writersTitle:"प्रसिद्ध शायर और लेखक",writersSub:"उर्दू साहित्य की महान आवाज़ें",ghalib:"मिर्ज़ा ग़ालिब",ghalibNative:"महान उर्दू शायर",ghalibDates:"जन्म: 27 दिसंबर 1797<br>निधन: 15 फ़रवरी 1869",iqbal:"अल्लामा इक़बाल",iqbalNative:"शायर और दार्शनिक",iqbalDates:"जन्म: 9 नवंबर 1877<br>निधन: 21 अप्रैल 1938",faiz:"फ़ैज़ अहमद फ़ैज़",faizNative:"प्रगतिशील उर्दू शायर",faizDates:"जन्म: 13 फ़रवरी 1911<br>निधन: 20 नवंबर 1984",meer:"मीर तक़ी मीर",meerNative:"शास्त्रीय उर्दू शायर",meerDates:"जन्म: 1723<br>निधन: 20 सितंबर 1810",writerExplore:"और पढ़ें ←",discoverWriters:"सभी शायरों को जानें →",beyond:"सामान्य सोच से आगे",philosophyTitle:"दर्शन और जीवन-बोध",philosophySub:"विचारों की गहराई और जीवन को समझें",humanPsych:"मानव मनोविज्ञान",humanPsychDesc:"मानव व्यवहार, सोच और मनोविज्ञान को समझें।",existence:"जीवन और अस्तित्व",existenceDesc:"जीवन, अस्तित्व और चेतना से जुड़े प्रश्न।",wisdom:"ज्ञान और विवेक",wisdomDesc:"ज्ञान, अनुभव और चिंतन की दुनिया।",explore:"और जानें →",newWord:"एक नया शब्द सीखें",dictionaryTitle:"उर्दू शब्दकोश",threeLanguages:"एक शब्द, तीन भाषाएँ",selfRespect:"आत्मसम्मान",selfRespectHi:"हिंदी: आत्मसम्मान",selfRespectEn:"अंग्रेज़ी: Self-respect",exploreDictionary:"शब्दकोश देखें →",knowledgeIdeas:"ज्ञान और विचार",latestArticles:"नवीनतम लेख",articlesSub:"साहित्य, इतिहास और विचारों पर लेख",literature:"साहित्य",article1:"उर्दू साहित्य का सफ़र",article1Desc:"उर्दू साहित्य के विकास और समृद्ध परंपरा का परिचय।",article2:"मनुष्य और उसकी सोच",article2Desc:"मानवीय विचारों और व्यवहार को समझने की यात्रा।",article3:"शायरी का इतिहास",article3Desc:"शायरी की परंपरा और उसके बदलते रूप।",readArticle:"लेख पढ़ें →",readMore:"और पढ़ें →",footerIntro:"उर्दू साहित्य, शायरी और दर्शन की एक डिजिटल दुनिया।",exploreHeading:"खोजें",discoverHeading:"जानें",ourVision:"हमारा उद्देश्य",visionText:"शब्दों को सहेजना, ज्ञान बाँटना और साहित्य का सम्मान करना।",rights:"सर्वाधिकार सुरक्षित।",like:"♡ पसंद",liked:"♥ पसंद किया",comment:"टिप्पणी",share:"शेयर",writeComment:"टिप्पणी लिखें…",send:"पोस्ट",commentNote:"प्रीव्यू के लिए टिप्पणियाँ और पसंद केवल इसी ब्राउज़र में सेव होती हैं। सार्वजनिक टिप्पणियों के लिए सुरक्षित डेटाबेस चाहिए।",noComments:"अभी कोई टिप्पणी नहीं।",shared:"शेयर लिंक कॉपी हो गया।",shareError:"शेयर नहीं हो सका।"},
+ur:{home:"صفحۂ اوّل",poetry:"شاعری",quotes:"اقوال",philosophy:"فلسفہ",writers:"شعرا و ادبا",dictionary:"اردو لغت",articles:"مضامین",history:"تاریخ و ثقافت",about:"ہمارے بارے میں",heroTag:"الفاظ اور حکمت کا ایک سفر",heroDesc:"جہاں الفاظ احساس بنتے ہیں اور خیالات حکمت۔",exploreLiterature:"ادب کی دنیا دیکھیے ←",reflection:"غور و فکر کا ایک لمحہ",thoughtTitle:"آج کا خیال",todayThought:"آج کا انتخاب",thoughtUr:"انسان کی سوچ ہی اس کی اصل پہچان ہے",thoughtHi:"انسان کی سوچ ہی اس کی اصل پہچان ہے۔",thoughtEn:"انسان کی سوچ ہی اس کی اصل پہچان ہے۔",moreThoughts:"مزید اقوال پڑھیے ←",beautyWords:"الفاظ کا حسن",poetryTitle:"شاعری اور غزل",poetrySub:"الفاظ میں پوشیدہ احساسات",poem1Ur:"محبت ایک احساس ہے",poem1Title:"محبت",poem1Desc:"محبت ایک خوبصورت احساس ہے۔",poem2Ur:"زندگی ایک سفر ہے",poem2Title:"زندگی",poem2Desc:"زندگی ایک انوکھا سفر ہے۔",poem3Ur:"خاموشی بھی ایک زبان ہے",poem3Title:"خاموشی",poem3Desc:"خاموشی بھی ایک زبان ہے۔",allPoetry:"تمام شاعری دیکھیے ←",legends:"ادب کے روشن ستارے",writersTitle:"مشہور شعرا اور ادبا",writersSub:"اردو ادب کی عظیم آوازیں",ghalib:"مرزا غالب",ghalibNative:"عظیم اردو شاعر",ghalibDates:"پیدائش: 27 دسمبر 1797<br>وفات: 15 فروری 1869",iqbal:"علامہ اقبال",iqbalNative:"شاعر اور مفکر",iqbalDates:"پیدائش: 9 نومبر 1877<br>وفات: 21 اپریل 1938",faiz:"فیض احمد فیض",faizNative:"ترقی پسند اردو شاعر",faizDates:"پیدائش: 13 فروری 1911<br>وفات: 20 نومبر 1984",meer:"میر تقی میر",meerNative:"کلاسیکی اردو شاعر",meerDates:"پیدائش: 1723<br>وفات: 20 ستمبر 1810",writerExplore:"مزید پڑھیے ←",discoverWriters:"تمام شعرا سے ملیے ←",beyond:"عام سوچ سے آگے",philosophyTitle:"فلسفہ اور دانائی",philosophySub:"خیالات کی گہرائی اور زندگی کا مطالعہ",humanPsych:"انسانی نفسیات",humanPsychDesc:"انسانی رویّوں، سوچ اور نفسیات کو سمجھیے۔",existence:"زندگی اور وجود",existenceDesc:"زندگی، وجود اور شعور سے متعلق سوالات۔",wisdom:"دانائی",wisdomDesc:"علم، تجربے اور غور و فکر کی دنیا۔",explore:"مزید دیکھیے ←",newWord:"ایک نیا لفظ سیکھیے",dictionaryTitle:"اردو لغت",threeLanguages:"ایک لفظ، تین زبانیں",selfRespect:"خودداری",selfRespectHi:"ہندی: आत्मसम्मान",selfRespectEn:"انگریزی: Self-respect",exploreDictionary:"لغت دیکھیے ←",knowledgeIdeas:"علم اور خیالات",latestArticles:"تازہ مضامین",articlesSub:"ادب، تاریخ اور فکر پر مضامین",literature:"ادب",article1:"اردو ادب کا سفر",article1Desc:"اردو ادب کے ارتقا اور اس کی شاندار روایت کا تعارف۔",article2:"انسان اور اس کی سوچ",article2Desc:"انسانی خیالات اور رویّوں کو سمجھنے کا سفر۔",article3:"شاعری کی تاریخ",article3Desc:"شاعری کی روایت اور اس کی بدلتی ہوئی صورتیں۔",readArticle:"مضمون پڑھیے ←",readMore:"مزید پڑھیے ←",footerIntro:"اردو ادب، شاعری اور فلسفے کی ایک ڈیجیٹل دنیا۔",exploreHeading:"دیکھیے",discoverHeading:"دریافت",ourVision:"ہمارا مقصد",visionText:"الفاظ کو محفوظ کرنا، دانائی بانٹنا اور ادب کا جشن منانا۔",rights:"جملہ حقوق محفوظ ہیں۔",like:"♡ پسند",liked:"♥ پسند کیا",comment:"تبصرہ",share:"شیئر",writeComment:"تبصرہ لکھیے…",send:"شائع کریں",commentNote:"یہ تبصرے اور پسند صرف اسی براؤزر میں عارضی طور پر محفوظ ہوتے ہیں۔ عوامی نظام کے لیے محفوظ ڈیٹابیس درکار ہوگا۔",noComments:"ابھی کوئی تبصرہ نہیں۔",shared:"شیئر لنک کاپی ہوگیا۔",shareError:"شیئر نہیں ہوسکا۔"}
+};
+let currentLang="en";
+function t(key){return (translations[currentLang]||translations.en)[key]||translations.en[key]||key}
+function setLanguage(lang){
+ currentLang=lang;const dict=translations[lang]||translations.en;document.documentElement.lang=lang;document.documentElement.dir="ltr";
+ document.querySelectorAll("[data-i18n]").forEach(el=>{const k=el.dataset.i18n;if(dict[k]!==undefined)el.textContent=dict[k]});
+ document.getElementById("brandText").textContent=lang==="ur"?"خیال نامہ":lang==="hi"?"ख़याल नामा":"KHAYALNAMA";
+ document.getElementById("heroTitle").textContent=lang==="ur"?"خیال نامہ":lang==="hi"?"ख़याल नामा":"KHAYALNAMA";
+ document.getElementById("heroUrdu").style.display=lang==="ur"?"none":"block";
+ document.getElementById("languageSelect").value=lang;localStorage.setItem("khayalnama-language",lang);renderActionLabels();closeMenu();
+}
+document.getElementById("languageSelect").addEventListener("change",e=>setLanguage(e.target.value));
+function openMenu(){document.getElementById("sidebar").classList.add("active");document.getElementById("overlay").classList.add("active");document.body.style.overflow="hidden"}
+function closeMenu(){document.getElementById("sidebar").classList.remove("active");document.getElementById("overlay").classList.remove("active");document.body.style.overflow=""}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenu()});
+function showNotice(msg){const n=document.getElementById("notice");n.textContent=msg;n.classList.add("show");clearTimeout(window.noticeTimer);window.noticeTimer=setTimeout(()=>n.classList.remove("show"),2300)}
+function safeGet(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback}catch(e){return fallback}}
+function renderActionLabels(){
+ document.querySelectorAll(".post").forEach(post=>{
+  const id=post.dataset.postId;const liked=!!safeGet("kn-like-"+id,false);const count=safeGet("kn-like-count-"+id,0);
+  const like=post.querySelector(".like-action");if(like){like.classList.toggle("liked",liked);like.textContent=(liked?t("liked"):t("like"))+" ";const span=document.createElement("span");span.className="count";span.textContent=count;like.appendChild(span)}
+  const c=post.querySelector(".comment-action");if(c)c.textContent=t("comment")+" ("+safeGet("kn-comments-"+id,[]).length+")";
+  const s=post.querySelector(".share-action");if(s)s.textContent=t("share");
+  const input=post.querySelector(".comment-input");if(input)input.placeholder=t("writeComment");
+  const send=post.querySelector(".comment-submit");if(send)send.textContent=t("send");
+  const note=post.querySelector(".comment-note");if(note)note.textContent=t("commentNote");
+  drawComments(post);
+ });
+}
+function drawComments(post){
+ const list=post.querySelector(".comment-list");if(!list)return;const comments=safeGet("kn-comments-"+post.dataset.postId,[]);list.innerHTML="";
+ if(!comments.length){const li=document.createElement("li");li.textContent=t("noComments");list.appendChild(li);return}
+ comments.forEach(c=>{const li=document.createElement("li");li.textContent=c;list.appendChild(li)});
+}
+function addPostControls(){
+ document.querySelectorAll(".post").forEach(post=>{
+  if(post.querySelector(".post-actions"))return;
+  const id=post.dataset.postId;
+  const bar=document.createElement("div");bar.className="post-actions";
+  const like=document.createElement("button");like.type="button";like.className="action-btn like-action";like.addEventListener("click",()=>toggleLike(post));
+  const comment=document.createElement("button");comment.type="button";comment.className="action-btn comment-action";comment.addEventListener("click",()=>post.querySelector(".comments-panel").classList.toggle("open"));
+  const share=document.createElement("button");share.type="button";share.className="action-btn share-action";share.addEventListener("click",()=>sharePost(post));
+  bar.append(like,comment,share);post.appendChild(bar);
+  const panel=document.createElement("div");panel.className="comments-panel";
+  const form=document.createElement("form");form.className="comment-form";
+  const input=document.createElement("input");input.className="comment-input";input.maxLength=300;input.required=true;input.setAttribute("aria-label","Write a comment");
+  const submit=document.createElement("button");submit.type="submit";submit.className="comment-submit";
+  form.append(input,submit);form.addEventListener("submit",e=>{e.preventDefault();const value=input.value.trim();if(!value)return;const comments=safeGet("kn-comments-"+id,[]);comments.push(value);localStorage.setItem("kn-comments-"+id,JSON.stringify(comments));input.value="";renderActionLabels()});
+  const list=document.createElement("ul");list.className="comment-list";
+  const note=document.createElement("p");note.className="comment-note";
+  panel.append(form,list,note);post.appendChild(panel);
+ });
+ renderActionLabels();
+}
+function toggleLike(post){
+ const id=post.dataset.postId;const wasLiked=!!safeGet("kn-like-"+id,false);const count=safeGet("kn-like-count-"+id,0);
+ localStorage.setItem("kn-like-"+id,JSON.stringify(!wasLiked));localStorage.setItem("kn-like-count-"+id,JSON.stringify(Math.max(0,count+(wasLiked?-1:1))));renderActionLabels();
+}
+async function sharePost(post){
+ const title=post.dataset.postTitle||"Khayalnama";const text=post.innerText.slice(0,220);const data={title:"Khayalnama — "+title,text:text,url:location.href};
+ try{if(navigator.share)await navigator.share(data);else{await navigator.clipboard.writeText(data.title+"\n"+data.text+"\n"+data.url);showNotice(t("shared"))}}
+ catch(e){if(e.name!=="AbortError")showNotice(t("shareError"))}
+}
+addPostControls();setLanguage(localStorage.getItem("khayalnama-language")||"en");
+</script>
+</body>
+                                                                                                                                                          </html>
