@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Famous Poets & Writers of Urdu Literature — Khayalnama. Explore biographies, lives, and works of Ghalib, Iqbal, Faiz, and more.">
+<title>Writers & Poets | Khayalnama — خیال نامہ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--surface:#fff;--soft:#f5f1e8;--gold:#a77b32;--gold-dark:#805b20;--ink:#292720;--muted:#777267;--border:rgba(167,123,50,.24);--shadow:0 12px 35px rgba(43,35,20,.07)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--ink);font-family:"Playfair Display",serif;overflow-x:hidden}a{text-decoration:none;color:inherit}button,select,input,textarea{font:inherit}
+header{height:82px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.96);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(14px);direction:ltr}
+.brand{display:flex;align-items:center;gap:12px;min-width:0;direction:ltr;flex-shrink:0}
+.logo-image{width:55px;height:55px;object-fit:contain;border-radius:8px}.logo-fallback{width:55px;height:55px;border:1px dashed var(--gold);border-radius:8px;display:grid;place-items:center;color:var(--gold);font:10px Arial;text-align:center;flex-shrink:0}
+.brand-text{font:700 19px "Playfair Display",serif;letter-spacing:2px;color:var(--gold-dark);white-space:nowrap}
+.header-actions{display:flex;align-items:center;gap:14px;direction:ltr;flex-shrink:0}.home-link{font:13px "Playfair Display",serif;color:var(--muted)}.home-link:hover{color:var(--gold-dark)}
+.language-select{border:1px solid var(--border);background:#fff;color:var(--gold-dark);padding:10px 12px;border-radius:6px;cursor:pointer;font:13px Arial}
+.menu-btn{width:42px;height:42px;border:1px solid var(--border);background:#fff;color:var(--gold-dark);font:23px Arial;border-radius:6px;cursor:pointer}
+.overlay{position:fixed;inset:0;background:rgba(20,18,14,.45);z-index:200;opacity:0;visibility:hidden;transition:.25s}.overlay.active{opacity:1;visibility:visible}
+.sidebar{position:fixed;top:0;right:-330px;width:300px;max-width:86%;height:100vh;background:#fff;border-left:2px solid var(--gold);z-index:201;padding:25px;transition:.35s;overflow-y:auto;direction:ltr}.sidebar.active{right:0}
+.sidebar-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;direction:ltr}.sidebar-top h2{font:700 18px "Playfair Display",serif;color:var(--gold-dark);letter-spacing:2px}
+.close-btn{border:0;background:none;font:30px Arial;color:var(--gold-dark);cursor:pointer}.sidebar a{display:block;padding:14px 8px;border-bottom:1px solid var(--border);font:15px "Playfair Display",serif;color:var(--ink)}.sidebar a:hover,.sidebar a.active-link{color:var(--gold-dark);padding-left:15px;font-weight:600}
+
+/* Page Banner */
+.page-banner{padding:64px 8% 52px;text-align:center;background:radial-gradient(ellipse at center,#f2e8d4 0%,#fbfaf7 72%);border-bottom:1px solid var(--border)}
+.breadcrumb{font:12px Arial,sans-serif;color:var(--muted);margin-bottom:16px;letter-spacing:1px}.breadcrumb a:hover{color:var(--gold-dark)}
+.page-tag{font:11px "Playfair Display",serif;letter-spacing:4px;color:var(--gold-dark);margin-bottom:14px}
+.page-banner h1{font-size:clamp(32px,6vw,54px);color:#8e682b;font-weight:500;margin-bottom:12px}
+.page-banner p{max-width:680px;margin:auto;color:#686257;line-height:2;font-size:15px}
+.gold-line{height:2px;width:52px;background:var(--gold);margin:18px auto}
+
+/* Layout & Grid */
+.section{padding:60px 8%}
+.filter-bar{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-bottom:42px}
+.filter-btn{border:1px solid var(--border);background:#fff;color:var(--muted);padding:10px 20px;border-radius:30px;font:13px "Playfair Display",serif;cursor:pointer;transition:.2s}
+.filter-btn:hover,.filter-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+
+.writers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:26px}
+.writer-card{background:#fff;border:1px solid var(--border);padding:32px 22px;border-radius:6px;box-shadow:var(--shadow);transition:.25s;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:space-between}
+.writer-card:hover{transform:translateY(-3px);border-color:var(--gold)}
+.writer-card.hidden{display:none}
+
+/* Circular Image Styling */
+.writer-photo{width:115px;height:115px;border-radius:50%;object-fit:cover;border:3px solid #e4d2ad;padding:3px;background:#fff;margin:0 auto 18px}
+.writer-placeholder{width:115px;height:115px;border-radius:50%;border:2px dashed var(--gold);color:var(--gold-dark);font:12px Arial;background:var(--soft);display:grid;place-items:center;margin:0 auto 18px}
+
+.writer-card h3{font-size:21px;font-weight:500;margin-bottom:6px}
+.writer-native{font-size:13px;color:var(--gold-dark);margin-bottom:12px;font-weight:600}
+.writer-dates{font-family:"Noto Sans Devanagari",sans-serif;font-size:12px;color:var(--muted);line-height:1.9;margin-bottom:16px}
+.writer-bio{font:13px/1.9 "Noto Sans Devanagari",sans-serif;color:#5c5649;margin-bottom:20px;text-align:center}
+.writer-more{display:inline-block;padding:10px 18px;border:1px solid var(--gold);border-radius:4px;color:var(--gold-dark);font-size:12px;letter-spacing:.8px;transition:.2s;background:#fff}
+.writer-more:hover{background:var(--gold);color:#fff}
+
+/* Page Navigation Footer Strip */
+.page-nav-strip{background:var(--soft);border-top:1px solid var(--border);padding:36px 8%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.nav-pill{display:inline-block;padding:12px 22px;border:1px solid var(--gold);border-radius:4px;color:var(--gold-dark);font-size:13px;letter-spacing:.8px;background:#fff;transition:.2s}
+.nav-pill:hover{background:var(--gold);color:#fff}
+
+footer{background:#f0ece3;border-top:1px solid var(--border);padding:52px 8% 22px}.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px;margin-bottom:35px}footer h3{color:var(--gold-dark);font-size:17px;margin-bottom:15px}footer p,footer a{display:block;color:#746e62;font-size:13px;line-height:2.3}footer a:hover{color:var(--gold-dark)}.copyright{text-align:center;border-top:1px solid var(--border);padding-top:20px;color:#8a8479;font-size:12px}
+
+/* Social actions */
+.post-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px;padding-top:14px;border-top:1px solid var(--border);font-family:Arial,sans-serif;width:100%}
+.action-btn{border:1px solid var(--border);background:#fff;color:#6e624e;padding:8px 11px;border-radius:20px;font:12px Arial,sans-serif;cursor:pointer;transition:.2s}
+.action-btn:hover,.action-btn.liked{background:#f7eee0;color:var(--gold-dark);border-color:var(--gold)}.action-btn .count{font-weight:bold;margin-left:3px}
+.comments-panel{display:none;margin-top:14px;text-align:left;width:100%}.comments-panel.open{display:block}.comment-form{display:flex;gap:8px;margin-bottom:10px}.comment-form input{min-width:0;flex:1;border:1px solid var(--border);border-radius:5px;padding:10px;font:13px Arial,sans-serif}.comment-form button{border:0;border-radius:5px;background:var(--gold);color:white;padding:0 13px;font:12px Arial,sans-serif;cursor:pointer}
+.comment-list{list-style:none}.comment-list li{padding:8px 10px;margin-top:6px;background:#faf8f3;border-radius:5px;font:13px/1.6 Arial,sans-serif;overflow-wrap:anywhere}.comment-note{font:11px/1.6 Arial,sans-serif;color:var(--muted);margin-top:7px}
+.notice{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#292720;color:#fff;padding:11px 17px;border-radius:25px;font:13px Arial,sans-serif;z-index:500;opacity:0;pointer-events:none;transition:.25s}.notice.show{opacity:1}
+
+/* Multi-language overrides */
+html[lang="hi"] body,html[lang="hi"] .page-banner p,html[lang="hi"] .writer-bio,html[lang="hi"] .filter-btn{font-family:"Noto Sans Devanagari",sans-serif}
+html[lang="ur"] body{font-family:"Noto Nastaliq Urdu",serif}
+html[lang="ur"] .brand-text{font:600 17px/1.8 "Noto Nastaliq Urdu",serif;letter-spacing:0;white-space:nowrap}
+html[lang="ur"] header,html[lang="ur"] .brand,html[lang="ur"] .header-actions,html[lang="ur"] .sidebar-top{direction:ltr}
+html[lang="ur"] .home-link,html[lang="ur"] .sidebar a,html[lang="ur"] .sidebar-top h2,html[lang="ur"] .filter-btn{font-family:"Noto Nastaliq Urdu",serif;letter-spacing:0;line-height:2.2}
+html[lang="ur"] .sidebar a{text-align:right;direction:rtl}
+html[lang="ur"] .page-banner h1,html[lang="ur"] .page-banner p,html[lang="ur"] .writer-bio,html[lang="ur"] footer p,html[lang="ur"] footer a,html[lang="ur"] footer h3,html[lang="ur"] .nav-pill{font-family:"Noto Nastaliq Urdu",serif;letter-spacing:0;line-height:2.4}
+html[lang="ur"] .post-actions,html[lang="ur"] .comment-form,html[lang="ur"] .comment-list,html[lang="ur"] .comment-note{font-family:Arial,sans-serif;direction:ltr}
+@media(max-width:650px){header{height:72px;padding:0 4%}.brand{gap:7px}.brand-text{font-size:15px;letter-spacing:1px}.logo-image,.logo-fallback{width:43px;height:43px}.home-link{display:none}.header-actions{gap:8px}.language-select{padding:9px 7px;font-size:12px}.menu-btn{width:39px;height:39px}.section{padding:48px 5%}.writers-grid{grid-template-columns:1fr}html[lang="ur"] .brand-text{font-size:14px;max-width:105px;white-space:normal;text-align:center}}
+</style>
+</head>
+<body>
+<header>
+ <a class="brand" href="../index.html" aria-label="Khayalnama home">
+  <img class="logo-image" src="../assets/logo.png" alt="Khayalnama logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+  <span class="logo-fallback" style="display:none">YOUR<br>LOGO</span>
+  <span class="brand-text" id="brandText">KHAYALNAMA</span>
+ </a>
+ <div class="header-actions">
+  <a class="home-link" href="../index.html" data-i18n="home">HOME</a>
+  <select class="language-select" id="languageSelect" aria-label="Choose language"><option value="en">English</option><option value="hi">हिन्दी</option><option value="ur">اردو</option></select>
+  <button class="menu-btn" onclick="openMenu()" aria-label="Open menu">☰</button>
+ </div>
+</header>
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<aside class="sidebar" id="sidebar">
+ <div class="sidebar-top"><h2>KHAYALNAMA</h2><button class="close-btn" onclick="closeMenu()" aria-label="Close menu">×</button></div>
+ <nav>
+  <a href="../index.html" data-i18n="home">Home</a>
+  <a href="poetry.html" data-i18n="poetry">Poetry</a>
+  <a href="aqwal.html" data-i18n="quotes">Aqwal</a>
+  <a href="philosophy.html" data-i18n="philosophy">Philosophy</a>
+  <a href="writers.html" class="active-link" data-i18n="writers">Writers</a>
+  <a href="dictionary.html" data-i18n="dictionary">Urdu Dictionary</a>
+  <a href="articles.html" data-i18n="articles">Articles</a>
+  <a href="history.html" data-i18n="history">History & Culture</a>
+  <a href="about.html" data-i18n="about">About Us</a>
+ </nav>
+</aside>
+
+<section class="page-banner">
+ <div class="breadcrumb"><a href="../index.html" data-i18n="home">HOME</a> / <span data-i18n="writers">WRITERS</span></div>
+ <div class="page-tag" data-i18n="legends">LEGENDS OF LITERATURE</div>
+ <h1 data-i18n="writersTitle">Famous Poets & Writers</h1>
+ <div class="gold-line"></div>
+ <p data-i18n="writersPageDesc">Explore the lives, literary contributions, and timeless legacies of the greatest masters who shaped Urdu literature and poetry.</p>
+</section>
+
+<section class="section">
+ <!-- Filter Bar -->
+ <div class="filter-bar" role="tablist">
+  <button class="filter-btn active" onclick="filterWriters('all', this)" data-i18n="filterAll">All Masters</button>
+  <button class="filter-btn" onclick="filterWriters('classical', this)" data-i18n="filterClassical">Classical Poets</button>
+  <button class="filter-btn" onclick="filterWriters('modern', this)" data-i18n="filterModern">Modern & Progressive</button>
+ </div>
+
+ <div class="writers-grid">
+  
+  <!-- Writer 1: Mirza Ghalib -->
+  <article class="writer-card post" data-category="classical" data-post-id="writer-ghalib" data-post-title="Mirza Ghalib">
+   <div>
+    <img class="writer-photo" src="../assets/ghalib.jpg" alt="Mirza Ghalib" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+    <div class="writer-placeholder" style="display:none">PORTRAIT</div>
+    <h3 data-i18n="ghalib">Mirza Ghalib</h3>
+    <div class="writer-native" data-i18n="ghalibNative">Urdu poet</div>
+    <p class="writer-dates" data-i18n="ghalibDates">Born: 27 December 1797<br>Died: 15 February 1869</p>
+    <p class="writer-bio" data-i18n="ghalibBio">The preeminent poet of the Urdu language, known for his philosophical depth, revolutionary ghazals, and unmatched epistolary style.</p>
+   </div>
+   <a class="writer-more" href="writers/ghalib.html" data-i18n="writerExplore">EXPLORE PROFILE →</a>
+  </article>
+
+  <!-- Writer 2: Allama Iqbal -->
+  <article class="writer-card post" data-category="modern" data-post-id="writer-iqbal" data-post-title="Allama Iqbal">
+   <div>
+    <img class="writer-photo" src="../assets/iqbal.jpg" alt="Allama Iqbal" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+    <div class="writer-placeholder" style="display:none">PORTRAIT</div>
+    <h3 data-i18n="iqbal">Allama Iqbal</h3>
+    <div class="writer-native" data-i18n="iqbalNative">Urdu poet and philosopher</div>
+    <p class="writer-dates" data-i18n="iqbalDates">Born: 9 November 1877<br>Died: 21 April 1938</p>
+    <p class="writer-bio" data-i18n="iqbalBio">Poet of the East, philosopher, and visionary whose inspiring verses awakened selfhood, unity, and spiritual renewal across generations.</p>
+   </div>
+   <a class="writer-more" href="writers/iqbal.html" data-i18n="writerExplore">EXPLORE PROFILE →</a>
+  </article>
+
+  <!-- Writer 3: Faiz Ahmed Faiz -->
+  <article class="writer-card post" data-category="modern" data-post-id="writer-faiz" data-post-title="Faiz Ahmed Faiz">
+   <div>
+    <img class="writer-photo" src="../assets/faiz.jpg" alt="Faiz Ahmed Faiz" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+    <div class="writer-placeholder" style="display:none">PORTRAIT</div>
+    <h3 data-i18n="faiz">Faiz Ahmed Faiz</h3>
+    <div class="writer-native" data-i18n="faizNative">Urdu poet</div>
+    <p class="writer-dates" data-i18n="faizDates">Born: 13 February 1911<br>Died: 20 November 1984</p>
+    <p class="writer-bio" data-i18n="faizBio">One of the most celebrated progressive Urdu writers, seamlessly blending romantic lyricism with revolutionary calls for social justice.</p>
+   </div>
+   <a class="writer-more" href="writers/faiz.html" data-i18n="writerExplore">EXPLORE PROFILE →</a>
+  </article>
+
+  <!-- Writer 4: Mir Taqi Mir -->
+  <article class="writer-card post" data-category="classical" data-post-id="writer-meer" data-post-title="Mir Taqi Mir">
+   <div>
+    <img class="writer-photo" src="../assets/meer.jpg" alt="Mir Taqi Mir" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+    <div class="writer-placeholder" style="display:none">PORTRAIT</div>
+    <h3 data-i18n="meer">Mir Taqi Mir</h3>
+    <div class="writer-native" data-i18n="meerNative">Classical Urdu poet</div>
+    <p class="writer-dates" data-i18n="meerDates">Born: 1723<br>Died: 20 September 1810</p>
+    <p class="writer-bio" data-i18n="meerBio">The 'Khuda-e-Sukhan' (God of Poetry), famed for his poignant expression of sorrow, delicate pathos, and the foundational elegance of classical ghazal.</p>
+   </div>
+   <a class="writer-more" href="writers/meer.html" data-i18n="writerExplore">EXPLORE PROFILE →</a>
+  </article>
+
+  <!-- Writer 5: Jaun Elia -->
+  <article class="writer-card post" data-category="modern" data-post-id="writer-jaun" data-post-title="Jaun Elia">
+   <div>
+    <img class="writer-photo" src="../assets/jaun.jpg" alt="Jaun Elia" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+    <div class="writer-placeholder" style="display:none">PORTRAIT</div>
+    <h3 data-i18n="jaun">Jaun Elia</h3>
+    <div class="writer-native" data-i18n="jaunNative">Modern Urdu poet & scholar</div>
+    <p class="writer-dates" data-i18n="jaunDates">Born: 14 December 1931<br>Died: 8 November 2002</p>
+    <p class="writer-bio" data-i18n="jaunBio">A unique iconoclast and scholar whose deeply personal idiom, angst, and poignant anti-establishment poetry captured contemporary melancholy.</p>
+   </div>
+   <a class="writer-more" href="writers/jaun.html" data-i18n="writerExplore">EXPLORE PROFILE →</a>
+  </article>
+
+  <!-- Writer 6: Parveen Shakir -->
+  <article class="writer-card post" data-category="modern" data-post-id="writer-parveen" data-post-title="Parveen Shakir">
+   <div>
+    <img class="writer-photo" src="../assets/parveen.jpg" alt="Parveen Shakir" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+    <div class="writer-placeholder" style="display:none">PORTRAIT</div>
+    <h3 data-i18n="parveen">Parveen Shakir</h3>
+    <div class="writer-native" data-i18n="parveenNative">Contemporary Urdu poet</div>
+    <p class="writer-dates" data-i18n="parveenDates">Born: 24 November 1952<br>Died: 26 December 1994</p>
+    <p class="writer-bio" data-i18n="parveenBio">Pioneered a feminine voice in Urdu poetry, expressing delicate sensitivities, love, and societal struggles with breathtaking grace.</p>
+   </div>
+   <a class="writer-more" href="writers/parveen.html" data-i18n="writerExplore">EXPLORE PROFILE →</a>
+  </article>
+
+ </div>
+</section>
+
+<!-- Cross-page navigation strip -->
+<div class="page-nav-strip">
+ <a href="philosophy.html" class="nav-pill" data-i18n="prevPhilosophy">← Prev: Philosophy</a>
+ <a href="dictionary.html" class="nav-pill" data-i18n="nextDictionary">Next: Dictionary →</a>
+</div>
+
+<footer><div class="footer-grid">
+ <div><h3>KHAYALNAMA</h3><p class="brand-urdu">خیال نامہ</p><p data-i18n="footerIntro">A digital world of Urdu literature, poetry and philosophy.</p></div>
+ <div><h3 data-i18n="exploreHeading">Explore</h3><a href="poetry.html" data-i18n="poetry">Poetry</a><a href="aqwal.html" data-i18n="quotes">Aqwal</a><a href="writers.html" data-i18n="writers">Writers</a><a href="dictionary.html" data-i18n="dictionary">Dictionary</a></div>
+ <div><h3 data-i18n="discoverHeading">Discover</h3><a href="philosophy.html" data-i18n="philosophy">Philosophy</a><a href="articles.html" data-i18n="articles">Articles</a><a href="history.html" data-i18n="history">History & Culture</a><a href="about.html" data-i18n="about">About Us</a></div>
+ <div><h3 data-i18n="ourVision">Our Vision</h3><p data-i18n="visionText">Preserving words, sharing wisdom and celebrating literature.</p></div>
+ </div><div class="copyright">© 2026 KHAYALNAMA. <span data-i18n="rights">All Rights Reserved.</span></div>
+</footer>
+<div class="notice" id="notice" role="status" aria-live="polite"></div>
+
+<script>
+const translations={
+en:{
+ home:"HOME",poetry:"Poetry",quotes:"Quotes",philosophy:"Philosophy",writers:"Writers",dictionary:"Urdu Dictionary",articles:"Articles",history:"History & Culture",about:"About Us",
+ legends:"LEGENDS OF LITERATURE",writersTitle:"Famous Poets & Writers",writersPageDesc:"Explore the lives, literary contributions, and timeless legacies of the greatest masters who shaped Urdu literature and poetry.",
+ filterAll:"All Masters",filterClassical:"Classical Poets",filterModern:"Modern & Progressive",
+ ghalib:"Mirza Ghalib",ghalibNative:"Urdu poet",ghalibDates:"Born: 27 December 1797<br>Died: 15 February 1869",ghalibBio:"The preeminent poet of the Urdu language, known for his philosophical depth, revolutionary ghazals, and unmatched epistolary style.",
+ iqbal:"Allama Iqbal",iqbalNative:"Urdu poet and philosopher",iqbalDates:"Born: 9 November 1877<br>Died: 21 April 1938",iqbalBio:"Poet of the East, philosopher, and visionary whose inspiring verses awakened selfhood, unity, and spiritual renewal across generations.",
+ faiz:"Faiz Ahmed Faiz",faizNative:"Urdu poet",faizDates:"Born: 13 February 1911<br>Died: 20 November 1984",faizBio:"One of the most celebrated progressive Urdu writers, seamlessly blending romantic lyricism with revolutionary calls for social justice.",
+ meer:"Mir Taqi Mir",meerNative:"Classical Urdu poet",meerDates:"Born: 1723<br>Died: 20 September 1810",meerBio:"The 'Khuda-e-Sukhan' (God of Poetry), famed for his poignant expression of sorrow, delicate pathos, and the foundational elegance of classical ghazal.",
+ jaun:"Jaun Elia",jaunNative:"Modern Urdu poet & scholar",jaunDates:"Born: 14 December 1931<br>Died: 8 November 2002",jaunBio:"A unique iconoclast and scholar whose deeply personal idiom, angst, and poignant anti-establishment poetry captured contemporary melancholy.",
+ parveen:"Parveen Shakir",parveenNative:"Contemporary Urdu poet",parveenDates:"Born: 24 November 1952<br>Died: 26 December 1994",parveenBio:"Pioneered a feminine voice in Urdu poetry, expressing delicate sensitivities, love, and societal struggles with breathtaking grace.",
+ writerExplore:"EXPLORE PROFILE →",prevPhilosophy:"← Prev: Philosophy",nextDictionary:"Next: Dictionary →",
+ footerIntro:"A digital world of Urdu literature, poetry and philosophy.",exploreHeading:"Explore",discoverHeading:"Discover",ourVision:"Our Vision",visionText:"Preserving words, sharing wisdom and celebrating literature.",rights:"All Rights Reserved.",
+ like:"♡ Like",liked:"♥ Liked",comment:"Comment",share:"Share",writeComment:"Write a comment…",send:"Post",commentNote:"Comments and likes are saved only in this browser for preview. Public comments need a secure database.",noComments:"No comments yet.",shared:"Share link copied.",shareError:"Could not share this item."
+},
+hi:{
+ home:"मुखपृष्ठ",poetry:"कविता एवं शायरी",quotes:"अनमोल विचार",philosophy:"दर्शन",writers:"शायर एवं लेखक",dictionary:"उर्दू शब्दकोश",articles:"लेख",history:"इतिहास एवं संस्कृति",about:"हमारे बारे में",
+ legends:"साहित्य के महान व्यक्तित्व",writersTitle:"प्रसिद्ध शायर और लेखक",writersPageDesc:"उर्दू साहित्य और शायरी को आकार देने वाले महान उस्तादों के जीवन, साहित्यिक योगदान और उनकी विरासत को जानें।",
+ filterAll:"सभी उस्ताद",filterClassical:"शास्त्रीय शायर",filterModern:"आधुनिक एवं प्रगतिशील",
+ ghalib:"मिर्ज़ा ग़ालिब",ghalibNative:"महान उर्दू शायर",ghalibDates:"जन्म: 27 दिसंबर 1797<br>निधन: 15 फ़रवरी 1869",ghalibBio:"उर्दू भाषा के सिरमौर शायर, जो अपनी दार्शनिक गहराई, क्रांतिकारी ग़ज़लों और बेजोड़ पत्र-शैली के लिए जाने जाते हैं।",
+ iqbal:"अल्लामा इक़बाल",iqbalNative:"शायर और दार्शनिक",iqbalDates:"जन्म: 9 नवंबर 1877<br>निधन: 21 अप्रैल 1938",iqbalBio:"मशरिक के शायर, दार्शनिक और दूरदर्शी जिनकी प्रेरणादायक कविताओं ने आत्म-बोध और आध्यात्मिक चेतना को जगाया।",
+ faiz:"फ़ैज़ अहमद फ़ैज़",faizNative:"प्रगतिशील उर्दू शायर",faizDates:"जन्म: 13 फ़रवरी 1911<br>निधन: 20 नवंबर 1984",faizBio:"सबसे प्रसिद्ध प्रगतिशील लेखकों में से एक, जिन्होंने रोमानी भावुकता को सामाजिक न्याय की क्रांतिकारी पुकार के साथ जोड़ा।",
+ meer:"मीर तक़ी मीर",meerNative:"शास्त्रीय उर्दू शायर",meerDates:"जन्म: 1723<br>निधन: 20 सितंबर 1810",meerBio:"'खुदा-ए-सुखन', जो दर्द के मर्मस्पर्शी इजहार और शास्त्रीय ग़ज़ल की आधारभूत भव्यता के लिए जाने जाते हैं।",
+ jaun:"जौन एलिया",jaunNative:"आधुनिक शायर एवं विद्वान",jaunDates:"जन्म: 14 दिसंबर 1931<br>निधन: 8 नवंबर 2002",jaunBio:"एक अनूठे विद्रोही और विद्वान जिनकी गहरी व्यक्तिगत शैली और तल्ख शायरी ने आधुनिक युग के अकेलेपन को व्यक्त किया।",
+ parveen:"परवीन शाकिर",parveenNative:"समकालीन उर्दू शायर",parveenDates:"जन्म: 24 नवंबर 1952<br>निधन: 26 दिसंबर 1994",parveenBio:"उर्दू शायरी में स्त्री-स्वर की अगुआ, जिन्होंने कोमल संवेदनाओं और प्रेम को अद्भुत गरिमा के साथ व्यक्त किया।",
+ writerExplore:"प्रोफ़ाइल देखें →",prevPhilosophy:"← पिछला: दर्शन",nextDictionary:"अगला: उर्दू शब्दकोश →",
+ footerIntro:"उर्दू साहित्य, शायरी और दर्शन की एक डिजिटल दुनिया।",exploreHeading:"खोजें",discoverHeading:"जानें",ourVision:"हमारा उद्देश्य",visionText:"शब्दों को سहेजना, ज्ञान बाँटना और साहित्य का सम्मान करना।",rights:"सर्वाधिकार सुरक्षित।",
+ like:"♡ पसंद",liked:"♥ पसंद किया",comment:"टिप्पणी",share:"शेयर",writeComment:"टिप्पणी लिखें…",send:"पोस्ट",commentNote:"प्रीव्यू के लिए टिप्पणियाँ और पसंद केवल इसी ब्राउज़र में सेव होती हैं। सार्वजनिक टिप्पणियों के लिए सुरक्षित डेटाबेस चाहिए।",noComments:"अभी कोई टिप्पणी नहीं।",shared:"शेयर लिंक कॉपी हो गया।",shareError:"शेयर नहीं हो सका।"
+},
+ur:{
+ home:"صفحۂ اوّل",poetry:"شاعری",quotes:"اقوال",philosophy:"فلسفہ",writers:"شعرا و ادبا",dictionary:"اردو لغت",articles:"مضامین",history:"تاریخ و ثقافت",about:"ہمارے بارے میں",
+ legends:"ادب کے روشن ستارے",writersTitle:"مشہور شعرا اور ادبا",writersPageDesc:"اردو ادب اور شاعری کی آبیاری کرنے والے عظیم اساتذہ کی زندگی، ادبی خدمات اور لازوال ورثے کا مطالعہ کریں۔",
+ filterAll:"تمام شعرا",filterClassical:"کلاسیکی شعرا",filterModern:"جدید اور ترقی پسند",
+ ghalib:"مرزا غالب",ghalibNative:"عظیم اردو شاعر",ghalibDates:"پیدائش: 27 دسمبر 1797<br>وفات: 15 فروری 1869",ghalibBio:"اردو زبان کے بے تاج بادشاہ، جو اپنی فکری گہرائی، منفرد اندازِ بیاں اور بے مثال خطوط نگاری کے لیے جہانِ ادب میں مرجعِ خلائق ہیں۔",
+ iqbal:"علامہ اقبال",iqbalNative:"شاعر اور مفکر",iqbalDates:"پیدائش: 9 نومبر 1877<br>وفات: 21 اپریل 1938",ghalibBio:"مشرق کے شاعر، فلسفی اور مدبر جن کے اشعار نے امت میں خودی، بیداری اور حریت کا جذبہ پیدا کیا۔",
+ iqbalBio:"مشرق کے شاعر اور فلسفی جن کے الہامی اشعار نے امت میں خودی، عمل اور روحانی بیداری کا شعور بیدار کیا۔",
+ faiz:"فیض احمد فیض",faizNative:"ترقی پسند اردو شاعر",faizDates:"پیدائش: 13 فروری 1911<br>وفات: 20 نومبر 1984",faizBio:"ترقی پسند تحریک کے درخشاں ستارہ، جن کی شاعری میں رومانوی حسن اور انقلاب کی پکار کا دلکش امتزاج پایا جاتا ہے۔",
+ meer:"میر تقی میر",meerNative:"کلاسیکی اردو شاعر",meerDates:"پیدائش: 1723<br>وفات: 20 ستمبر 1810",meerBio:"'خدائے سخن' کہلانے والے میر تقی میر، جو درد و سوز کے بیان اور غزل کی لطافت میں بے مثال ہیں۔",
+ jaun:"جون ایلیا",jaunNative:"جدید اردو شاعر و عالم",jaunDates:"پیدائش: 14 دسمبر 1931<br>وفات: 8 نومبر 2002",jaunBio:"ایک انوکھے انارکیسٹ اور عالم جن کی تلخ نوائی اور بے باک لہجے نے عصری حسیت کو نئی جہت دی۔",
+ parveen:"پروین شاکر",parveenNative:"معاصر اردو شاعرہ",parveenDates:"پیدائش: 24 نومبر 1952<br>وفات: 26 دسمبر 1994",parveenBio:"اردو غزل میں نسوانی لہجے کی معتبر آواز، جنہوں نے محبت اور حیات کی لطیف کیفیات کو کمال ہنر سے برتا۔",
+ writerExplore:"پروفাইল دیکھیے ←",prevPhilosophy:"← پچھلا صفحہ: فلسفہ",nextDictionary:"اگلا صفحہ: اردو لغت →",
+ footerIntro:"اردو ادب، شاعری اور فلسفے کی ایک ڈیجیٹل دنیا۔",exploreHeading:"دیکھیے",discoverHeading:"دریافت",ourVision:"ہمارا مقصد",visionText:"الفاظ کو محفوظ کرنا، دانائی بانٹنا اور ادب کا جشن منانا۔",rights:"جملہ حقوق محفوظ ہیں۔",
+ like:"♡ پسند",liked:"♥ پسند किया",comment:"تبصرہ",share:"শেئر",writeComment:"تبصرہ لکھیے…",send:"شائع کریں",commentNote:"یہ تبصرے اور پسند صرف اسی براؤزر میں عارضی طور پر محفوظ ہوتے ہیں۔ عوامی نظام کے لیے محفوظ ڈیٹابیس درکار ہوگا۔",noComments:"ابھی کوئی تبصرہ نہیں۔",shared:"شیئر لنک کاپی ہوگیا۔",shareError:"شیئر نہیں ہوسکا۔"
+}
+};
+
+let currentLang="en";
+function t(key){return (translations[currentLang]||translations.en)[key]||translations.en[key]||key}
+
+function setLanguage(lang){
+ currentLang=lang;
+ const dict=translations[lang]||translations.en;
+ document.documentElement.lang=lang;
+ document.documentElement.dir="ltr";
+ document.querySelectorAll("[data-i18n]").forEach(el=>{
+  const k=el.dataset.i18n;
+  if(dict[k]!==undefined)el.textContent=dict[k];
+ });
+ document.getElementById("brandText").textContent=lang==="ur"?"خیال نامہ":lang==="hi"?"ख़याल नामा":"KHAYALNAMA";
+ document.getElementById("languageSelect").value=lang;
+ localStorage.setItem("khayalnama-language",lang);
+ renderActionLabels();
+ closeMenu();
+}
+
+document.getElementById("languageSelect").addEventListener("change",e=>setLanguage(e.target.value));
+function openMenu(){document.getElementById("sidebar").classList.add("active");document.getElementById("overlay").classList.add("active");document.body.style.overflow="hidden"}
+function closeMenu(){document.getElementById("sidebar").classList.remove("active");document.getElementById("overlay").classList.remove("active");document.body.style.overflow=""}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenu()});
+
+// Filter system for Writers
+function filterWriters(category, btn){
+ document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+ btn.classList.add("active");
+ document.querySelectorAll(".writer-card").forEach(card=>{
+  const cats=card.dataset.category||"";
+  if(category==="all"||cats.includes(category)){
+   card.classList.remove("hidden");
+  }else{
+   card.classList.add("hidden");
+  }
+ });
+}
+
+function showNotice(msg){const n=document.getElementById("notice");n.textContent=msg;n.classList.add("show");clearTimeout(window.noticeTimer);window.noticeTimer=setTimeout(()=>n.classList.remove("show"),2300)}
+function safeGet(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback}catch(e){return fallback}}
+
+function renderActionLabels(){
+ document.querySelectorAll(".post").forEach(post=>{
+  const id=post.dataset.postId;
+  if(!id) return;
+  const liked=!!safeGet("kn-like-"+id,false);
+  const count=safeGet("kn-like-count-"+id,0);
+  
+  const like=post.querySelector(".like-action");
+  if(like){
+   like.classList.toggle("liked",liked);
+   like.textContent=(liked?t("liked"):t("like"))+" ";
+   const span=document.createElement("span");
+   span.className="count";
+   span.textContent=count;
+   like.appendChild(span);
+  }
+  const c=post.querySelector(".comment-action");
+  if(c) c.textContent=t("comment")+" ("+safeGet("kn-comments-"+id,[]).length+")";
+  
+  const s=post.querySelector(".share-action");
+  if(s) s.textContent=t("share");
+
+  const input=post.querySelector(".comment-input");
+  if(input) input.placeholder=t("writeComment");
+
+  const send=post.querySelector(".comment-submit");
+  if(send) send.textContent=t("send");
+
+  const note=post.querySelector(".comment-note");
+  if(note) note.textContent=t("commentNote");
+
+  drawComments(post);
+ });
+}
+
+function drawComments(post){
+ const id = post.dataset.postId;
+ const list=post.querySelector(".comment-list");
+ if(!list) return;
+ const comments=safeGet("kn-comments-"+id,[]);
+ list.innerHTML="";
+ if(!comments.length){
+  const li=document.createElement("li");
+  li.textContent=t("noComments");
+  list.appendChild(li);
+  return;
+ }
+ comments.forEach(c=>{const li=document.createElement("li");li.textContent=c;list.appendChild(li)});
+}
+
+function addPostControls(){
+ document.querySelectorAll(".post").forEach(post=>{
+  if(post.querySelector(".post-actions")) return;
+  const id=post.dataset.postId;
+
+  const bar=document.createElement("div");
+  bar.className="post-actions";
+  
+  const like=document.createElement("button");
+  like.type="button";
+  like.className="action-btn like-action";
+  like.addEventListener("click",()=>toggleLike(post));
+
+  const comment=document.createElement("button");
+  comment.type="button";
+  comment.className="action-btn comment-action";
+  comment.addEventListener("click",()=>post.querySelector(".comments-panel").classList.toggle("open"));
+
+  const share=document.createElement("button");
+  share.type="button";
+  share.className="action-btn share-action";
+  share.addEventListener("click",()=>sharePost(post));
+
+  bar.append(like,comment,share);
+  post.appendChild(bar);
+
+  const panel=document.createElement("div");
+  panel.className="comments-panel";
+
+  const form=document.createElement("form");
+  form.className="comment-form";
+
+  const input=document.createElement("input");
+  input.className="comment-input";
+  input.maxLength=300;
+  input.required=true;
+  input.setAttribute("aria-label","Write a comment");
+
+  const submit=document.createElement("button");
+  submit.type="submit";
+  submit.className="comment-submit";
+
+  form.append(input,submit);
+  form.addEventListener("submit",e=>{
+   e.preventDefault();
+   const val=input.value.trim();
+   if(!val) return;
+   const comments=safeGet("kn-comments-"+id,[]);
+   comments.push(val);
+   localStorage.setItem("kn-comments-"+id,JSON.stringify(comments));
+   input.value="";
+   renderActionLabels();
+  });
+
+  const list=document.createElement("ul");
+  list.className="comment-list";
+
+  const note=document.createElement("p");
+  note.className="comment-note";
+
+  panel.append(form,list,note);
+  post.appendChild(panel);
+ });
+ renderActionLabels();
+}
+
+function toggleLike(post){
+ const id=post.dataset.postId;
+ const wasLiked=!!safeGet("kn-like-"+id,false);
+ const count=safeGet("kn-like-count-"+id,0);
+ localStorage.setItem("kn-like-"+id,JSON.stringify(!wasLiked));
+ localStorage.setItem("kn-like-count-"+id,JSON.stringify(Math.max(0,count+(wasLiked?-1:1))));
+ renderActionLabels();
+}
+
+async function sharePost(post){
+ const title=post.dataset.postTitle||"Khayalnama Writer";
+ const text=post.innerText.slice(0,220);
+ const data={title:"Khayalnama — "+title,text:text,url:location.href};
+ try{if(navigator.share)await navigator.share(data);else{await navigator.clipboard.writeText(data.title+"\n"+data.text+"\n"+data.url);showNotice(t("shared"))}}
+ catch(e){if(e.name!=="AbortError")showNotice(t("shareError"))}
+}
+
+addPostControls();
+setLanguage(localStorage.getItem("khayalnama-language")||"en");
+</script>
+</body>
+</html>
