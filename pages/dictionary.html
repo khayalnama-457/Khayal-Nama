@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Urdu Dictionary — Search words in Urdu, Hindi, or English with meanings and usage examples.">
+<title>Urdu Dictionary | Khayalnama — خیال نامہ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--surface:#fff;--soft:#f5f1e8;--gold:#a77b32;--gold-dark:#805b20;--ink:#292720;--muted:#777267;--border:rgba(167,123,50,.24);--shadow:0 12px 35px rgba(43,35,20,.07)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--ink);font-family:"Playfair Display",serif;overflow-x:hidden}a{text-decoration:none;color:inherit}button,select,input,textarea{font:inherit}
+header{height:82px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.96);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(14px);direction:ltr}
+.brand{display:flex;align-items:center;gap:12px;min-width:0;direction:ltr;flex-shrink:0}
+.logo-image{width:55px;height:55px;object-fit:contain;border-radius:8px}.logo-fallback{width:55px;height:55px;border:1px dashed var(--gold);border-radius:8px;display:grid;place-items:center;color:var(--gold);font:10px Arial;text-align:center;flex-shrink:0}
+.brand-text{font:700 19px "Playfair Display",serif;letter-spacing:2px;color:var(--gold-dark);white-space:nowrap}
+.header-actions{display:flex;align-items:center;gap:14px;direction:ltr;flex-shrink:0}.home-link{font:13px "Playfair Display",serif;color:var(--muted)}.home-link:hover{color:var(--gold-dark)}
+.language-select{border:1px solid var(--border);background:#fff;color:var(--gold-dark);padding:10px 12px;border-radius:6px;cursor:pointer;font:13px Arial}
+.menu-btn{width:42px;height:42px;border:1px solid var(--border);background:#fff;color:var(--gold-dark);font:23px Arial;border-radius:6px;cursor:pointer}
+.overlay{position:fixed;inset:0;background:rgba(20,18,14,.45);z-index:200;opacity:0;visibility:hidden;transition:.25s}.overlay.active{opacity:1;visibility:visible}
+.sidebar{position:fixed;top:0;right:-330px;width:300px;max-width:86%;height:100vh;background:#fff;border-left:2px solid var(--gold);z-index:201;padding:25px;transition:.35s;overflow-y:auto;direction:ltr}.sidebar.active{right:0}
+.sidebar-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;direction:ltr}.sidebar-top h2{font:700 18px "Playfair Display",serif;color:var(--gold-dark);letter-spacing:2px}
+.close-btn{border:0;background:none;font:30px Arial;color:var(--gold-dark);cursor:pointer}.sidebar a{display:block;padding:14px 8px;border-bottom:1px solid var(--border);font:15px "Playfair Display",serif;color:var(--ink)}.sidebar a:hover,.sidebar a.active-link{color:var(--gold-dark);padding-left:15px;font-weight:600}
+
+/* Page Banner */
+.page-banner{padding:64px 8% 52px;text-align:center;background:radial-gradient(ellipse at center,#f2e8d4 0%,#fbfaf7 72%);border-bottom:1px solid var(--border)}
+.breadcrumb{font:12px Arial,sans-serif;color:var(--muted);margin-bottom:16px;letter-spacing:1px}.breadcrumb a:hover{color:var(--gold-dark)}
+.page-tag{font:11px "Playfair Display",serif;letter-spacing:4px;color:var(--gold-dark);margin-bottom:14px}
+.page-banner h1{font-size:clamp(32px,6vw,54px);color:#8e682b;font-weight:500;margin-bottom:12px}
+.page-banner p{max-width:680px;margin:auto;color:#686257;line-height:2;font-size:15px}
+.gold-line{height:2px;width:52px;background:var(--gold);margin:18px auto}
+
+/* Search Section */
+.section{padding:60px 8%;min-height:420px}
+.search-box-wrap{max-width:680px;margin:0 auto 20px auto;position:relative}
+.search-input{width:100%;border:2px solid var(--border);background:#fff;padding:16px 22px;border-radius:8px;font:16px "Playfair Display",serif;outline:none;box-shadow:var(--shadow);transition:.2s}
+.search-input:focus{border-color:var(--gold)}
+
+/* Quick Suggestion Chips */
+.suggestions{max-width:680px;margin:0 auto 40px auto;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center}
+.sug-label{font:12px Arial,sans-serif;color:var(--muted);margin-right:6px}
+.sug-chip{border:1px solid var(--border);background:#fff;color:var(--gold-dark);padding:6px 14px;border-radius:20px;font:14px "Noto Nastaliq Urdu",serif;cursor:pointer;transition:.2s}
+.sug-chip:hover{background:var(--gold);color:#fff}
+
+/* Search Result Area */
+.results-container{max-width:760px;margin:0 auto;display:grid;gap:24px}
+.empty-state{text-align:center;padding:40px 20px;color:var(--muted);font:15px/1.9 "Noto Sans Devanagari",sans-serif;background:#fff;border:1px dashed var(--border);border-radius:8px}
+
+.result-card{background:#fff;border:1px solid var(--border);padding:34px 28px;border-radius:8px;box-shadow:var(--shadow);animation:fadeIn .25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.res-top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:20px;flex-wrap:wrap;gap:12px}
+.res-urdu{font:38px/1.8 "Noto Nastaliq Urdu",serif;color:var(--gold-dark);direction:rtl}
+.res-pos{font:11px Arial,sans-serif;background:var(--soft);color:var(--gold-dark);padding:5px 12px;border-radius:20px;border:1px solid var(--border);letter-spacing:1px}
+
+.lang-row{margin-bottom:14px;padding:12px 16px;background:var(--soft);border-radius:6px;border-left:3px solid var(--gold)}
+.lang-badge{font:bold 11px Arial,sans-serif;color:var(--gold-dark);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:4px}
+.lang-val-hi{font:16px/1.8 "Noto Sans Devanagari",sans-serif;color:var(--ink)}
+.lang-val-en{font:15px/1.7 "Playfair Display",serif;color:var(--ink)}
+
+.detail-block{margin-top:18px;padding-top:16px;border-top:1px dashed var(--border)}
+.detail-title{font:bold 12px Arial,sans-serif;color:var(--gold-dark);letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px;display:block}
+.detail-text{font:15px/2 "Noto Sans Devanagari",sans-serif;color:#4a453b}
+.usage-box{background:#faf8f2;padding:16px;border-radius:6px;border:1px solid var(--border);margin-top:14px}
+.usage-ur{font:20px/2.3 "Noto Nastaliq Urdu",serif;color:var(--ink);direction:rtl;text-align:right;margin-bottom:6px}
+.usage-hi{font:14px/1.8 "Noto Sans Devanagari",sans-serif;color:#5c5649;margin-bottom:4px}
+.usage-en{font:italic 14px/1.7 "Playfair Display",serif;color:var(--muted)}
+
+/* Page Navigation Footer Strip */
+.page-nav-strip{background:var(--soft);border-top:1px solid var(--border);padding:36px 8%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.nav-pill{display:inline-block;padding:12px 22px;border:1px solid var(--gold);border-radius:4px;color:var(--gold-dark);font-size:13px;letter-spacing:.8px;background:#fff;transition:.2s}
+.nav-pill:hover{background:var(--gold);color:#fff}
+
+footer{background:#f0ece3;border-top:1px solid var(--border);padding:52px 8% 22px}.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px;margin-bottom:35px}footer h3{color:var(--gold-dark);font-size:17px;margin-bottom:15px}footer p,footer a{display:block;color:#746e62;font-size:13px;line-height:2.3}footer a:hover{color:var(--gold-dark)}.copyright{text-align:center;border-top:1px solid var(--border);padding-top:20px;color:#8a8479;font-size:12px}
+
+/* Social actions */
+.post-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px;padding-top:14px;border-top:1px solid var(--border);font-family:Arial,sans-serif}
+.action-btn{border:1px solid var(--border);background:#fff;color:#6e624e;padding:8px 11px;border-radius:20px;font:12px Arial,sans-serif;cursor:pointer;transition:.2s}
+.action-btn:hover,.action-btn.liked{background:#f7eee0;color:var(--gold-dark);border-color:var(--gold)}.action-btn .count{font-weight:bold;margin-left:3px}
+.comments-panel{display:none;margin-top:14px;text-align:left}.comments-panel.open{display:block}.comment-form{display:flex;gap:8px;margin-bottom:10px}.comment-form input{min-width:0;flex:1;border:1px solid var(--border);border-radius:5px;padding:10px;font:13px Arial,sans-serif}.comment-form button{border:0;border-radius:5px;background:var(--gold);color:white;padding:0 13px;font:12px Arial,sans-serif;cursor:pointer}
+.comment-list{list-style:none}.comment-list li{padding:8px 10px;margin-top:6px;background:#faf8f3;border-radius:5px;font:13px/1.6 Arial,sans-serif;overflow-wrap:anywhere}.comment-note{font:11px/1.6 Arial,sans-serif;color:var(--muted);margin-top:7px}
+.notice{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#292720;color:#fff;padding:11px 17px;border-radius:25px;font:13px Arial,sans-serif;z-index:500;opacity:0;pointer-events:none;transition:.25s}.notice.show{opacity:1}
+
+html[lang="ur"] body{font-family:"Noto Nastaliq Urdu",serif}
+html[lang="ur"] .brand-text{font:600 17px/1.8 "Noto Nastaliq Urdu",serif;letter-spacing:0;white-space:nowrap}
+html[lang="ur"] header,html[lang="ur"] .brand,html[lang="ur"] .header-actions,html[lang="ur"] .sidebar-top{direction:ltr}
+html[lang="ur"] .home-link,html[lang="ur"] .sidebar a,html[lang="ur"] .sidebar-top h2{font-family:"Noto Nastaliq Urdu",serif;letter-spacing:0;line-height:2.2}
+html[lang="ur"] .sidebar a{text-align:right;direction:rtl}
+html[lang="ur"] .page-banner h1,html[lang="ur"] .page-banner p,html[lang="ur"] .detail-text,html[lang="ur"] footer p,html[lang="ur"] footer a,html[lang="ur"] footer h3,html[lang="ur"] .nav-pill{font-family:"Noto Nastaliq Urdu",serif;letter-spacing:0;line-height:2.4}
+html[lang="ur"] .post-actions,html[lang="ur"] .comment-form,html[lang="ur"] .comment-list,html[lang="ur"] .comment-note{font-family:Arial,sans-serif;direction:ltr}
+@media(max-width:650px){header{height:72px;padding:0 4%}.brand{gap:7px}.brand-text{font-size:15px;letter-spacing:1px}.logo-image,.logo-fallback{width:43px;height:43px}.home-link{display:none}.header-actions{gap:8px}.language-select{padding:9px 7px;font-size:12px}.menu-btn{width:39px;height:39px}.section{padding:48px 5%}html[lang="ur"] .brand-text{font-size:14px;max-width:105px;white-space:normal;text-align:center}}
+</style>
+</head>
+<body>
+<header>
+ <a class="brand" href="../index.html" aria-label="Khayalnama home">
+  <img class="logo-image" src="../assets/logo.png" alt="Khayalnama logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+  <span class="logo-fallback" style="display:none">YOUR<br>LOGO</span>
+  <span class="brand-text" id="brandText">KHAYALNAMA</span>
+ </a>
+ <div class="header-actions">
+  <a class="home-link" href="../index.html" data-i18n="home">HOME</a>
+  <select class="language-select" id="languageSelect" aria-label="Choose language"><option value="en">English</option><option value="hi">हिन्दी</option><option value="ur">اردو</option></select>
+  <button class="menu-btn" onclick="openMenu()" aria-label="Open menu">☰</button>
+ </div>
+</header>
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<aside class="sidebar" id="sidebar">
+ <div class="sidebar-top"><h2>KHAYALNAMA</h2><button class="close-btn" onclick="closeMenu()" aria-label="Close menu">×</button></div>
+ <nav>
+  <a href="../index.html" data-i18n="home">Home</a>
+  <a href="poetry.html" data-i18n="poetry">Poetry</a>
+  <a href="aqwal.html" data-i18n="quotes">Aqwal</a>
+  <a href="philosophy.html" data-i18n="philosophy">Philosophy</a>
+  <a href="writers.html" data-i18n="writers">Writers</a>
+  <a href="dictionary.html" class="active-link" data-i18n="dictionary">Urdu Dictionary</a>
+  <a href="articles.html" data-i18n="articles">Articles</a>
+  <a href="history.html" data-i18n="history">History & Culture</a>
+  <a href="about.html" data-i18n="about">About Us</a>
+ </nav>
+</aside>
+
+<section class="page-banner">
+ <div class="breadcrumb"><a href="../index.html" data-i18n="home">HOME</a> / <span data-i18n="dictionary">DICTIONARY</span></div>
+ <div class="page-tag" data-i18n="newWord">LEARN A NEW WORD</div>
+ <h1 data-i18n="dictTitle">Urdu Dictionary & Treasury</h1>
+ <div class="gold-line"></div>
+ <p data-i18n="dictPageDesc">Type any word in Urdu, Hindi, or English to see its multilingual meaning and sentence usage.</p>
+</section>
+
+<section class="section">
+ <!-- Search Bar -->
+ <div class="search-box-wrap">
+  <input type="text" id="wordSearchInput" class="search-input" oninput="handleSearch()" placeholder="Type a word (e.g. خودداری, khudari, self-respect, سکون)..." aria-label="Search word">
+ </div>
+
+ <!-- Quick Try Chips -->
+ <div class="suggestions">
+  <span class="sug-label" data-i18n="tryLabel">Try:</span>
+  <button type="button" class="sug-chip" onclick="quickSearch('خودداری')">خودداری</button>
+  <button type="button" class="sug-chip" onclick="quickSearch('تخیّل')">تخیّل</button>
+  <button type="button" class="sug-chip" onclick="quickSearch('تضاد')">تضاد</button>
+  <button type="button" class="sug-chip" onclick="quickSearch('عرفان')">عرفان</button>
+  <button type="button" class="sug-chip" onclick="quickSearch('سکون')">سکون</button>
+ </div>
+
+ <!-- Dynamic Search Results Container -->
+ <div class="results-container" id="resultsContainer">
+  <div class="empty-state" id="initialPrompt" data-i18n="searchPrompt">Type a word above to explore its meaning in Urdu, Hindi, and English along with usage examples.</div>
+ </div>
+</section>
+
+<!-- Cross-page navigation strip -->
+<div class="page-nav-strip">
+ <a href="writers.html" class="nav-pill" data-i18n="prevWriters">← Prev: Writers</a>
+ <a href="articles.html" class="nav-pill" data-i18n="nextArticles">Next: Articles →</a>
+</div>
+
+<footer><div class="footer-grid">
+ <div><h3>KHAYALNAMA</h3><p class="brand-urdu">خیال نامہ</p><p data-i18n="footerIntro">A digital world of Urdu literature, poetry and philosophy.</p></div>
+ <div><h3 data-i18n="exploreHeading">Explore</h3><a href="poetry.html" data-i18n="poetry">Poetry</a><a href="aqwal.html" data-i18n="quotes">Aqwal</a><a href="writers.html" data-i18n="writers">Writers</a><a href="dictionary.html" data-i18n="dictionary">Dictionary</a></div>
+ <div><h3 data-i18n="discoverHeading">Discover</h3><a href="philosophy.html" data-i18n="philosophy">Philosophy</a><a href="articles.html" data-i18n="articles">Articles</a><a href="history.html" data-i18n="history">History & Culture</a><a href="about.html" data-i18n="about">About Us</a></div>
+ <div><h3 data-i18n="ourVision">Our Vision</h3><p data-i18n="visionText">Preserving words, sharing wisdom and celebrating literature.</p></div>
+ </div><div class="copyright">© 2026 KHAYALNAMA. <span data-i18n="rights">All Rights Reserved.</span></div>
+</footer>
+<div class="notice" id="notice" role="status" aria-live="polite"></div>
+
+<script>
+// Dictionary Database (Words, Meanings, and Usage)
+const dictionaryWords = [
+  {
+    id: "khudari",
+    urdu: "خودداری",
+    hindi: "आत्मसम्मान (ख़ुद्दारी)",
+    english: "Self-respect / Dignity",
+    pos: "Noun (اسم)",
+    meaning: {
+      ur: "اپنی عزتِ نفس اور وقار کو برقرار رکھنا، کسی کے آگے ہاتھ نہ پھیلانا۔",
+      hi: "अपने आत्मसम्मान और गरिमा को बनाए रखना, किसी के आगे न झुकना।",
+      en: "Maintaining one's personal dignity, honor, and pride without bowing before external pressures."
+    },
+    usage: {
+      ur: "غریب ضرور ہے مگر اس کی خودداری اسے کسی کے آگے جھکنے نہیں دیتی۔",
+      hi: "वह ग़रीब ज़रूर है मगर उसकी ख़ुद्दारी उसे किसी के आगे झुकने नहीं देती।",
+      en: "He may be poor, yet his self-respect never allows him to bow before anyone."
+    }
+  },
+  {
+    id: "takhayyul",
+    urdu: "تخیّل",
+    hindi: "कल्पना (तख़य्युल)",
+    english: "Imagination / Fancy",
+    pos: "Noun (اسم)",
+    meaning: {
+      ur: "ذہن میں نئے خیالات، شاعرانہ تصورات اور تصویریں ابھارنے کی صلاحیت۔",
+      hi: "मन में नए विचार, काव्य कल्पनाएँ और चित्र बनाने की रचनात्मक शक्ति।",
+      en: "The creative faculty of forming mental images, poetic ideas, and abstract visions beyond physical reality."
+    },
+    usage: {
+      ur: "شاعر کا تخیل اسے آسمان کی بلندیوں تک لے جاتا ہے۔",
+      hi: "शायर का तख़य्युल उसे आसमान की बुलंदियों तक ले जाता है।",
+      en: "A poet's imagination carries them to the heights of the sky."
+    }
+  },
+  {
+    id: "tazad",
+    urdu: "تضاد",
+    hindi: "विरोधाभास (तज़ाद)",
+    english: "Contradiction / Contrast",
+    pos: "Noun (اسم)",
+    meaning: {
+      ur: "دو چیزوں یا باتوں کے درمیان مخالفت یا ایک دوسرے کے الٹ ہونا۔",
+      hi: "दो चीज़ों या विचारों के बीच विरोध या विपरीत होना।",
+      en: "Oppositeness or incompatibility between two things or ideas."
+    },
+    usage: {
+      ur: "اس کی باتوں اور عمل میں کھلا تضاد نظر آتا ہے۔",
+      hi: "उसकी बातों और कर्मों में खुला तज़ाद नज़र आता है।",
+      en: "There is an open contradiction between his words and his actions."
+    }
+  },
+  {
+    id: "irfan",
+    urdu: "عرفان",
+    hindi: "आत्म-बोध (इरफ़ान)",
+    english: "Gnosis / Inner Enlightenment",
+    pos: "Noun (اسم)",
+    meaning: {
+      ur: "حقیقت کی گہری پہچان، خود شناسی اور روحانی معرفت۔",
+      hi: "सत्य की गहरी पहचान, आत्म-बोध और आध्यात्मिक ज्ञान।",
+      en: "Profound spiritual knowledge, self-realization, and direct mystical awareness."
+    },
+    usage: {
+      ur: "خود کو پہچاننا ہی دراصل عرفانِ ذات کی پہلی سیڑھی ہے۔",
+      hi: "खुद को पहचानना ही असल में इरफ़ान-ए-ज़ात की पहली सीढ़ी है।",
+      en: "Recognizing oneself is truly the first step toward self-enlightenment."
+    }
+  },
+  {
+    id: "sukun",
+    urdu: "سکون",
+    hindi: "शांति (सुकून)",
+    english: "Tranquility / Peace",
+    pos: "Noun (اسم)",
+    meaning: {
+      ur: "دلی چین، اطمینان اور ذہنی بے چینی سے نجات کی حالت۔",
+      hi: "दिल का चैन, मानसिक शांति और बेचैनी से मुक्ति की अवस्था।",
+      en: "A deep state of mental calm, peace of mind, and freedom from inner turmoil."
+    },
+    usage: {
+      ur: "رات کی خاموشی میں کتاب پڑھنے سے دل کو عجیب سکون ملتا ہے۔",
+      hi: "रात की ख़ामोशी में किताब पढ़ने से दिल को अजीब सुकून मिलता है।",
+      en: "Reading a book in the quiet of the night brings a profound peace to the heart."
+    }
+  }
+];
+
+const translations={
+en:{
+ home:"HOME",poetry:"Poetry",quotes:"Quotes",philosophy:"Philosophy",writers:"Writers",dictionary:"Urdu Dictionary",articles:"Articles",history:"History & Culture",about:"About Us",
+ newWord:"LEARN A NEW WORD",dictTitle:"Urdu Dictionary & Treasury",dictPageDesc:"Type any word in Urdu, Hindi, or English to see its multilingual meaning and sentence usage.",
+ tryLabel:"Try:",searchPrompt:"Type a word above to explore its meaning in Urdu, Hindi, and English along with usage examples.",
+ notFound:"No matching word found in the dictionary. Try another spelling or word.",
+ meaningTitle:"Meaning & Explanation",usageTitle:"Usage in Sentences",
+ prevWriters:"← Prev: Writers",nextArticles:"Next: Articles →",
+ footerIntro:"A digital world of Urdu literature, poetry and philosophy.",exploreHeading:"Explore",discoverHeading:"Discover",ourVision:"Our Vision",visionText:"Preserving words, sharing wisdom and celebrating literature.",rights:"All Rights Reserved.",
+ like:"♡ Like",liked:"♥ Liked",comment:"Comment",share:"Share",writeComment:"Write a comment…",send:"Post",commentNote:"Comments and likes are saved only in this browser for preview. Public comments need a secure database.",noComments:"No comments yet.",shared:"Share link copied.",shareError:"Could not share this item."
+},
+hi:{
+ home:"मुखपृष्ठ",poetry:"कविता एवं शायरी",quotes:"अनमोल विचार",philosophy:"दर्शन",writers:"शायर एवं लेखक",dictionary:"उर्दू शब्दकोश",articles:"लेख",history:"इतिहास एवं संस्कृति",about:"हमारे बारे में",
+ newWord:"एक नया शब्द सीखें",dictTitle:"उर्दू शब्दकोश और शब्द भंडार",dictPageDesc:"उर्दू, हिंदी या अंग्रेज़ी में कोई भी शब्द टाइप करें और उसका अर्थ तथा वाक्य में प्रयोग देखें।",
+ tryLabel:"उदाहरण:",searchPrompt:"उर्दू, हिंदी और अंग्रेज़ी में अर्थ तथा वाक्य प्रयोग देखने के लिए ऊपर कोई शब्द टाइप करें।",
+ notFound:"शब्दकोश में कोई मिलता-जुलता शब्द नहीं मिला। कृपया दूसरा शब्द खोजें।",
+ meaningTitle:"अर्थ और व्याख्या",usageTitle:"वाक्यों में प्रयोग",
+ prevWriters:"← पिछला: शायर",nextArticles:"अगला: लेख (Articles) →",
+ footerIntro:"उर्दू साहित्य, शायरी और दर्शन की एक डिजिटल दुनिया।",exploreHeading:"खोजें",discoverHeading:"जानें",ourVision:"हमारा उद्देश्य",visionText:"शब्दों को सहेजना, ज्ञान बाँटना और साहित्य का सम्मान करना।",rights:"सर्वाधिकार सुरक्षित।",
+ like:"♡ पसंद",liked:"♥ पसंद किया",comment:"टिप्पणी",share:"शेयर",writeComment:"टिप्पणी लिखें…",send:"पोस्ट",commentNote:"प्रीव्यू के लिए टिप्पणियाँ और पसंद केवल इसी ब्राउज़र में सेव होती हैं। सार्वजनिक टिप्पणियों के लिए सुरक्षित डेटाबेस चाहिए।",noComments:"अभी कोई टिप्पणी नहीं।",shared:"शेयर लिंक कॉपी हो गया।",shareError:"शेयर नहीं हो सका।"
+},
+ur:{
+ home:"صفحۂ اوّل",poetry:"شاعری",quotes:"اقوال",philosophy:"فلسفہ",writers:"شعرا و ادبا",dictionary:"اردو لغت",articles:"مضامین",history:"تاریخ و ثقافت",about:"ہمارے بارے میں",
+ newWord:"ایک نیا لفظ سیکھیے",dictTitle:"اردو لغت اور الفاظ کا خزانہ",dictPageDesc:"اردو، ہندی یا انگریزی میں کوئی بھی لفظ لکھ کر تلاش کریں اور تینوں زبانوں میں اس کے معانی اور جملوں میں استعمال دیکھیں۔",
+ tryLabel:"مثالیں:",searchPrompt:"لفظ کے معانی اور جملوں میں استعمال دیکھنے کے لیے اوپر سرچ بار میں کوئی لفظ لکھیے۔",
+ notFound:"لغت میں یہ لفظ فی الحال موجود نہیں ہے۔ کوئی دوسرا لفظ تلاش کریں۔",
+ meaningTitle:"معانی اور تشریح",usageTitle:"جملوں میں استعمال",
+ prevWriters:"← پچھلا صفحہ: شعرا",nextArticles:"اگلا صفحہ: مضامین →",
+ footerIntro:"اردو ادب، شاعری اور فلسفے کی ایک ڈیجیٹل دنیا۔",exploreHeading:"دیکھیے",discoverHeading:"دریافت",ourVision:"ہمارا مقصد",visionText:"الفاظ کو محفوظ کرنا، دانائی بانٹنا اور ادب کا جشن منانا۔",rights:"جملہ حقوق محفوظ ہیں۔",
+ like:"♡ پسند",liked:"♥ पसंद किया",comment:"تبصرہ",share:"शेयर",writeComment:"تبصرہ لکھیے…",send:"شائع کریں",commentNote:"یہ تبصرے اور پسند صرف اسی براؤزر میں عارضی طور پر محفوظ ہوتے ہیں۔ عوامی نظام کے لیے محفوظ ڈیٹابیس درکار ہوگا۔",noComments:"ابھی کوئی تبصرہ نہیں۔",shared:"شیئر لنک کاپی ہوگیا۔",shareError:"شیئر نہیں ہوسکا۔"
+}
+};
+
+let currentLang="en";
+function t(key){return (translations[currentLang]||translations.en)[key]||translations.en[key]||key}
+
+function setLanguage(lang){
+ currentLang=lang;
+ const dict=translations[lang]||translations.en;
+ document.documentElement.lang=lang;
+ document.documentElement.dir="ltr";
+ document.querySelectorAll("[data-i18n]").forEach(el=>{
+  const k=el.dataset.i18n;
+  if(dict[k]!==undefined)el.textContent=dict[k];
+ });
+ document.getElementById("brandText").textContent=lang==="ur"?"خیال نامہ":lang==="hi"?"ख़याल नामा":"KHAYALNAMA";
+ document.getElementById("languageSelect").value=lang;
+ localStorage.setItem("khayalnama-language",lang);
+ handleSearch();
+ closeMenu();
+}
+
+document.getElementById("languageSelect").addEventListener("change",e=>setLanguage(e.target.value));
+function openMenu(){document.getElementById("sidebar").classList.add("active");document.getElementById("overlay").classList.add("active");document.body.style.overflow="hidden"}
+function closeMenu(){document.getElementById("sidebar").classList.remove("active");document.getElementById("overlay").classList.remove("active");document.body.style.overflow=""}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenu()});
+
+function quickSearch(word){
+ const input = document.getElementById("wordSearchInput");
+ input.value = word;
+ handleSearch();
+}
+
+function handleSearch(){
+ const query = document.getElementById("wordSearchInput").value.toLowerCase().trim();
+ const container = document.getElementById("resultsContainer");
+
+ if(!query){
+  container.innerHTML = `<div class="empty-state">${t("searchPrompt")}</div>`;
+  return;
+ }
+
+ const matches = dictionaryWords.filter(w => 
+  w.urdu.toLowerCase().includes(query) ||
+  w.hindi.toLowerCase().includes(query) ||
+  w.english.toLowerCase().includes(query) ||
+  w.id.toLowerCase().includes(query)
+ );
+
+ if(!matches.length){
+  container.innerHTML = `<div class="empty-state">${t("notFound")}</div>`;
+  return;
+ }
+
+ container.innerHTML = "";
+ matches.forEach(item => {
+  const card = document.createElement("article");
+  card.className = "result-card post";
+  card.dataset.postId = "dict-" + item.id;
+  card.dataset.postTitle = item.urdu;
+
+  const activeMeaning = item.meaning[currentLang] || item.meaning.en;
+
+  card.innerHTML = `
+   <div class="res-top">
+    <div class="res-urdu">${item.urdu}</div>
+    <span class="res-pos">${item.pos}</span>
+   </div>
+   <div class="lang-row">
+    <span class="lang-badge">HINDI / देवनागरी</span>
+    <div class="lang-val-hi">${item.hindi}</div>
+   </div>
+   <div class="lang-row">
+    <span class="lang-badge">ENGLISH</span>
+    <div class="lang-val-en">${item.english}</div>
+   </div>
+   <div class="detail-block">
+    <span class="detail-title">${t("meaningTitle")}</span>
+    <p class="detail-text">${activeMeaning}</p>
+   </div>
+   <div class="usage-box">
+    <span class="detail-title">${t("usageTitle")}</span>
+    <div class="usage-ur">${item.usage.ur}</div>
+    <div class="usage-hi">${item.usage.hi}</div>
+    <div class="usage-en">"${item.usage.en}"</div>
+   </div>
+  `;
+  container.appendChild(card);
+ });
+
+ addPostControls();
+}
+
+function showNotice(msg){const n=document.getElementById("notice");n.textContent=msg;n.classList.add("show");clearTimeout(window.noticeTimer);window.noticeTimer=setTimeout(()=>n.classList.remove("show"),2300)}
+function safeGet(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback}catch(e){return fallback}}
+
+function renderActionLabels(){
+ document.querySelectorAll(".post").forEach(post=>{
+  const id=post.dataset.postId;if(!id)return;
+  const liked=!!safeGet("kn-like-"+id,false);const count=safeGet("kn-like-count-"+id,0);
+  const like=post.querySelector(".like-action");if(like){like.classList.toggle("liked",liked);like.textContent=(liked?t("liked"):t("like"))+" ";const span=document.createElement("span");span.className="count";span.textContent=count;like.appendChild(span)}
+  const c=post.querySelector(".comment-action");if(c)c.textContent=t("comment")+" ("+safeGet("kn-comments-"+id,[]).length+")";
+  const s=post.querySelector(".share-action");if(s)s.textContent=t("share");
+  const input=post.querySelector(".comment-input");if(input)input.placeholder=t("writeComment");
+  const send=post.querySelector(".comment-submit");if(send)send.textContent=t("send");
+  const note=post.querySelector(".comment-note");if(note)note.textContent=t("commentNote");
+  drawComments(post);
+ });
+}
+
+function drawComments(post){
+ const list=post.querySelector(".comment-list");if(!list)return;const comments=safeGet("kn-comments-"+post.dataset.postId,[]);list.innerHTML="";
+ if(!comments.length){const li=document.createElement("li");li.textContent=t("noComments");list.appendChild(li);return}
+ comments.forEach(c=>{const li=document.createElement("li");li.textContent=c;list.appendChild(li)});
+}
+
+function addPostControls(){
+ document.querySelectorAll(".post").forEach(post=>{
+  if(post.querySelector(".post-actions"))return;
+  const id=post.dataset.postId;
+  const bar=document.createElement("div");bar.className="post-actions";
+  const like=document.createElement("button");like.type="button";like.className="action-btn like-action";like.addEventListener("click",()=>toggleLike(post));
+  const comment=document.createElement("button");comment.type="button";comment.className="action-btn comment-action";comment.addEventListener("click",()=>post.querySelector(".comments-panel").classList.toggle("open"));
+  const share=document.createElement("button");share.type="button";share.className="action-btn share-action";share.addEventListener("click",()=>sharePost(post));
+  bar.append(like,comment,share);post.appendChild(bar);
+  const panel=document.createElement("div");panel.className="comments-panel";
+  const form=document.createElement("form");form.className="comment-form";
+  const input=document.createElement("input");input.className="comment-input";input.maxLength=300;input.required=true;input.setAttribute("aria-label","Write a comment");
+  const submit=document.createElement("button");submit.type="submit";submit.className="comment-submit";
+  form.append(input,submit);form.addEventListener("submit",e=>{e.preventDefault();const value=input.value.trim();if(!value)return;const comments=safeGet("kn-comments-"+id,[]);comments.push(value);localStorage.setItem("kn-comments-"+id,JSON.stringify(comments));input.value="";renderActionLabels()});
+  const list=document.createElement("ul");list.className="comment-list";
+  const note=document.createElement("p");note.className="comment-note";
+  panel.append(form,list,note);post.appendChild(panel);
+ });
+ renderActionLabels();
+}
+
+function toggleLike(post){
+ const id=post.dataset.postId;const wasLiked=!!safeGet("kn-like-"+id,false);const count=safeGet("kn-like-count-"+id,0);
+ localStorage.setItem("kn-like-"+id,JSON.stringify(!wasLiked));localStorage.setItem("kn-like-count-"+id,JSON.stringify(Math.max(0,count+(wasLiked?-1:1))));renderActionLabels();
+}
+
+async function sharePost(post){
+ const title=post.dataset.postTitle||"Khayalnama Dictionary";const text=post.innerText.slice(0,220);const data={title:"Khayalnama — "+title,text:text,url:location.href};
+ try{if(navigator.share)await navigator.share(data);else{await navigator.clipboard.writeText(data.title+"\n"+data.text+"\n"+data.url);showNotice(t("shared"))}}
+ catch(e){if(e.name!=="AbortError")showNotice(t("shareError"))}
+}
+
+setLanguage(localStorage.getItem("khayalnama-language")||"en");
+</script>
+</body>
+</html>
