@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Articles & Essays on Urdu Literature, History, and Philosophy — Khayalnama.">
+<title>Articles & Essays | Khayalnama — خیال نامہ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--surface:#fff;--soft:#f5f1e8;--gold:#a77b32;--gold-dark:#805b20;--ink:#292720;--muted:#777267;--border:rgba(167,123,50,.24);--shadow:0 12px 35px rgba(43,35,20,.07)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--ink);font-family:"Playfair Display",serif;overflow-x:hidden}a{text-decoration:none;color:inherit}button,select,input,textarea{font:inherit}
+header{height:82px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.96);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(14px);direction:ltr}
+.brand{display:flex;align-items:center;gap:12px;min-width:0;direction:ltr;flex-shrink:0}
+.logo-image{width:55px;height:55px;object-fit:contain;border-radius:8px}.logo-fallback{width:55px;height:55px;border:1px dashed var(--gold);border-radius:8px;display:grid;place-items:center;color:var(--gold);font:10px Arial;text-align:center;flex-shrink:0}
+.brand-text{font:700 19px "Playfair Display",serif;letter-spacing:2px;color:var(--gold-dark);white-space:nowrap}
+.header-actions{display:flex;align-items:center;gap:14px;direction:ltr;flex-shrink:0}.home-link{font:13px "Playfair Display",serif;color:var(--muted)}.home-link:hover{color:var(--gold-dark)}
+.language-select{border:1px solid var(--border);background:#fff;color:var(--gold-dark);padding:10px 12px;border-radius:6px;cursor:pointer;font:13px Arial}
+.menu-btn{width:42px;height:42px;border:1px solid var(--border);background:#fff;color:var(--gold-dark);font:23px Arial;border-radius:6px;cursor:pointer}
+.overlay{position:fixed;inset:0;background:rgba(20,18,14,.45);z-index:200;opacity:0;visibility:hidden;transition:.25s}.overlay.active{opacity:1;visibility:visible}
+.sidebar{position:fixed;top:0;right:-330px;width:300px;max-width:86%;height:100vh;background:#fff;border-left:2px solid var(--gold);z-index:201;padding:25px;transition:.35s;overflow-y:auto;direction:ltr}.sidebar.active{right:0}
+.sidebar-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;direction:ltr}.sidebar-top h2{font:700 18px "Playfair Display",serif;color:var(--gold-dark);letter-spacing:2px}
+.close-btn{border:0;background:none;font:30px Arial;color:var(--gold-dark);cursor:pointer}.sidebar a{display:block;padding:14px 8px;border-bottom:1px solid var(--border);font:15px "Playfair Display",serif;color:var(--ink)}.sidebar a:hover,.sidebar a.active-link{color:var(--gold-dark);padding-left:15px;font-weight:600}
+
+/* Page Banner */
+.page-banner{padding:64px 8% 52px;text-align:center;background:radial-gradient(ellipse at center,#f2e8d4 0%,#fbfaf7 72%);border-bottom:1px solid var(--border)}
+.breadcrumb{font:12px Arial,sans-serif;color:var(--muted);margin-bottom:16px;letter-spacing:1px}.breadcrumb a:hover{color:var(--gold-dark)}
+.page-tag{font:11px "Playfair Display",serif;letter-spacing:4px;color:var(--gold-dark);margin-bottom:14px}
+.page-banner h1{font-size:clamp(32px,6vw,54px);color:#8e682b;font-weight:500;margin-bottom:12px}
+.page-banner p{max-width:680px;margin:auto;color:#686257;line-height:2;font-size:15px}
+.gold-line{height:2px;width:52px;background:var(--gold);margin:18px auto}
+
+/* Layout & Grid */
+.section{padding:60px 8%}
+.filter-bar{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-bottom:42px}
+.filter-btn{border:1px solid var(--border);background:#fff;color:var(--muted);padding:10px 20px;border-radius:30px;font:13px "Playfair Display",serif;cursor:pointer;transition:.2s}
+.filter-btn:hover,.filter-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+
+.articles-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:26px}
+.article-card{background:#fff;border:1px solid var(--border);padding:32px 26px;border-radius:6px;box-shadow:var(--shadow);transition:.25s;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between}
+.article-card:hover{transform:translateY(-3px);border-color:var(--gold)}
+.article-card.hidden{display:none}
+
+.art-meta{font-size:11px;letter-spacing:1.5px;color:var(--gold-dark);margin-bottom:12px;text-transform:uppercase;font-weight:600}
+.article-card h3{font-size:22px;font-weight:500;margin-bottom:10px}
+.article-card p{font:13px/1.9 "Noto Sans Devanagari",sans-serif;color:var(--muted);margin-bottom:18px}
+.read-art-link{display:inline-block;color:var(--gold-dark);font-size:12px;letter-spacing:1px;border-bottom:1px solid var(--gold);padding-bottom:3px}
+
+/* Detailed Article Reader */
+.article-reader{background:#fff;border:1px solid var(--border);border-radius:8px;padding:45px;box-shadow:var(--shadow);margin-top:20px;display:none}
+.article-reader.active{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:var(--soft);color:var(--gold-dark);border:1px solid var(--border);padding:8px 16px;border-radius:4px;font-size:12px;cursor:pointer;margin-bottom:24px;transition:.2s}
+.back-btn:hover{background:var(--gold);color:#fff}
+.reader-tag{font-size:11px;letter-spacing:2px;color:var(--gold-dark);text-transform:uppercase;margin-bottom:8px;font-weight:600}
+.reader-title{font-size:clamp(26px,4vw,38px);font-weight:500;color:#373329;margin-bottom:16px}
+.reader-content{font:15px/2.2 "Noto Sans Devanagari",sans-serif;color:#4a453b;margin-top:24px}
+.reader-content p{margin-bottom:20px}
+
+/* Page Navigation Footer Strip */
+.page-nav-strip{background:var(--soft);border-top:1px solid var(--border);padding:36px 8%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.nav-pill{display:inline-block;padding:12px 22px;border:1px solid var(--gold);border-radius:4px;color:var(--gold-dark);font-size:13px;letter-spacing:.8px;background:#fff;transition:.2s}
+.nav-pill:hover{background:var(--gold);color:#fff}
+
+footer{background:#f0ece3;border-top:1px solid var(--border);padding:52px 8% 22px}.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px;margin-bottom:35px}footer h3{color:var(--gold-dark);font-size:17px;margin-bottom:15px}footer p,footer a{display:block;color:#746e62;font-size:13px;line-height:2.3}footer a:hover{color:var(--gold-dark)}.copyright{text-align:center;border-top:1px solid var(--border);padding-top:20px;color:#8a8479;font-size:12px}
+
+/* Social actions */
+.post-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px;padding-top:16px;border-top:1px solid var(--border);font-family:Arial,sans-serif}
+.action-btn{border:1px solid var(--border);background:#fff;color:#6e624e;padding:8px 11px;border-radius:20px;font:12px Arial,sans-serif;cursor:pointer;transition:.2s}
+.action-btn:hover,.action-btn.liked{background:#f7eee0;color:var(--gold-dark);border-color:var(--gold)}.action-btn .count{font-weight:bold;margin-left:3px}
+.comments-panel{display:none;margin-top:14px;text-align:left}.comments-panel.open{display:block}.comment-form{display:flex;gap:8px;margin-bottom:10px}.comment-form input{min-width:0;flex:1;border:1px solid var(--border);border-radius:5px;padding:10px;font:13px Arial,sans-serif}.comment-form button{border:0;border-radius:5px;background:var(--gold);color:white;padding:0 13px;font:12px Arial,sans-serif;cursor:pointer}
+.comment-list{list-style:none}.comment-list li{padding:8px 10px;margin-top:6px;background:#faf8f3;border-radius:5px;font:13px/1.6 Arial,sans-serif;overflow-wrap:anywhere}.comment-note{font:11px/1.6 Arial,sans-serif;color:var(--muted);margin-top:7px}
+.notice{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#292720;color:#fff;padding:11px 17px;border-radius:25px;font:13px Arial,sans-serif;z-index:500;opacity:0;pointer-events:none;transition:.25s}.notice.show{opacity:1}
+
+html[lang="hi"] body,html[lang="hi"] .page-banner p,html[lang="hi"] .reader-content,html[lang="hi"] .filter-btn{font-family:"Noto Sans Devanagari",sans-serif}
+html[lang="ur"] body{font-family:"Noto Nastaliq Urdu",serif}
+html[lang="ur"] .brand-text{font:600 17px/1.8 "Noto Nastaliq Urdu",serif;letter-spacing:0;white-space:nowrap}
+html[lang="ur"] header,html[lang="ur"] .brand,html[lang="ur"] .header-actions,html[lang="ur"] .sidebar-top{direction:ltr}
+html[lang="ur"] .home-link,html[lang="ur"] .sidebar a,html[lang="ur"] .sidebar-top h2,html[lang="ur"] .filter-btn{font-family:"Noto Nastaliq Urdu",serif;letter-spacing:0;line-height:2.2}
+html[lang="ur"] .sidebar a{text-align:right;direction:rtl}
+html[lang="ur"] .page-banner h1,html[lang="ur"] .page-banner p,html[lang="ur"] .reader-content,html[lang="ur"] footer p,html[lang="ur"] footer a,html[lang="ur"] footer h3,html[lang="ur"] .nav-pill{font-family:"Noto Nastaliq Urdu",serif;letter-spacing:0;line-height:2.4}
+html[lang="ur"] .post-actions,html[lang="ur"] .comment-form,html[lang="ur"] .comment-list,html[lang="ur"] .comment-note{font-family:Arial,sans-serif;direction:ltr}
+@media(max-width:650px){header{height:72px;padding:0 4%}.brand{gap:7px}.brand-text{font-size:15px;letter-spacing:1px}.logo-image,.logo-fallback{width:43px;height:43px}.home-link{display:none}.header-actions{gap:8px}.language-select{padding:9px 7px;font-size:12px}.menu-btn{width:39px;height:39px}.section{padding:48px 5%}.articles-grid{grid-template-columns:1fr}html[lang="ur"] .brand-text{font-size:14px;max-width:105px;white-space:normal;text-align:center}}
+</style>
+</head>
+<body>
+<header>
+ <a class="brand" href="../index.html" aria-label="Khayalnama home">
+  <img class="logo-image" src="../assets/logo.png" alt="Khayalnama logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+  <span class="logo-fallback" style="display:none">YOUR<br>LOGO</span>
+  <span class="brand-text" id="brandText">KHAYALNAMA</span>
+ </a>
+ <div class="header-actions">
+  <a class="home-link" href="../index.html" data-i18n="home">HOME</a>
+  <select class="language-select" id="languageSelect" aria-label="Choose language"><option value="en">English</option><option value="hi">हिन्दी</option><option value="ur">اردو</option></select>
+  <button class="menu-btn" onclick="openMenu()" aria-label="Open menu">☰</button>
+ </div>
+</header>
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<aside class="sidebar" id="sidebar">
+ <div class="sidebar-top"><h2>KHAYALNAMA</h2><button class="close-btn" onclick="closeMenu()" aria-label="Close menu">×</button></div>
+ <nav>
+  <a href="../index.html" data-i18n="home">Home</a>
+  <a href="poetry.html" data-i18n="poetry">Poetry</a>
+  <a href="aqwal.html" data-i18n="quotes">Aqwal</a>
+  <a href="philosophy.html" data-i18n="philosophy">Philosophy</a>
+  <a href="writers.html" data-i18n="writers">Writers</a>
+  <a href="dictionary.html" data-i18n="dictionary">Urdu Dictionary</a>
+  <a href="articles.html" class="active-link" data-i18n="articles">Articles</a>
+  <a href="history.html" data-i18n="history">History & Culture</a>
+  <a href="about.html" data-i18n="about">About Us</a>
+ </nav>
+</aside>
+
+<section class="page-banner">
+ <div class="breadcrumb"><a href="../index.html" data-i18n="home">HOME</a> / <span data-i18n="articles">ARTICLES</span></div>
+ <div class="page-tag" data-i18n="knowledgeIdeas">KNOWLEDGE & IDEAS</div>
+ <h1 data-i18n="articlesTitle">Articles & Essays</h1>
+ <div class="gold-line"></div>
+ <p data-i18n="articlesPageDesc">Deep analytical essays and explorations into literature, human psychology, and cultural evolution.</p>
+</section>
+
+<section class="section">
+ <!-- Filter Bar -->
+ <div class="filter-bar" role="tablist" id="filterBar">
+  <button class="filter-btn active" onclick="filterArticles('all', this)" data-i18n="filterAll">All Articles</button>
+  <button class="filter-btn" onclick="filterArticles('literature', this)" data-i18n="filterLit">Literature</button>
+  <button class="filter-btn" onclick="filterArticles('philosophy', this)" data-i18n="filterPhil">Philosophy</button>
+ </div>
+
+ <!-- Articles Grid -->
+ <div class="articles-grid" id="articlesGrid">
+  
+  <!-- Article 1 -->
+  <div class="article-card" data-category="literature" onclick="openArticle('urdu-lit')">
+   <div>
+    <div class="art-meta" data-i18n="catLit">LITERATURE</div>
+    <h3 data-i18n="art1Title">The Journey of Urdu Literature</h3>
+    <p data-i18n="art1Desc">An introduction to the evolution, classical roots, and rich storytelling tradition of Urdu literature.</p>
+   </div>
+   <span class="read-art-link" data-i18n="readArticle">READ ARTICLE →</span>
+  </div>
+
+  <!-- Article 2 -->
+  <div class="article-card" data-category="philosophy" onclick="openArticle('human-thought')">
+   <div>
+    <div class="art-meta" data-i18n="catPhil">PHILOSOPHY</div>
+    <h3 data-i18n="art2Title">Human Beings and Their Thoughts</h3>
+    <p data-i18n="art2Desc">A profound journey to understand human consciousness, ideas, and behavioural psychology.</p>
+   </div>
+   <span class="read-art-link" data-i18n="readArticle">READ ARTICLE →</span>
+  </div>
+
+  <!-- Article 3 -->
+  <div class="article-card" data-category="literature" onclick="openArticle('poetry-history')">
+   <div>
+    <div class="art-meta" data-i18n="catLit">LITERATURE & HISTORY</div>
+    <h3 data-i18n="art3Title">The Evolution of Classical Poetry</h3>
+    <p data-i18n="art3Desc">Tracing the poetic tradition from courtly ghazals to modern progressive expressions.</p>
+   </div>
+   <span class="read-art-link" data-i18n="readArticle">READ ARTICLE →</span>
+  </div>
+
+ </div>
+
+ <!-- Detailed Article Reader View -->
+ <div class="article-reader" id="articleReader">
+  <button class="back-btn" onclick="closeArticle()">← <span data-i18n="backToOverview">Back to Overview</span></button>
+  <div class="reader-tag" id="readerTag"></div>
+  <h2 class="reader-title" id="readerTitle"></h2>
+  <div class="gold-line" style="margin:16px 0 0 0; width:40px;"></div>
+  
+  <div class="reader-content" id="readerContent"></div>
+
+  <!-- Social Interactions Box -->
+  <div class="post" id="articlePostBox" data-post-id="art-default" data-post-title="Article">
+   <div class="post-actions" id="artActionSlot"></div>
+   <div class="comments-panel">
+    <form class="comment-form">
+     <input class="comment-input" maxlength="300" required aria-label="Write a comment">
+     <button type="submit" class="comment-submit"></button>
+    </form>
+    <ul class="comment-list"></ul>
+    <p class="comment-note"></p>
+   </div>
+  </div>
+ </div>
+
+</section>
+
+<!-- Cross-page navigation strip -->
+<div class="page-nav-strip">
+ <a href="dictionary.html" class="nav-pill" data-i18n="prevDictionary">← Prev: Dictionary</a>
+ <a href="history.html" class="nav-pill" data-i18n="nextHistory">Next: History & Culture →</a>
+</div>
+
+<footer><div class="footer-grid">
+ <div><h3>KHAYALNAMA</h3><p class="brand-urdu">خیال نامہ</p><p data-i18n="footerIntro">A digital world of Urdu literature, poetry and philosophy.</p></div>
+ <div><h3 data-i18n="exploreHeading">Explore</h3><a href="poetry.html" data-i18n="poetry">Poetry</a><a href="aqwal.html" data-i18n="quotes">Aqwal</a><a href="writers.html" data-i18n="writers">Writers</a><a href="dictionary.html" data-i18n="dictionary">Dictionary</a></div>
+ <div><h3 data-i18n="discoverHeading">Discover</h3><a href="philosophy.html" data-i18n="philosophy">Philosophy</a><a href="articles.html" data-i18n="articles">Articles</a><a href="history.html" data-i18n="history">History & Culture</a><a href="about.html" data-i18n="about">About Us</a></div>
+ <div><h3 data-i18n="ourVision">Our Vision</h3><p data-i18n="visionText">Preserving words, sharing wisdom and celebrating literature.</p></div>
+ </div><div class="copyright">© 2026 KHAYALNAMA. <span data-i18n="rights">All Rights Reserved.</span></div>
+</footer>
+<div class="notice" id="notice" role="status" aria-live="polite"></div>
+
+<script>
+// Article Content Database
+const articlesDB = {
+ "urdu-lit": {
+  tagKey: "catLit",
+  titleKey: "art1Title",
+  paragraphs: ["art1P1", "art1P2"]
+ },
+ "human-thought": {
+  tagKey: "catPhil",
+  titleKey: "art2Title",
+  paragraphs: ["art2P1", "art2P2"]
+ },
+ "poetry-history": {
+  tagKey: "catLit",
+  titleKey: "art3Title",
+  paragraphs: ["art3P1", "art3P2"]
+ }
+};
+
+const translations={
+en:{
+ home:"HOME",poetry:"Poetry",quotes:"Quotes",philosophy:"Philosophy",writers:"Writers",dictionary:"Urdu Dictionary",articles:"Articles",history:"History & Culture",about:"About Us",
+ knowledgeIdeas:"KNOWLEDGE & IDEAS",articlesTitle:"Articles & Essays",articlesPageDesc:"Deep analytical essays and explorations into literature, human psychology, and cultural evolution.",
+ filterAll:"All Articles",filterLit:"Literature",filterPhil:"Philosophy",
+ catLit:"LITERATURE",catPhil:"PHILOSOPHY",readArticle:"READ ARTICLE →",backToOverview:"Back to Overview",
+ 
+ art1Title:"The Journey of Urdu Literature",
+ art1Desc:"An introduction to the evolution, classical roots, and rich storytelling tradition of Urdu literature.",
+ art1P1:"Urdu literature boasts a rich, centuries-old heritage deeply intertwined with the cultural synthesis of South Asia. Emerging from Sufi gatherings and royal courts, it developed a refined vocabulary and emotional depth that few languages can match.",
+ art1P2:"From the classical ghazals of Mir and Ghalib to the revolutionary prose of the Progressive Writers' Movement, Urdu has continually adapted, capturing both individual heartbreaks and collective social struggles.",
+
+ art2Title:"Human Beings and Their Thoughts",
+ art2Desc:"A profound journey to understand human consciousness, ideas, and behavioural psychology.",
+ art2P1:"The human mind is an extraordinary landscape where thoughts weave the fabric of reality. Ancient sages and modern psychologists alike have pondered how fleeting mental impressions solidify into lifelong habits and character traits.",
+ art2P2:"Understanding the mechanics of thought allows individuals to cultivate mindfulness, overcome cognitive biases, and align their inner intentions with ethical, constructive actions.",
+
+ art3Title:"The Evolution of Classical Poetry",
+ art3Desc:"Tracing the poetic tradition from courtly ghazals to modern progressive expressions.",
+ art3P1:"Poetry in Urdu has always served as the mirror of society. Classical forms like the Masnavi, Qasida, and Ghazal established strict metric rules while allowing boundless room for metaphorical expression.",
+ art3P2:"Over time, the introduction of Nazm (poem) and Azad Nazm (free verse) enabled poets to address complex social, political, and existential themes with unprecedented freedom and urgency.",
+
+ prevDictionary:"← Prev: Dictionary",nextHistory:"Next: History & Culture →",
+ footerIntro:"A digital world of Urdu literature, poetry and philosophy.",exploreHeading:"Explore",discoverHeading:"Discover",ourVision:"Our Vision",visionText:"Preserving words, sharing wisdom and celebrating literature.",rights:"All Rights Reserved.",
+ like:"♡ Like",liked:"♥ Liked",comment:"Comment",share:"Share",writeComment:"Write a comment…",send:"Post",commentNote:"Comments and likes are saved only in this browser for preview. Public comments need a secure database.",noComments:"No comments yet.",shared:"Share link copied.",shareError:"Could not share this item."
+},
+hi:{
+ home:"मुखपृष्ठ",poetry:"कविता एवं शायरी",quotes:"अनमोल विचार",philosophy:"दर्शन",writers:"शायर एवं लेखक",dictionary:"उर्दू शब्दकोश",articles:"लेख",history:"इतिहास एवं संस्कृति",about:"हमारे बारे में",
+ knowledgeIdeas:"ज्ञान और विचार",articlesTitle:"लेख और निबंध",articlesPageDesc:"साहित्य, मानव मनोविज्ञान और सांस्कृतिक विकास पर गहन विश्लेषणात्मक निबंध।",
+ filterAll:"सभी लेख",filterLit:"साहित्य",filterPhil:"दर्शन",
+ catLit:"साहित्य",catPhil:"दर्शन",readArticle:"लेख पढ़ें →",backToOverview:"वापस सूची पर लौटें",
+
+ art1Title:"उर्दू साहित्य का सफ़र",
+ art1Desc:"उर्दू साहित्य के विकास, शास्त्रीय जड़ों और इसकी समृद्ध कथा-परंपरा का परिचय।",
+ art1P1:"उर्दू साहित्य की विरासत सदियों पुरानी है जो दक्षिण एशिया की सांस्कृतिक मेल-जोल से जुड़ी है। सूफी सभाओं और राजदरबारों से निकलकर इसने एक परिष्कृत शब्दावली विकसित की।",
+ art1P2:"मीर और ग़ालिब की शास्त्रीय ग़ज़लों से लेकर प्रगतिशील लेखक संघ के क्रांतिकारी गद्य तक, उर्दू ने लगातार खुद को ढाला है।",
+
+ art2Title:"मनुष्य और उसकी सोच",
+ art2Desc:"मानवीय चेतना, विचारों और व्यवहारिक मनोविज्ञान को समझने की एक गहरी यात्रा।",
+ art2P1:"मानव मन एक असाधारण दुनिया है जहाँ विचार वास्तविकता के ताने-बाने बुनते हैं। प्राचीन ऋषियों और आधुनिक मनोवैज्ञानिकों दोनों ने इस बात पर विचार किया है।",
+ art2P2:"विचारों की यांत्रिकी को समझने से व्यक्ति सचेत जागरूकता विकसित कर सकता है और अपनी आंतरिक मंशा को नैतिक कार्यों के साथ जोड़ सकता है।",
+
+ art3Title:"शास्त्रीय शायरी का विकास",
+ art3Desc:"दरबारी ग़ज़लों से लेकर आधुनिक प्रगतिशील अभिव्यक्तियों तक काव्य परंपरा का इतिहास।",
+ art3P1:"उर्दू में शायरी हमेशा समाज का आईना रही है। मसनवी, क़सीदा और ग़ज़ल जैसे शास्त्रीय रूपों ने कड़े नियम तय किए।",
+ art3P2:"समय के साथ, नज़्म और आज़ाद नज़्म की शुरुआत ने शायरों को जटिल सामाजिक और दार्शनिक विषयों को स्वतंत्र रूप से उठाने की अनुमति दी।",
+
+ prevDictionary:"← पिछला: शब्दकोश",nextHistory:"अगला: इतिहास और संस्कृति →",
+ footerIntro:"उर्दू साहित्य, शायरी और दर्शन की एक डिजिटल दुनिया।",exploreHeading:"खोजें",discoverHeading:"जानें",ourVision:"हमारा उद्देश्य",visionText:"शब्दों को सहेजना, ज्ञान बाँटना और साहित्य का सम्मान करना।",rights:"सर्वाधिकार सुरक्षित.",
+ like:"♡ पसंद",liked:"♥ पसंद किया",comment:"टिप्पणी",share:"शेयर",writeComment:"टिप्पणी लिखें…",send:"पोस्ट",commentNote:"प्रीव्यू के लिए टिप्पणियाँ और पसंद केवल इसी ब्राउज़र में सेव होती हैं। सार्वजनिक टिप्पणियों के लिए सुरक्षित डेटाबेस चाहिए।",noComments:"अभी कोई टिप्पणी नहीं।",shared:"शेयर लिंक कॉपी हो गया।",shareError:"शेयर नहीं हो सका।"
+},
+ur:{
+ home:"صفحۂ اوّل",poetry:"شاعری",quotes:"اقوال",philosophy:"فلسفہ",writers:"شعرا و ادبا",dictionary:"اردو لغت",articles:"مضامین",history:"تاریخ و ثقافت",about:"ہمارے بارے میں",
+ knowledgeIdeas:"علم اور خیالات",articlesTitle:"مضامین اور مقالات",articlesPageDesc:"ادب، انسانی نفسیات اور تہذیبی ارتقا پر گہرے فکری و تجزیاتی مضامین۔",
+ filterAll:"تمام مضامین",filterLit:"ادب",filterPhil:"فلسفہ",
+ catLit:"ادب",catPhil:"فلسفہ",readArticle:"مضمون پڑھیے ←",backToOverview:"واपس فہرست پر جائیں",
+
+ art1Title:"اردو ادب کا سفر",
+ art1Desc:"اردو ادب کے ارتقا، کلاسیکی جڑوں اور اس کی شاندار کہانی نما روایت کا تعارف۔",
+ art1P1:"اردو ادب صدیوں پرانا شاندار ورثہ رکھتا ہے جو برصغیر کی تہذیبی ہم آہنگی میں رچا بسا ہے۔ صوفی خانقاہوں اور درباروں سے جنم لینے والی اس زبان نے بے مثال غنائیت اور وسعت پائی۔",
+ art1P2:"میر و غالب کی غزلوں سے لے کر ترقی پسند تحریک کے انقلابی افسانوں اور نظموں تک، اردو ادب نے ہمیشہ وقت کی نبض کو پہچانا اور اجتماعی شعور کی ترجمانی کی۔",
+
+ art2Title:"انسان اور اس کی سوچ",
+ art2Desc:"انسانی شعور، خیالات اور رویّوں کی نفسیات کو سمجھنے کا ایک فکری سفر۔",
+ art2P1:"انسانی ذہن ایک ایسی وسیع دنیا ہے جہاں خیالات حقیقت کا تاروپود بنتے ہیں۔ قدیم حکماء سے لے کر جدید ماہرینِ نفسیات تک سب نے اس امر پر غور کیا ہے کہ خیالات کیسے کردار بنتے ہیں۔",
+ art2P2:"فکر اور شعور کی اس حرکیات کو سمجھ کر انسان اپنی زندگی کو بہتر بنا سکتا ہے اور اپنی اندرونی توانائی کو تعمیری سمت دے سکتا ہے۔",
+
+ art3Title:"شاعری کی تاریخ اور ارتقا",
+ art3Desc:"درباری غزل سے لے کر جدید آزاد نظم تک شعری روایت کا بدلتا ہوا روپ۔",
+ art3P1:"اردو شاعری ہمیشہ معاشرے کا آئینہ رہی ہے۔ مثنوی، قصیدہ اور غزل نے جہاں فنی پختگی کو سنوارا، وہیں جذبے کی سچائی کو بھی برقرار رکھا۔",
+ art3P2:"وقت کے ساتھ ساتھ نظم اور آزاد نظم کے فروغ نے شعرا کو کائناتی اور سماجی مسائل پر کھل کر بات کرنے کی آزادی دی۔",
+
+ prevDictionary:"← پچھلا صفحہ: لغت",nextHistory:"اگلا صفحہ: تاریخ و ثقافت →",
+ footerIntro:"اردو ادب، شاعری اور فلسفے کی ایک ڈیجیٹل دنیا۔",exploreHeading:"دیکھیے",discoverHeading:"دریافت",ourVision:"ہمارا مقصد",visionText:"الفاظ کو محفوظ کرنا، دانائی بانٹنا اور ادب کا جشن منانا۔",rights:"جملہ حقوق محفوظ ہیں۔",
+ like:"♡ پسند",liked:"♥ पसंद किया",comment:"تبصرہ",share:"शेयर",writeComment:"تبصرہ لکھیے…",send:"شائع کریں",commentNote:"یہ تبصرے اور پسند صرف اسی براؤزر میں عارضی طور پر محفوظ ہوتے ہیں۔ عوامی نظام کے لیے محفوظ ڈیٹابیس درکار ہوگا۔",noComments:"ابھی کوئی تبصرہ نہیں۔",shared:"شیئر لنک کاپی ہوگیا۔",shareError:"شیئر نہیں ہوسکا۔"
+}
+};
+
+let currentLang="en";
+function t(key){return (translations[currentLang]||translations.en)[key]||translations.en[key]||key}
+
+function setLanguage(lang){
+ currentLang=lang;
+ const dict=translations[lang]||translations.en;
+ document.documentElement.lang=lang;
+ document.documentElement.dir="ltr";
+ document.querySelectorAll("[data-i18n]").forEach(el=>{
+  const k=el.dataset.i18n;
+  if(dict[k]!==undefined)el.textContent=dict[k];
+ });
+ document.getElementById("brandText").textContent=lang==="ur"?"خیال نامہ":lang==="hi"?"ख़याल नामा":"KHAYALNAMA";
+ document.getElementById("languageSelect").value=lang;
+ localStorage.setItem("khayalnama-language",lang);
+
+ if(currentOpenArticle){
+  openArticle(currentOpenArticle, true);
+ }
+
+ closeMenu();
+}
+
+document.getElementById("languageSelect").addEventListener("change",e=>setLanguage(e.target.value));
+function openMenu(){document.getElementById("sidebar").classList.add("active");document.getElementById("overlay").classList.add("active");document.body.style.overflow="hidden"}
+function closeMenu(){document.getElementById("sidebar").classList.remove("active");document.getElementById("overlay").classList.remove("active");document.body.style.overflow=""}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenu()});
+
+// Filter system for Articles
+function filterArticles(category, btn){
+ document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+ btn.classList.add("active");
+ document.querySelectorAll(".article-card").forEach(card=>{
+  const cats=card.dataset.category||"";
+  if(category==="all"||cats.includes(category)){
+   card.classList.remove("hidden");
+  }else{
+   card.classList.add("hidden");
+  }
+ });
+}
+
+// Dynamic Article Reader
+let currentOpenArticle = null;
+
+function openArticle(artId){
+ currentOpenArticle = artId;
+ const art = articlesDB[artId];
+ if(!art) return;
+
+ const dict = translations[currentLang] || translations.en;
+
+ document.getElementById("readerTag").textContent = dict[art.tagKey] || art.tagKey;
+ document.getElementById("readerTitle").textContent = dict[art.titleKey] || art.titleKey;
+
+ let contentHTML = "";
+ art.paragraphs.forEach(pKey => {
+  if(dict[pKey]) contentHTML += `<p>${dict[pKey]}</p>`;
+ });
+ document.getElementById("readerContent").innerHTML = contentHTML;
+
+ // Setup Post box
+ const postBox = document.getElementById("articlePostBox");
+ postBox.dataset.postId = "art-item-" + artId;
+ postBox.dataset.postTitle = dict[art.titleKey];
+ setupPostBox(postBox);
+
+ document.getElementById("articlesGrid").style.display = "none";
+ document.getElementById("filterBar").style.display = "none";
+ document.getElementById("articleReader").classList.add("active");
+ window.scrollTo({top: 300, behavior: 'smooth'});
+}
+
+function closeArticle(){
+ currentOpenArticle = null;
+ document.getElementById("articleReader").classList.remove("active");
+ document.getElementById("articlesGrid").style.display = "grid";
+ document.getElementById("filterBar").style.display = "flex";
+ window.scrollTo({top: 200, behavior: 'smooth'});
+}
+
+function setupPostBox(post){
+ const id = post.dataset.postId;
+ const actionSlot = post.querySelector("#artActionSlot");
+ actionSlot.innerHTML = "";
+
+ const like = document.createElement("button");
+ like.type = "button";
+ like.className = "action-btn like-action";
+ like.addEventListener("click", () => toggleLike(post));
+
+ const comment = document.createElement("button");
+ comment.type = "button";
+ comment.className = "action-btn comment-action";
+ comment.addEventListener("click", () => post.querySelector(".comments-panel").classList.toggle("open"));
+
+ const share = document.createElement("button");
+ share.type = "button";
+ share.className = "action-btn share-action";
+ share.addEventListener("click", () => sharePost(post));
+
+ actionSlot.append(like, comment, share);
+
+ const form = post.querySelector(".comment-form");
+ const input = post.querySelector(".comment-input");
+ const submit = post.querySelector(".comment-submit");
+ const note = post.querySelector(".comment-note");
+
+ input.placeholder = t("writeComment");
+ submit.textContent = t("send");
+ note.textContent = t("commentNote");
+
+ const newForm = form.cloneNode(true);
+ form.parentNode.replaceChild(newForm, form);
+
+ newForm.addEventListener("submit", e => {
+  e.preventDefault();
+  const val = newForm.querySelector(".comment-input").value.trim();
+  if(!val) return;
+  const comments = safeGet("kn-comments-"+id, []);
+  comments.push(val);
+  localStorage.setItem("kn-comments-"+id, JSON.stringify(comments));
+  newForm.querySelector(".comment-input").value = "";
+  renderActionLabels();
+ });
+
+ renderActionLabels();
+}
+
+function showNotice(msg){const n=document.getElementById("notice");n.textContent=msg;n.classList.add("show");clearTimeout(window.noticeTimer);window.noticeTimer=setTimeout(()=>n.classList.remove("show"),2300)}
+function safeGet(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback}catch(e){return fallback}}
+
+function renderActionLabels(){
+ document.querySelectorAll(".post").forEach(post=>{
+  const id=post.dataset.postId;if(!id)return;
+  const liked=!!safeGet("kn-like-"+id,false);const count=safeGet("kn-like-count-"+id,0);
+  const like=post.querySelector(".like-action");
+  if(like){
+   like.classList.toggle("liked",liked);
+   like.textContent=(liked?t("liked"):t("like"))+" ";
+   const span=document.createElement("span");
+   span.className="count";
+   span.textContent=count;
+   like.appendChild(span);
+  }
+  const c=post.querySelector(".comment-action");if(c)c.textContent=t("comment")+" ("+safeGet("kn-comments-"+id,[]).length+")";
+  const s=post.querySelector(".share-action");if(s)s.textContent=t("share");
+  drawComments(post);
+ });
+}
+
+function drawComments(post){
+ const id = post.dataset.postId;
+ const list=post.querySelector(".comment-list");if(!list)return;
+ const comments=safeGet("kn-comments-"+id,[]);
+ list.innerHTML="";
+ if(!comments.length){const li=document.createElement("li");li.textContent=t("noComments");list.appendChild(li);return}
+ comments.forEach(c=>{const li=document.createElement("li");li.textContent=c;list.appendChild(li)});
+}
+
+function toggleLike(post){
+ const id=post.dataset.postId;const wasLiked=!!safeGet("kn-like-"+id,false);const count=safeGet("kn-like-count-"+id,0);
+ localStorage.setItem("kn-like-"+id,JSON.stringify(!wasLiked));localStorage.setItem("kn-like-count-"+id,JSON.stringify(Math.max(0,count+(wasLiked?-1:1))));renderActionLabels();
+}
+
+async function sharePost(post){
+ const title=post.dataset.postTitle||"Khayalnama Article";const text=post.innerText.slice(0,220);const data={title:"Khayalnama — "+title,text:text,url:location.href};
+ try{if(navigator.share)await navigator.share(data);else{await navigator.clipboard.writeText(data.title+"\n"+data.text+"\n"+data.url);showNotice(t("shared"))}}
+ catch(e){if(e.name!=="AbortError")showNotice(t("shareError"))}
+}
+
+setLanguage(localStorage.getItem("khayalnama-language")||"en");
+</script>
+</body>
+</html>
