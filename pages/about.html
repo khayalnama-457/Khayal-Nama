@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="About Khayalnama — A digital world of Urdu literature, poetry, and philosophy created by Ahmad.">
+<title>About Us | Khayalnama — خیال نامہ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--surface:#fff;--soft:#f5f1e8;--gold:#a77b32;--gold-dark:#805b20;--ink:#292720;--muted:#777267;--border:rgba(167,123,50,.24);--shadow:0 12px 35px rgba(43,35,20,.07)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--ink);font-family:"Playfair Display",serif;overflow-x:hidden}a{text-decoration:none;color:inherit}button,select,input,textarea{font:inherit}
+header{height:82px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.96);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(14px);direction:ltr}
+.brand{display:flex;align-items:center;gap:12px;min-width:0;direction:ltr;flex-shrink:0}
+.logo-image{width:55px;height:55px;object-fit:contain;border-radius:8px}.logo-fallback{width:55px;height:55px;border:1px dashed var(--gold);border-radius:8px;display:grid;place-items:center;color:var(--gold);font:10px Arial;text-align:center;flex-shrink:0}
+.brand-text{font:700 19px "Playfair Display",serif;letter-spacing:2px;color:var(--gold-dark);white-space:nowrap}
+.header-actions{display:flex;align-items:center;gap:14px;direction:ltr;flex-shrink:0}.home-link{font:13px "Playfair Display",serif;color:var(--muted)}.home-link:hover{color:var(--gold-dark)}
+.language-select{border:1px solid var(--border);background:#fff;color:var(--gold-dark);padding:10px 12px;border-radius:6px;cursor:pointer;font:13px Arial}
+.menu-btn{width:42px;height:42px;border:1px solid var(--border);background:#fff;color:var(--gold-dark);font:23px Arial;border-radius:6px;cursor:pointer}
+.overlay{position:fixed;inset:0;background:rgba(20,18,14,.45);z-index:200;opacity:0;visibility:hidden;transition:.25s}.overlay.active{opacity:1;visibility:visible}
+.sidebar{position:fixed;top:0;right:-330px;width:300px;max-width:86%;height:100vh;background:#fff;border-left:2px solid var(--gold);z-index:201;padding:25px;transition:.35s;overflow-y:auto;direction:ltr}.sidebar.active{right:0}
+.sidebar-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;direction:ltr}.sidebar-top h2{font:700 18px "Playfair Display",serif;color:var(--gold-dark);letter-spacing:2px}
+.close-btn{border:0;background:none;font:30px Arial;color:var(--gold-dark);cursor:pointer}.sidebar a{display:block;padding:14px 8px;border-bottom:1px solid var(--border);font:15px "Playfair Display",serif;color:var(--ink)}.sidebar a:hover,.sidebar a.active-link{color:var(--gold-dark);padding-left:15px;font-weight:600}
+
+/* Page Banner */
+.page-banner{padding:64px 8% 52px;text-align:center;background:radial-gradient(ellipse at center,#f2e8d4 0%,#fbfaf7 72%);border-bottom:1px solid var(--border)}
+.breadcrumb{font:12px Arial,sans-serif;color:var(--muted);margin-bottom:16px;letter-spacing:1px}.breadcrumb a:hover{color:var(--gold-dark)}
+.page-tag{font:11px "Playfair Display",serif;letter-spacing:4px;color:var(--gold-dark);margin-bottom:14px}
+.page-banner h1{font-size:clamp(32px,6vw,54px);color:#8e682b;font-weight:500;margin-bottom:12px}
+.page-banner p{max-width:680px;margin:auto;color:#686257;line-height:2;font-size:15px}
+.gold-line{height:2px;width:52px;background:var(--gold);margin:18px auto}
+
+/* About Container */
+.section{padding:60px 8%;max-width:850px;margin:0 auto}
+.about-card{background:#fff;border:1px solid var(--border);padding:45px 38px;border-radius:8px;box-shadow:var(--shadow)}
+.about-card h2{font-size:28px;color:var(--gold-dark);margin-bottom:20px;font-weight:500}
+.about-card p{font:15px/2.2 "Noto Sans Devanagari",sans-serif;color:#524c41;margin-bottom:20px}
+
+/* Creator Profile Section */
+.creator-profile{display:flex;align-items:center;gap:24px;background:var(--soft);border:1px solid var(--border);padding:25px;border-radius:10px;margin:30px 0;flex-wrap:wrap}
+.creator-avatar-wrap{width:110px;height:110px;border-radius:50%;border:2px dashed var(--gold);overflow:hidden;background:#fff;display:grid;place-items:center;flex-shrink:0;position:relative}
+.creator-avatar-wrap img{width:100%;height:100%;object-fit:cover}
+.avatar-fallback{font:11px Arial,sans-serif;color:var(--gold-dark);text-align:center;padding:10px}
+.creator-info h3{font-size:20px;color:var(--gold-dark);margin-bottom:6px}
+.creator-info p{font:13px/1.8 "Noto Sans Devanagari",sans-serif;color:var(--muted);margin:0}
+
+/* Social Connect Grid */
+.social-section{margin-top:35px;border-top:1px dashed var(--border);padding-top:30px}
+.social-section h3{font-size:20px;color:var(--gold-dark);margin-bottom:18px}
+.social-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.social-btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border-radius:6px;font:14px Arial,sans-serif;color:#fff;font-weight:bold;transition:.25s;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+.social-btn:hover{transform:translateY(-2px);opacity:.92}
+.btn-youtube{background:#ff0000}
+.btn-insta{background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.btn-fb{background:#1877f2}
+
+/* Page Navigation Footer Strip */
+.page-nav-strip{background:var(--soft);border-top:1px solid var(--border);padding:36px 8%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.nav-pill{display:inline-block;padding:12px 22px;border:1px solid var(--gold);border-radius:4px;color:var(--gold-dark);font-size:13px;letter-spacing:.8px;background:#fff;transition:.2s}
+.nav-pill:hover{background:var(--gold);color:#fff}
+
+footer{background:#f0ece3;border-top:1px solid var(--border);padding:52px 8% 22px}.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px;margin-bottom:35px}footer h3{color:var(--gold-dark);font-size:17px;margin-bottom:15px}footer p,footer a{display:block;color:#746e62;font-size:13px;line-height:2.3}footer a:hover{color:var(--gold-dark)}.copyright{text-align:center;border-top:1px solid var(--border);padding-top:20px;color:#8a8479;font-size:12px}
+
+html[lang="hi"] body,html[lang="hi"] .about-card p{font-family:"Noto Sans Devanagari",sans-serif}
+html[lang="ur"] body{font-family:"Noto Nastaliq Urdu",serif}
+html[lang="ur"] .brand-text{font:600 17px/1.8 "Noto Nastaliq Urdu",serif;letter-spacing:0;white-space:nowrap}
+html[lang="ur"] header,html[lang="ur"] .brand,html[lang="ur"] .header-actions,html[lang="ur"] .sidebar-top{direction:ltr}
+html[lang="ur"] .home-link,html[lang="ur"] .sidebar a,html[lang="ur"] .sidebar-top h2{font-family:"Noto Nastaliq Urdu",serif;letter-spacing:0;line-height:2.2}
+html[lang="ur"] .sidebar a{text-align:right;direction:rtl}
+html[lang="ur"] .page-banner h1,html[lang="ur"] .page-banner p,html[lang="ur"] .about-card p,html[lang="ur"] footer p,html[lang="ur"] footer a,html[lang="ur"] footer h3,html[lang="ur"] .nav-pill{font-family:"Noto Nastaliq Urdu",serif;letter-spacing:0;line-height:2.4}
+@media(max-width:650px){header{height:72px;padding:0 4%}.brand{gap:7px}.brand-text{font-size:15px;letter-spacing:1px}.logo-image,.logo-fallback{width:43px;height:43px}.home-link{display:none}.header-actions{gap:8px}.language-select{padding:9px 7px;font-size:12px}.menu-btn{width:39px;height:39px}.section{padding:48px 5%}.about-card{padding:30px 20px}.creator-profile{flex-direction:column;text-align:center}html[lang="ur"] .brand-text{font-size:14px;max-width:105px;white-space:normal;text-align:center}}
+</style>
+</head>
+<body>
+<header>
+ <a class="brand" href="../index.html" aria-label="Khayalnama home">
+  <img class="logo-image" src="../assets/logo.png" alt="Khayalnama logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+  <span class="logo-fallback" style="display:none">YOUR<br>LOGO</span>
+  <span class="brand-text" id="brandText">KHAYALNAMA</span>
+ </a>
+ <div class="header-actions">
+  <a class="home-link" href="../index.html" data-i18n="home">HOME</a>
+  <select class="language-select" id="languageSelect" aria-label="Choose language"><option value="en">English</option><option value="hi">हिन्दी</option><option value="ur">اردو</option></select>
+  <button class="menu-btn" onclick="openMenu()" aria-label="Open menu">☰</button>
+ </div>
+</header>
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<aside class="sidebar" id="sidebar">
+ <div class="sidebar-top"><h2>KHAYALNAMA</h2><button class="close-btn" onclick="closeMenu()" aria-label="Close menu">×</button></div>
+ <nav>
+  <a href="../index.html" data-i18n="home">Home</a>
+  <a href="poetry.html" data-i18n="poetry">Poetry</a>
+  <a href="aqwal.html" data-i18n="quotes">Aqwal</a>
+  <a href="philosophy.html" data-i18n="philosophy">Philosophy</a>
+  <a href="writers.html" data-i18n="writers">Writers</a>
+  <a href="dictionary.html" data-i18n="dictionary">Urdu Dictionary</a>
+  <a href="articles.html" data-i18n="articles">Articles</a>
+  <a href="history.html" data-i18n="history">History & Culture</a>
+  <a href="about.html" class="active-link" data-i18n="about">About Us</a>
+ </nav>
+</aside>
+
+<section class="page-banner">
+ <div class="breadcrumb"><a href="../index.html" data-i18n="home">HOME</a> / <span data-i18n="about">ABOUT US</span></div>
+ <div class="page-tag" data-i18n="ourStory">OUR STORY & VISION</div>
+ <h1 data-i18n="aboutTitle">About Khayalnama</h1>
+ <div class="gold-line"></div>
+ <p data-i18n="aboutPageDesc">A digital sanctuary dedicated to preserving classical Urdu literature, poetry, and philosophical thoughts.</p>
+</section>
+
+<section class="section">
+ <div class="about-card">
+  <h2 data-i18n="visionHeading">Our Mission & Vision</h2>
+  
+  <p data-i18n="p1">Khayalnama (خیال نامہ) was created with a deep passion for Urdu literature, classical poetry (Shayari), wise sayings (Aqwal-e-Zareen), and timeless philosophical explorations. In today's digital era, our goal is to provide a clean, elegant, and ad-free space where lovers of literature can immerse themselves in words that touch the soul.</p>
+  <p data-i18n="p2">Whether you are exploring the profound verses of legendary poets, looking up classical Urdu vocabulary in our digital dictionary, or reading insightful essays on history and culture, Khayalnama serves as your bridge to a rich literary heritage.</p>
+
+  <!-- Creator Profile & Image Box -->
+  <div class="creator-profile">
+   <div class="creator-avatar-wrap">
+    <img src="../assets/ahmad.jpg" alt="Ahmad - Creator" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+    <div class="avatar-fallback" style="display:none">UPLOAD<br>PHOTO</div>
+   </div>
+   <div class="creator-info">
+    <h3 data-i18n="creatorName">Ahmad</h3>
+    <p data-i18n="creatorRole">Founder & Developer of Khayalnama</p>
+    <p data-i18n="creatorDesc" style="margin-top:6px; font-size:13px;">Passionate about web development, Urdu literature, and bringing classical poetry to the digital world.</p>
+   </div>
+  </div>
+
+  <!-- Social Media Connect Section with Links -->
+  <div class="social-section">
+   <h3 data-i18n="connectHeading">Connect With Us</h3>
+   <p data-i18n="connectDesc" style="font-size:13px; color:var(--muted); margin-bottom:16px;">Join our community across social platforms for daily poetry, quotes, and updates:</p>
+   
+   <div class="social-grid">
+    <!-- یوٹھیوب چینل کا لنک یہاں ڈالیں -->
+    <a href="https://youtube.com/@your-youtube-channel" target="_blank" rel="noopener" class="social-btn btn-youtube">
+     ▶ <span data-i18n="ytText">YouTube Channel</span>
+    </a>
+    <!-- انسٹاگرام پیج کا لنک یہاں ڈالیں -->
+    <a href="https://instagram.com/your-instagram-handle" target="_blank" rel="noopener" class="social-btn btn-insta">
+     📷 <span data-i18n="instaText">Instagram Page</span>
+    </a>
+    <!-- فیس بک پیج کا لنک یہاں ڈالیں -->
+    <a href="https://facebook.com/your-facebook-page" target="_blank" rel="noopener" class="social-btn btn-fb">
+     f <span data-i18n="fbText">Facebook Page</span>
+    </a>
+   </div>
+  </div>
+
+ </div>
+</section>
+
+<!-- Cross-page navigation strip -->
+<div class="page-nav-strip">
+ <a href="history.html" class="nav-pill" data-i18n="prevHistory">← Prev: History & Culture</a>
+ <a href="../index.html" class="nav-pill" data-i18n="backHome">Back to Home →</a>
+</div>
+
+<footer><div class="footer-grid">
+ <div><h3>KHAYALNAMA</h3><p class="brand-urdu">خیال نامہ</p><p data-i18n="footerIntro">A digital world of Urdu literature, poetry and philosophy.</p></div>
+ <div><h3 data-i18n="exploreHeading">Explore</h3><a href="poetry.html" data-i18n="poetry">Poetry</a><a href="aqwal.html" data-i18n="quotes">Aqwal</a><a href="writers.html" data-i18n="writers">Writers</a><a href="dictionary.html" data-i18n="dictionary">Dictionary</a></div>
+ <div><h3 data-i18n="discoverHeading">Discover</h3><a href="philosophy.html" data-i18n="philosophy">Philosophy</a><a href="articles.html" data-i18n="articles">Articles</a><a href="history.html" data-i18n="history">History & Culture</a><a href="about.html" data-i18n="about">About Us</a></div>
+ <div><h3 data-i18n="ourVision">Our Vision</h3><p data-i18n="visionText">Preserving words, sharing wisdom and celebrating literature.</p></div>
+ </div><div class="copyright">© 2026 KHAYALNAMA. Created by Ahmad. <span data-i18n="rights">All Rights Reserved.</span></div>
+</footer>
+
+<script>
+const translations={
+en:{
+ home:"HOME",poetry:"Poetry",quotes:"Quotes",philosophy:"Philosophy",writers:"Writers",dictionary:"Urdu Dictionary",articles:"Articles",history:"History & Culture",about:"About Us",
+ ourStory:"OUR STORY & VISION",aboutTitle:"About Khayalnama",aboutPageDesc:"A digital sanctuary dedicated to preserving classical Urdu literature, poetry, and philosophical thoughts.",
+ visionHeading:"Our Mission & Vision",
+ creatorName:"Ahmad",
+ creatorRole:"Founder & Developer of Khayalnama",
+ creatorDesc:"Passionate about web development, Urdu literature, and bringing classical poetry to the digital world.",
+ p1:"Khayalnama (خیال نامہ) was created with a deep passion for Urdu literature, classical poetry (Shayari), wise sayings (Aqwal-e-Zareen), and timeless philosophical explorations. In today's digital era, our goal is to provide a clean, elegant, and ad-free space where lovers of literature can immerse themselves in words that touch the soul.",
+ p2:"Whether you are exploring the profound verses of legendary poets, looking up classical Urdu vocabulary in our digital dictionary, or reading insightful essays on history and culture, Khayalnama serves as your bridge to a rich literary heritage.",
+ connectHeading:"Connect With Us",
+ connectDesc:"Join our community across social platforms for daily poetry, quotes, and updates:",
+ ytText:"YouTube Channel",instaText:"Instagram Page",fbText:"Facebook Page",
+ prevHistory:"← Prev: History & Culture",backHome:"Back to Home →",
+ footerIntro:"A digital world of Urdu literature, poetry and philosophy.",exploreHeading:"Explore",discoverHeading:"Discover",ourVision:"Our Vision",visionText:"Preserving words, sharing wisdom and celebrating literature.",rights:"All Rights Reserved."
+},
+hi:{
+ home:"मुखपृष्ठ",poetry:"कविता एवं शायरी",quotes:"अनमोल विचार",philosophy:"दर्शन",writers:"शायर एवं लेखक",dictionary:"उर्दू शब्दकोश",articles:"लेख",history:"इतिहास एवं संस्कृति",about:"हमारे बारे में",
+ ourStory:"हमारी कहानी और विजन",aboutTitle:"ख़याल नामा के बारे में",aboutPageDesc:"शास्त्रीय उर्दू साहित्य, कविता और दार्शनिक विचारों को सहेजने के लिए एक डिजिटल आश्रय।",
+ visionHeading:"हमारा उद्देश्य और विजन",
+ creatorName:"अहमद (Ahmad)",
+ creatorRole:"संस्थापक एवं डेवलपर — ख़याल नामा",
+ creatorDesc:"वेब डेवलपमेंट, उर्दू साहित्य और शास्त्रीय शायरी को डिजिटल दुनिया तक पहुँचाने के प्रति समर्पित।",
+ p1:"ख़याल नामा (خیال نامہ) की स्थापना उर्दू साहित्य, शास्त्रीय शायरी, अनमोल वचनों (अक्वाल-ए-ज़र्रीन) और दार्शनिक खोजों के प्रति गहरे प्रेम के साथ की गई है। आज के डिजिटल युग में हमारा उद्देश्य एक ऐसा स्वच्छ और सुंदर मंच प्रदान करना है जहाँ साहित्य प्रेमी डूब सकें।",
+ p2:"चाहे आप महान शायरों की गहरी पंक्तियों का अध्ययन कर रहे हों, डिजिटल शब्दकोश में शब्द खोज रहे हों, या इतिहास और संस्कृति पर निबंध पढ़ रहे हों, ख़याल नामा आपकी विरासत का सेतु है।",
+ connectHeading:"हमसे जुड़ें",
+ connectDesc:"दैनिक शायरी, उद्धरण और अपडेट के लिए हमारे सोशल मीडिया प्लेटफ़ॉर्म से जुड़ें:",
+ ytText:"यूट्यूब चैनल",instaText:"इंस्टाग्राम पेज",fbText:"फेसबुक पेज",
+ prevHistory:"← पिछला: इतिहास और संस्कृति",backHome:"मुखपृष्ठ पर लौटें →",
+ footerIntro:"उर्दू साहित्य, शायरी और दर्शन की एक डिजिटल दुनिया।",exploreHeading:"खोजें",discoverHeading:"जानें",ourVision:"हमारा उद्देश्य",visionText:"शब्दों को सहेजना, ज्ञान बाँटना और साहित्य का सम्मान करना।",rights:"सर्वाधिकार सुरक्षित."
+},
+ur:{
+ home:"صفحۂ اوّل",poetry:"شاعری",quotes:"اقوال",philosophy:"فلسفہ",writers:"شعرا و ادبا",dictionary:"اردو لغت",articles:"مضامین",history:"تاریخ و ثقافت",about:"ہمارے بارے میں",
+ ourStory:"ہماری کہانی اور مقصد",aboutTitle:"خیال نامہ کے بارے میں",aboutPageDesc:"اردو ادب، شاعری اور فلسفے کے ورثے کو محفوظ کرنے کا ایک ڈیجیٹل پلیٹ فارم۔",
+ visionHeading:"ہمارا مقصد اور وژن",
+ creatorName:"احمد (Ahmad)",
+ creatorRole:"بانی و ڈویلپر — خیال نامہ",
+ creatorDesc:"ویب ڈویلپمنٹ، اردو ادب اور کلاسیکی شاعری کو ڈیجیٹل دنیا سے روشناس کرانے کا شوق۔",
+ p1:"'خیال نامہ' (Khayalnama) اردو ادب، کلاسیکی شاعری، اقوالِ زریں اور فلسفیانہ افکار سے گہری محبت کے تحت تخلیق کیا گیا ہے۔ اس جدید ڈیجیٹل دور میں ہمارا مقصد ایک ایسا پرسکون اور خوبصورت پلیٹ فارم فراہم کرنا ہے جہاں ادب سے محبت کرنے والے روح پرور الفاظ سے مستفیض ہو سکیں۔",
+ p2:"چاہے آپ نامور شعرا کے منتخب اشعار پڑھ رہے ہوں، لغت میں نئے الفاظ تلاش کر رہے ہوں یا تاریخ و ثقافت کے مضامین کا مطالعہ کر رہے ہوں، خیال نامہ آپ کو آپ کی شاندار ادبی تہذیب سے جوڑتا ہے۔",
+ connectHeading:"ہم سے سوشل میڈیا پر جڑیں",
+ connectDesc:"روزانہ نئے اشعار، اقوال اور اپ ڈیٹس کے لیے ہمارے سوشل میڈیا پیجز کو جوائن کریں:",
+ ytText:"یوٹیوب چینل (YouTube)",instaText:"انسٹاگرام (Instagram)",fbText:"فیس بک (Facebook)",
+ prevHistory:"← پچھلا صفحہ: تاریخ و ثقافت",backHome:"صفحۂ اوّل پر جائیں →",
+ footerIntro:"اردو ادب، شاعری اور فلسفے کی ایک ڈیجیٹل دنیا۔",exploreHeading:"دیکھیے",discoverHeading:"دریافت",ourVision:"ہمارا مقصد",visionText:"الفاظ کو محفوظ کرنا، دانائی بانٹنا اور ادب کا جشن منانا۔",rights:"جملہ حقوق محفوظ ہیں۔"
+}
+};
+
+let currentLang="en";
+function setLanguage(lang){
+ currentLang=lang;
+ const dict=translations[lang]||translations.en;
+ document.documentElement.lang=lang;
+ document.documentElement.dir="ltr";
+ document.querySelectorAll("[data-i18n]").forEach(el=>{
+  const k=el.dataset.i18n;
+  if(dict[k]!==undefined)el.textContent=dict[k];
+ });
+ document.getElementById("brandText").textContent=lang==="ur"?"خیال نامہ":lang==="hi"?"ख़याल नामा":"KHAYALNAMA";
+ document.getElementById("languageSelect").value=lang;
+ localStorage.setItem("khayalnama-language",lang);
+ closeMenu();
+}
+
+document.getElementById("languageSelect").addEventListener("change",e=>setLanguage(e.target.value));
+function openMenu(){document.getElementById("sidebar").classList.add("active");document.getElementById("overlay").classList.add("active");document.body.style.overflow="hidden"}
+function closeMenu(){document.getElementById("sidebar").classList.remove("active");document.getElementById("overlay").classList.remove("active");document.body.style.overflow=""}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenu()});
+
+setLanguage(localStorage.getItem("khayalnama-language")||"en");
+</script>
+</body>
+</html>
