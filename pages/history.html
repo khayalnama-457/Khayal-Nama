@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="History & Culture of Urdu Literature and South Asian Heritage — Khayalnama.">
+<title>History & Culture | Khayalnama — خیال نامہ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--surface:#fff;--soft:#f5f1e8;--gold:#a77b32;--gold-dark:#805b20;--ink:#292720;--muted:#777267;--border:rgba(167,123,50,.24);--shadow:0 12px 35px rgba(43,35,20,.07)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--ink);font-family:"Playfair Display",serif;overflow-x:hidden}a{text-decoration:none;color:inherit}button,select,input,textarea{font:inherit}
+header{height:82px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.96);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(14px);direction:ltr}
+.brand{display:flex;align-items:center;gap:12px;min-width:0;direction:ltr;flex-shrink:0}
+.logo-image{width:55px;height:55px;object-fit:contain;border-radius:8px}.logo-fallback{width:55px;height:55px;border:1px dashed var(--gold);border-radius:8px;display:grid;place-items:center;color:var(--gold);font:10px Arial;text-align:center;flex-shrink:0}
+.brand-text{font:700 19px "Playfair Display",serif;letter-spacing:2px;color:var(--gold-dark);white-space:nowrap}
+.header-actions{display:flex;align-items:center;gap:14px;direction:ltr;flex-shrink:0}.home-link{font:13px "Playfair Display",serif;color:var(--muted)}.home-link:hover{color:var(--gold-dark)}
+.language-select{border:1px solid var(--border);background:#fff;color:var(--gold-dark);padding:10px 12px;border-radius:6px;cursor:pointer;font:13px Arial}
+.menu-btn{width:42px;height:42px;border:1px solid var(--border);background:#fff;color:var(--gold-dark);font:23px Arial;border-radius:6px;cursor:pointer}
+.overlay{position:fixed;inset:0;background:rgba(20,18,14,.45);z-index:200;opacity:0;visibility:hidden;transition:.25s}.overlay.active{opacity:1;visibility:visible}
+.sidebar{position:fixed;top:0;right:-330px;width:300px;max-width:86%;height:100vh;background:#fff;border-left:2px solid var(--gold);z-index:201;padding:25px;transition:.35s;overflow-y:auto;direction:ltr}.sidebar.active{right:0}
+.sidebar-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;direction:ltr}.sidebar-top h2{font:700 18px "Playfair Display",serif;color:var(--gold-dark);letter-spacing:2px}
+.close-btn{border:0;background:none;font:30px Arial;color:var(--gold-dark);cursor:pointer}.sidebar a{display:block;padding:14px 8px;border-bottom:1px solid var(--border);font:15px "Playfair Display",serif;color:var(--ink)}.sidebar a:hover,.sidebar a.active-link{color:var(--gold-dark);padding-left:15px;font-weight:600}
+
+/* Page Banner */
+.page-banner{padding:64px 8% 52px;text-align:center;background:radial-gradient(ellipse at center,#f2e8d4 0%,#fbfaf7 72%);border-bottom:1px solid var(--border)}
+.breadcrumb{font:12px Arial,sans-serif;color:var(--muted);margin-bottom:16px;letter-spacing:1px}.breadcrumb a:hover{color:var(--gold-dark)}
+.page-tag{font:11px "Playfair Display",serif;letter-spacing:4px;color:var(--gold-dark);margin-bottom:14px}
+.page-banner h1{font-size:clamp(32px,6vw,54px);color:#8e682b;font-weight:500;margin-bottom:12px}
+.page-banner p{max-width:680px;margin:auto;color:#686257;line-height:2;font-size:15px}
+.gold-line{height:2px;width:52px;background:var(--gold);margin:18px auto}
+
+/* Layout & Cards */
+.section{padding:60px 8%}
+.history-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:30px}
+.history-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:var(--shadow);transition:.25s;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between}
+.history-card:hover{transform:translateY(-4px);border-color:var(--gold)}
+.hist-img-wrap{width:100%;height:190px;background:var(--soft);overflow:hidden;border-bottom:1px solid var(--border);position:relative}
+.hist-img-wrap img{width:100%;height:100%;object-fit:cover;transition:.4s}
+.history-card:hover .hist-img-wrap img{transform:scale(1.04)}
+.hist-content{padding:26px 22px}
+.hist-meta{font-size:11px;letter-spacing:1.5px;color:var(--gold-dark);margin-bottom:10px;text-transform:uppercase;font-weight:600}
+.history-card h3{font-size:21px;font-weight:500;margin-bottom:10px;line-height:1.4}
+.history-card p{font:13px/1.9 "Noto Sans Devanagari",sans-serif;color:var(--muted);margin-bottom:18px}
+.hist-footer{padding:0 22px 24px;display:flex;justify-content:space-between;align-items:center}
+.read-hist-link{color:var(--gold-dark);font-size:12px;letter-spacing:1px;border-bottom:1px solid var(--gold);padding-bottom:2px}
+
+/* Detailed Reader */
+.history-reader{background:#fff;border:1px solid var(--border);border-radius:8px;padding:45px;box-shadow:var(--shadow);margin-top:20px;display:none}
+.history-reader.active{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.back-btn{display:inline-flex;align-items:center;gap:6px;background:var(--soft);color:var(--gold-dark);border:1px solid var(--border);padding:8px 16px;border-radius:4px;font-size:12px;cursor:pointer;margin-bottom:24px;transition:.2s}
+.back-btn:hover{background:var(--gold);color:#fff}
+.reader-tag{font-size:11px;letter-spacing:2px;color:var(--gold-dark);text-transform:uppercase;margin-bottom:8px;font-weight:600}
+.reader-title{font-size:clamp(26px,4vw,38px);font-weight:500;color:#373329;margin-bottom:16px}
+.reader-content{font:15px/2.2 "Noto Sans Devanagari",sans-serif;color:#4a453b;margin-top:24px}
+.reader-content p{margin-bottom:20px}
+
+/* Page Navigation Footer Strip */
+.page-nav-strip{background:var(--soft);border-top:1px solid var(--border);padding:36px 8%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.nav-pill{display:inline-block;padding:12px 22px;border:1px solid var(--gold);border-radius:4px;color:var(--gold-dark);font-size:13px;letter-spacing:.8px;background:#fff;transition:.2s}
+.nav-pill:hover{background:var(--gold);color:#fff}
+
+footer{background:#f0ece3;border-top:1px solid var(--border);padding:52px 8% 22px}.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px;margin-bottom:35px}footer h3{color:var(--gold-dark);font-size:17px;margin-bottom:15px}footer p,footer a{display:block;color:#746e62;font-size:13px;line-height:2.3}footer a:hover{color:var(--gold-dark)}.copyright{text-align:center;border-top:1px solid var(--border);padding-top:20px;color:#8a8479;font-size:12px}
+
+/* Social actions & Copy button */
+.post-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px;padding-top:16px;border-top:1px solid var(--border);font-family:Arial,sans-serif}
+.action-btn{border:1px solid var(--border);background:#fff;color:#6e624e;padding:8px 13px;border-radius:20px;font:12px Arial,sans-serif;cursor:pointer;transition:.2s}
+.action-btn:hover,.action-btn.liked{background:#f7eee0;color:var(--gold-dark);border-color:var(--gold)}.action-btn .count{font-weight:bold;margin-left:3px}
+.comments-panel{display:none;margin-top:14px;text-align:left}.comments-panel.open{display:block}.comment-form{display:flex;gap:8px;margin-bottom:10px}.comment-form input{min-width:0;flex:1;border:1px solid var(--border);border-radius:5px;padding:10px;font:13px Arial,sans-serif}.comment-form button{border:0;border-radius:5px;background:var(--gold);color:white;padding:0 13px;font:12px Arial,sans-serif;cursor:pointer}
+.comment-list{list-style:none}.comment-list li{padding:8px 10px;margin-top:6px;background:#faf8f3;border-radius:5px;font:13px/1.6 Arial,sans-serif;overflow-wrap:anywhere}.comment-note{font:11px/1.6 Arial,sans-serif;color:var(--muted);margin-top:7px}
+.notice{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#292720;color:#fff;padding:11px 17px;border-radius:25px;font:13px Arial,sans-serif;z-index:500;opacity:0;pointer-events:none;transition:.25s}.notice.show{opacity:1}
+
+html[lang="hi"] body,html[lang="hi"] .page-banner p,html[lang="hi"] .reader-content{font-family:"Noto Sans Devanagari",sans-serif}
+html[lang="ur"] body{font-family:"Noto Nastaliq Urdu",serif}
+html[lang="ur"] .brand-text{font:600 17px/1.8 "Noto Nastaliq Urdu",serif;letter-spacing:0;white-space:nowrap}
+html[lang="ur"] header,html[lang="ur"] .brand,html[lang="ur"] .header-actions,html[lang="ur"] .sidebar-top{direction:ltr}
+html[lang="ur"] .home-link,html[lang="ur"] .sidebar a,html[lang="ur"] .sidebar-top h2{font-family:"Noto Nastaliq Urdu",serif;letter-spacing:0;line-height:2.2}
+html[lang="ur"] .sidebar a{text-align:right;direction:rtl}
+html[lang="ur"] .page-banner h1,html[lang="ur"] .page-banner p,html[lang="ur"] .reader-content,html[lang="ur"] footer p,html[lang="ur"] footer a,html[lang="ur"] footer h3,html[lang="ur"] .nav-pill{font-family:"Noto Nastaliq Urdu",serif;letter-spacing:0;line-height:2.4}
+html[lang="ur"] .post-actions,html[lang="ur"] .comment-form,html[lang="ur"] .comment-list,html[lang="ur"] .comment-note{font-family:Arial,sans-serif;direction:ltr}
+@media(max-width:650px){header{height:72px;padding:0 4%}.brand{gap:7px}.brand-text{font-size:15px;letter-spacing:1px}.logo-image,.logo-fallback{width:43px;height:43px}.home-link{display:none}.header-actions{gap:8px}.language-select{padding:9px 7px;font-size:12px}.menu-btn{width:39px;height:39px}.section{padding:48px 5%}.history-grid{grid-template-columns:1fr}html[lang="ur"] .brand-text{font-size:14px;max-width:105px;white-space:normal;text-align:center}}
+</style>
+</head>
+<body>
+<header>
+ <a class="brand" href="../index.html" aria-label="Khayalnama home">
+  <img class="logo-image" src="../assets/logo.png" alt="Khayalnama logo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+  <span class="logo-fallback" style="display:none">YOUR<br>LOGO</span>
+  <span class="brand-text" id="brandText">KHAYALNAMA</span>
+ </a>
+ <div class="header-actions">
+  <a class="home-link" href="../index.html" data-i18n="home">HOME</a>
+  <select class="language-select" id="languageSelect" aria-label="Choose language"><option value="en">English</option><option value="hi">हिन्दी</option><option value="ur">اردو</option></select>
+  <button class="menu-btn" onclick="openMenu()" aria-label="Open menu">☰</button>
+ </div>
+</header>
+
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+<aside class="sidebar" id="sidebar">
+ <div class="sidebar-top"><h2>KHAYALNAMA</h2><button class="close-btn" onclick="closeMenu()" aria-label="Close menu">×</button></div>
+ <nav>
+  <a href="../index.html" data-i18n="home">Home</a>
+  <a href="poetry.html" data-i18n="poetry">Poetry</a>
+  <a href="aqwal.html" data-i18n="quotes">Aqwal</a>
+  <a href="philosophy.html" data-i18n="philosophy">Philosophy</a>
+  <a href="writers.html" data-i18n="writers">Writers</a>
+  <a href="dictionary.html" data-i18n="dictionary">Urdu Dictionary</a>
+  <a href="articles.html" data-i18n="articles">Articles</a>
+  <a href="history.html" class="active-link" data-i18n="history">History & Culture</a>
+  <a href="about.html" data-i18n="about">About Us</a>
+ </nav>
+</aside>
+
+<section class="page-banner">
+ <div class="breadcrumb"><a href="../index.html" data-i18n="home">HOME</a> / <span data-i18n="history">HISTORY & CULTURE</span></div>
+ <div class="page-tag" data-i18n="heritageTag">HERITAGE & ROOTS</div>
+ <h1 data-i18n="historyTitle">History & Culture</h1>
+ <div class="gold-line"></div>
+ <p data-i18n="historyPageDesc">Journey through time to explore the historical roots, cultural evolution, and linguistic synthesis of South Asia.</p>
+</section>
+
+<section class="section">
+ <!-- History Cards Grid -->
+ <div class="history-grid" id="historyGrid">
+  
+  <!-- Topic 1 -->
+  <div class="history-card" onclick="openHistory('urdu-origins')">
+   <div class="hist-img-wrap">
+    <img src="../assets/history-1.jpg" alt="Urdu Roots" onerror="this.src='https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&auto=format&fit=crop&q=60'">
+   </div>
+   <div class="hist-content">
+    <div class="hist-meta" data-i18n="metaRoots">LINGUISTIC HERITAGE</div>
+    <h3 data-i18n="hist1Title">The Roots and Origin of Urdu</h3>
+    <p data-i18n="hist1Desc">Tracing how diverse linguistic streams merged in the cultural capitals of South Asia.</p>
+   </div>
+   <div class="hist-footer">
+    <span class="read-hist-link" data-i18n="readTopic">READ TOPIC →</span>
+   </div>
+  </div>
+
+  <!-- Topic 2 -->
+  <div class="history-card" onclick="openHistory('court-culture')">
+   <div class="hist-img-wrap">
+    <img src="../assets/history-2.jpg" alt="Royal Courts" onerror="this.src='https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=600&auto=format&fit=crop&q=60'">
+   </div>
+   <div class="hist-content">
+    <div class="hist-meta" data-i18n="metaCulture">ROYAL & SUFI COURTS</div>
+    <h3 data-i18n="hist2Title">Culture of Royal Durbars and Sufi Khanqahs</h3>
+    <p data-i18n="hist2Desc">How poetry gatherings (Mushairas) and spiritual circles shaped the literary ethos.</p>
+   </div>
+   <div class="hist-footer">
+    <span class="read-hist-link" data-i18n="readTopic">READ TOPIC →</span>
+   </div>
+  </div>
+
+  <!-- Topic 3 -->
+  <div class="history-card" onclick="openHistory('modern-era')">
+   <div class="hist-img-wrap">
+    <img src="../assets/history-3.jpg" alt="Printing Press" onerror="this.src='https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=60'">
+   </div>
+   <div class="hist-content">
+    <div class="hist-meta" data-i18n="metaModern">MODERN TRANSFORMATION</div>
+    <h3 data-i18n="hist3Title">Printing Press, Journalism and Renaissance</h3>
+    <p data-i18n="hist3Desc">The advent of newspapers, educational institutions, and the literary renaissance of the 19th and 20th centuries.</p>
+   </div>
+   <div class="hist-footer">
+    <span class="read-hist-link" data-i18n="readTopic">READ TOPIC →</span>
+   </div>
+  </div>
+
+ </div>
+
+ <!-- Detailed History Reader View -->
+ <div class="history-reader" id="historyReader">
+  <button class="back-btn" onclick="closeHistory()">← <span data-i18n="backToOverview">Back to Overview</span></button>
+  <div class="reader-tag" id="readerTag"></div>
+  <h2 class="reader-title" id="readerTitle"></h2>
+  <div class="gold-line" style="margin:16px 0 0 0; width:40px;"></div>
+  
+  <div class="reader-content" id="readerContent"></div>
+
+  <!-- Social Interactions & Copy Box -->
+  <div class="post" id="historyPostBox" data-post-id="hist-default" data-post-title="History">
+   <div class="post-actions" id="histActionSlot"></div>
+   <div class="comments-panel">
+    <form class="comment-form">
+     <input class="comment-input" maxlength="300" required aria-label="Write a comment">
+     <button type="submit" class="comment-submit"></button>
+    </form>
+    <ul class="comment-list"></ul>
+    <p class="comment-note"></p>
+   </div>
+  </div>
+ </div>
+
+</section>
+
+<!-- Cross-page navigation strip -->
+<div class="page-nav-strip">
+ <a href="articles.html" class="nav-pill" data-i18n="prevArticles">← Prev: Articles</a>
+ <a href="about.html" class="nav-pill" data-i18n="nextAbout">Next: About Us →</a>
+</div>
+
+<footer><div class="footer-grid">
+ <div><h3>KHAYALNAMA</h3><p class="brand-urdu">خیال نامہ</p><p data-i18n="footerIntro">A digital world of Urdu literature, poetry and philosophy.</p></div>
+ <div><h3 data-i18n="exploreHeading">Explore</h3><a href="poetry.html" data-i18n="poetry">Poetry</a><a href="aqwal.html" data-i18n="quotes">Aqwal</a><a href="writers.html" data-i18n="writers">Writers</a><a href="dictionary.html" data-i18n="dictionary">Dictionary</a></div>
+ <div><h3 data-i18n="discoverHeading">Discover</h3><a href="philosophy.html" data-i18n="philosophy">Philosophy</a><a href="articles.html" data-i18n="articles">Articles</a><a href="history.html" data-i18n="history">History & Culture</a><a href="about.html" data-i18n="about">About Us</a></div>
+ <div><h3 data-i18n="ourVision">Our Vision</h3><p data-i18n="visionText">Preserving words, sharing wisdom and celebrating literature.</p></div>
+ </div><div class="copyright">© 2026 KHAYALNAMA. <span data-i18n="rights">All Rights Reserved.</span></div>
+</footer>
+<div class="notice" id="notice" role="status" aria-live="polite"></div>
+
+<script>
+const historyDB = {
+ "urdu-origins": {
+  tagKey: "metaRoots",
+  titleKey: "hist1Title",
+  paragraphs: ["hist1P1", "hist1P2"]
+ },
+ "court-culture": {
+  tagKey: "metaCulture",
+  titleKey: "hist2Title",
+  paragraphs: ["hist2P1", "hist2P2"]
+ },
+ "modern-era": {
+  tagKey: "metaModern",
+  titleKey: "hist3Title",
+  paragraphs: ["hist3P1", "hist3P2"]
+ }
+};
+
+const translations={
+en:{
+ home:"HOME",poetry:"Poetry",quotes:"Quotes",philosophy:"Philosophy",writers:"Writers",dictionary:"Urdu Dictionary",articles:"Articles",history:"History & Culture",about:"About Us",
+ heritageTag:"HERITAGE & ROOTS",historyTitle:"History & Culture",historyPageDesc:"Journey through time to explore the historical roots, cultural evolution, and linguistic synthesis of South Asia.",
+ metaRoots:"LINGUISTIC HERITAGE",metaCulture:"ROYAL & SUFI COURTS",metaModern:"MODERN TRANSFORMATION",readTopic:"READ TOPIC →",backToOverview:"Back to Overview",
+ copyText:"📋 Copy Topic",copied:"Topic text copied to clipboard!",
+
+ hist1Title:"The Roots and Origin of Urdu",
+ hist1Desc:"Tracing how diverse linguistic streams merged in the cultural capitals of South Asia.",
+ hist1P1:"Urdu emerged as a remarkable synthesis of multiple linguistic and cultural currents in South Asia. As traders, scholars, and settlers interacted across military camps and urban bazaars, a common medium of communication took root.",
+ hist1P2:"Over centuries, this spoken medium absorbed rich vocabulary from Persian, Arabic, and Turkic languages while retaining its foundational grammar rooted in Prakrit and Khariboli, blossoming into a vehicle of exquisite poetic expression.",
+
+ hist2Title:"Culture of Royal Durbars and Sufi Khanqahs",
+ hist2Desc:"How poetry gatherings (Mushairas) and spiritual circles shaped the literary ethos.",
+ hist2P1:"The patronage of regional courts in Delhi, Lucknow, Hyderabad, and Deccan provided a secure haven for poets, calligraphers, and musicians. Royal durbars celebrated grand literary symposia where verses were critiqued and applauded.",
+ hist2P2:"Simultaneously, Sufi khanqahs (spiritual hospices) fostered an environment of universal human love, introspection, and mystical poetry, bridging social boundaries and elevating the moral tone of literature.",
+
+ hist3Title:"Printing Press, Journalism and Renaissance",
+ hist3Desc:"The advent of newspapers, educational institutions, and the literary renaissance of the 19th and 20th centuries.",
+ hist3P1:"The 19th century witnessed a monumental shift with the introduction of lithographic printing presses and periodical journalism. Newspapers and literary journals enabled wider dissemination of ideas, essays, and political awakening.",
+ hist3P2:"Institutions like Fort William College and later academic movements established prose standards, transforming Urdu into a vibrant modern language capable of addressing science, philosophy, and contemporary global discourse.",
+
+ prevArticles:"← Prev: Articles",nextAbout:"Next: About Us →",
+ footerIntro:"A digital world of Urdu literature, poetry and philosophy.",exploreHeading:"Explore",discoverHeading:"Discover",ourVision:"Our Vision",visionText:"Preserving words, sharing wisdom and celebrating literature.",rights:"All Rights Reserved.",
+ like:"♡ Like",liked:"♥ Liked",comment:"Comment",share:"Share",writeComment:"Write a comment…",send:"Post",commentNote:"Comments and likes are saved only in this browser for preview. Public comments need a secure database.",noComments:"No comments yet.",shared:"Share link copied.",shareError:"Could not share this item."
+},
+hi:{
+ home:"मुखपृष्ठ",poetry:"कविता एवं शायरी",quotes:"अनमोल विचार",philosophy:"दर्शन",writers:"शायर एवं लेखक",dictionary:"उर्दू शब्दकोश",articles:"लेख",history:"इतिहास एवं संस्कृति",about:"हमारे बारे में",
+ heritageTag:"विरासत और जड़े",historyTitle:"इतिहास और संस्कृति",historyPageDesc:"दक्षिण एशिया के ऐतिहासिक जड़ों, सांस्कृतिक विकास और भाषाई मेल-जोल को जानने के लिए समय की यात्रा करें।",
+ metaRoots:"भाषाई विरासत",metaCulture:"शाही और सूफी दरबार",metaModern:"आधुनिक रूपांतरण",readTopic:"विषय पढ़ें →",backToOverview:"वापस सूची पर लौटें",
+ copyText:"📋 टेक्स्ट कॉपी करें",copied:"विषय का पाठ क्लिपबोर्ड पर कॉपी हो गया!",
+
+ hist1Title:"उर्दू की जड़ें और उद्भव",
+ hist1Desc:"यह देखना कि कैसे दक्षिण एशिया की सांस्कृतिक राजधानियों में विभिन्न भाषाई धाराएँ मिलीं।",
+ hist1P1:"उर्दू दक्षिण एशिया में कई भाषाई और सांस्कृतिक धाराओं के एक उल्लेखनीय संगम के रूप में उभरी। जैसे-जैसे व्यापारियों और विद्वानों ने मेल-जोल बढ़ाया, संवाद का एक साझा माध्यम स्थापित हुआ।",
+ hist1P2:"सदियों के दौरान, इस मौखिक माध्यम ने फ़ारसी, अरबी और तुर्की से समृद्ध शब्दावली को आत्मसात किया, और प्राकृत पर आधारित अपने व्याकरण को बनाए रखते हुए उत्कृष्ट काव्यात्मक अभिव्यक्ति का माध्यम बन गया।",
+
+ hist2Title:"शाही दरबारों और सूफी खानकाहों की संस्कृति",
+ hist2Desc:"कैसे मुशायरों और आध्यात्मिक हलकों ने साहित्यिक लोकाचार को आकार दिया।",
+ hist2P1:"दिल्ली, लखनऊ, हैदराबाद और दक्खन के दरबारों ने शायरों, कलाकारों और संगीतकारों को संरक्षण प्रदान किया। शाही दरबारों में भव्य साहित्यिक गोष्ठियाँ होती थीं।",
+ hist2P2:"साथ ही, सूफी खानकाहों ने सार्वभौमिक प्रेम और आत्मनिरीक्षण के वातावरण को बढ़ावा दिया, जिसने सामाजिक सीमाओं को पाटने का काम किया।",
+
+ hist3Title:"प्रेस, पत्रकारिता और पुनर्जागरण",
+ hist3Desc:"19वीं और 20वीं शताब्दी के समाचार पत्रों, शैक्षणिक संस्थानों और साहित्यिक पुनर्जागरण का आगमन।",
+ hist3P1:"19वीं शताब्दी में लिथोग्राफिक प्रेस और पत्रकारीय मुद्रण के आगमन के साथ एक बड़ा बदलाव आया। पत्र-पत्रिकाओं ने विचारों के प्रसार को आसान बनाया।",
+ hist3P2:"फोर्ट विलियम कॉलेज और बाद के अकादमिक आंदोलनों ने गद्य के मानक स्थापित किए, जिससे उर्दू विज्ञान और समकालीन वैश्विक प्रवचन में सक्षम हुई।",
+
+ prevArticles:"← पिछला: लेख",nextAbout:"अगला: हमारे बारे में →",
+ footerIntro:"उर्दू साहित्य, शायरी और दर्शन की एक डिजिटल दुनिया।",exploreHeading:"खोजें",discoverHeading:"जानें",ourVision:"हमारा उद्देश्य",visionText:"शब्दों को सहेजना, ज्ञान बाँटना और साहित्य का सम्मान करना।",rights:"सर्वाधिकार सुरक्षित.",
+ like:"♡ पसंद",liked:"♥ पसंद किया",comment:"टिप्पणी",share:"शेयर",writeComment:"टिप्पणी लिखें…",send:"पोस्ट",commentNote:"प्रीव्यू के लिए टिप्पणियाँ और पसंद केवल इसी ब्राउज़र में सेव होती हैं। सार्वजनिक टिप्पणियों के लिए सुरक्षित डेटाबेस चाहिए।",noComments:"अभी कोई टिप्पणी नहीं।",shared:"शेयर लिंक कॉपी हो गया।",shareError:"शेयर नहीं हो सका।"
+},
+ur:{
+ home:"صفحۂ اوّل",poetry:"شاعری",quotes:"اقوال",philosophy:"فلسفہ",writers:"شعرا و ادبا",dictionary:"اردو لغت",articles:"مضامین",history:"تاریخ و ثقافت",about:"ہمارے بارے میں",
+ heritageTag:"ورثہ اور جڑیں",historyTitle:"تاریخ اور ثقافت",historyPageDesc:"برصغیر کی تاریخی جڑوں، تہذیبی ارتقا اور لسانی اشتراک کی داستان کا مطالعہ کریں۔",
+ metaRoots:"لسانی ورثہ",metaCulture:"شاہی دربار اور صوفی خانقاہیں",metaModern:"جدید دور اور صحافت",readTopic:"موضوع پڑھیے ←",backToOverview:"واپس فہرست پر جائیں",
+ copyText:"📋 متن کاپی کریں",copied:"تاریخی مضمون کلپ بورڈ پر کاپی ہوگیا!",
+
+ hist1Title:"اردو زبان کی جڑیں اور آغاز",
+ hist1Desc:"برصغیر کی تہذیبی فضا میں مختلف لسانی دھاروں کے امتزاج کا سفر۔",
+ hist1P1:"اردو برصغیر پاک و ہند میں متعدد لسانی اور تہذیبی دھاروں کے خوبصورت اشتراک سے پروان چڑھی۔ فوجی چھاؤنیوں، بازاروں اور میل جول کے مراکز میں اس بول چال کی زبان نے جنم لیا۔",
+ hist1P2:"صدیوں کے ارتقا کے بعد اس زبان نے فارسی، عربی اور ترکی کے قیمتی الفاظ کو اپنے دامن میں سمیٹا، جب کہ اس کی گرامر نے پراکرت اور کھڑی بولی کی بنیادوں کو قائم رکھا۔",
+
+ hist2Title:"شاہی درباروں اور خانقاہوں کی تہذیب",
+ hist2Desc:"مشاعروں، ادبی مجالس اور تصوف کی روشنی نے ادب کو کیسے سنوارا۔",
+ hist2P1:"دہلی، لکھنؤ، حیدرآباد اور دکن کے درباروں نے شعرا، فنکاروں اور خطاطوں کی سرپرستی کی۔ شاہی درباروں میں باقاعدہ ادبی محفلیں سجی کرتی تھیں جہاں اشعار پر داد و تحسین کا تبادلہ ہوتا۔",
+ hist2P2:"دوسری طرف صوفی خانقاہوں نے انسان دوستی، رواداری اور باطنی طہارت کا درس دیا، جس نے ادب کو اخلاقی بلندی اور گہراؤ عطا کیا۔",
+
+ hist3Title:"پرنٹنگ پریس، صحافت اور ادبی احیا",
+ hist3P1:"19ویں صدی میں لیتھو پریس اور اخبارات کی آمد نے فکری و ادبی افق پر انقلاب برپا کیا۔ اخبارات اور رسائل نے سیاسی بیداری اور نئے خیالات کی ترویج میں اہم کردار ادا کیا۔",
+ hist3P2:"نثری ادب اور تنقید کے نئے مکاتبِ فکر نے جنم لیا، جس سے اردو سائنس، فلسفہ اور جدید دنیا کے تقاضوں سے ہم آہنگ ایک طاقتور زبان بن کر ابھری۔",
+
+ prevArticles:"← پچھلا صفحہ: مضامین",nextAbout:"اگلا صفحہ: ہمارے بارے میں →",
+ footerIntro:"اردو ادب، شاعری اور فلسفے کی ایک ڈیجیٹل دنیا۔",exploreHeading:"دیکھیے",discoverHeading:"دریافت",ourVision:"ہمارا مقصد",visionText:"الفاظ کو محفوظ کرنا، دانائی بانٹنا اور ادب کا جشن منانا۔",rights:"جملہ حقوق محفوظ ہیں۔",
+ like:"♡ پسند",liked:"♥ पसंद किया",comment:"تبصرہ",share:"शेयर",writeComment:"تبصرہ لکھیے…",send:"شائع کریں",commentNote:"یہ تبصرے اور پسند صرف اسی براؤزر میں عارضی طور پر محفوظ ہوتے ہیں۔ عوامی نظام کے لیے محفوظ ڈیٹابیس درکار ہوگا۔",noComments:"ابھی کوئی تبصرہ نہیں۔",shared:"شیئر لنک کاپی ہوگیا۔",shareError:"شیئر نہیں ہوسکا।"
+}
+};
+
+let currentLang="en";
+function t(key){return (translations[currentLang]||translations.en)[key]||translations.en[key]||key}
+
+function setLanguage(lang){
+ currentLang=lang;
+ const dict=translations[lang]||translations.en;
+ document.documentElement.lang=lang;
+ document.documentElement.dir="ltr";
+ document.querySelectorAll("[data-i18n]").forEach(el=>{
+  const k=el.dataset.i18n;
+  if(dict[k]!==undefined)el.textContent=dict[k];
+ });
+ document.getElementById("brandText").textContent=lang==="ur"?"خیال نامہ":lang==="hi"?"ख़याल नामा":"KHAYALNAMA";
+ document.getElementById("languageSelect").value=lang;
+ localStorage.setItem("khayalnama-language",lang);
+
+ if(currentOpenHistory){
+  openHistory(currentOpenHistory, true);
+ }
+
+ closeMenu();
+}
+
+document.getElementById("languageSelect").addEventListener("change",e=>setLanguage(e.target.value));
+function openMenu(){document.getElementById("sidebar").classList.add("active");document.getElementById("overlay").classList.add("active");document.body.style.overflow="hidden"}
+function closeMenu(){document.getElementById("sidebar").classList.remove("active");document.getElementById("overlay").classList.remove("active");document.body.style.overflow=""}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenu()});
+
+let currentOpenHistory = null;
+
+function openHistory(histId){
+ currentOpenHistory = histId;
+ const hist = historyDB[histId];
+ if(!hist) return;
+
+ const dict = translations[currentLang] || translations.en;
+
+ document.getElementById("readerTag").textContent = dict[hist.tagKey] || hist.tagKey;
+ document.getElementById("readerTitle").textContent = dict[hist.titleKey] || hist.titleKey;
+
+ let contentHTML = "";
+ hist.paragraphs.forEach(pKey => {
+  if(dict[pKey]) contentHTML += `<p>${dict[pKey]}</p>`;
+ });
+ document.getElementById("readerContent").innerHTML = contentHTML;
+
+ const postBox = document.getElementById("historyPostBox");
+ postBox.dataset.postId = "hist-item-" + histId;
+ postBox.dataset.postTitle = dict[hist.titleKey];
+ setupPostBox(postBox);
+
+ document.getElementById("historyGrid").style.display = "none";
+ document.getElementById("historyReader").classList.add("active");
+ window.scrollTo({top: 300, behavior: 'smooth'});
+}
+
+function closeHistory(){
+ currentOpenHistory = null;
+ document.getElementById("historyReader").classList.remove("active");
+ document.getElementById("historyGrid").style.display = "grid";
+ window.scrollTo({top: 200, behavior: 'smooth'});
+}
+
+function setupPostBox(post){
+ const id = post.dataset.postId;
+ const actionSlot = post.querySelector("#histActionSlot");
+ actionSlot.innerHTML = "";
+
+ const like = document.createElement("button");
+ like.type = "button";
+ like.className = "action-btn like-action";
+ like.addEventListener("click", () => toggleLike(post));
+
+ const comment = document.createElement("button");
+ comment.type = "button";
+ comment.className = "action-btn comment-action";
+ comment.addEventListener("click", () => post.querySelector(".comments-panel").classList.toggle("open"));
+
+ const share = document.createElement("button");
+ share.type = "button";
+ share.className = "action-btn share-action";
+ share.addEventListener("click", () => sharePost(post));
+
+ const copyBtn = document.createElement("button");
+ copyBtn.type = "button";
+ copyBtn.className = "action-btn";
+ copyBtn.textContent = t("copyText");
+ copyBtn.addEventListener("click", () => {
+  const text = document.getElementById("readerTitle").innerText + "\n\n" + document.getElementById("readerContent").innerText;
+  navigator.clipboard.writeText(text).then(() => showNotice(t("copied")));
+ });
+
+ actionSlot.append(like, comment, share, copyBtn);
+
+ const form = post.querySelector(".comment-form");
+ const input = post.querySelector(".comment-input");
+ const submit = post.querySelector(".comment-submit");
+ const note = post.querySelector(".comment-note");
+
+ input.placeholder = t("writeComment");
+ submit.textContent = t("send");
+ note.textContent = t("commentNote");
+
+ const newForm = form.cloneNode(true);
+ form.parentNode.replaceChild(newForm, form);
+
+ newForm.addEventListener("submit", e => {
+  e.preventDefault();
+  const val = newForm.querySelector(".comment-input").value.trim();
+  if(!val) return;
+  const comments = safeGet("kn-comments-"+id, []);
+  comments.push(val);
+  localStorage.setItem("kn-comments-"+id, JSON.stringify(comments));
+  newForm.querySelector(".comment-input").value = "";
+  renderActionLabels();
+ });
+
+ renderActionLabels();
+}
+
+function showNotice(msg){const n=document.getElementById("notice");n.textContent=msg;n.classList.add("show");clearTimeout(window.noticeTimer);window.noticeTimer=setTimeout(()=>n.classList.remove("show"),2300)}
+function safeGet(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback}catch(e){return fallback}}
+
+function renderActionLabels(){
+ document.querySelectorAll(".post").forEach(post=>{
+  const id=post.dataset.postId;if(!id)return;
+  const liked=!!safeGet("kn-like-"+id,false);const count=safeGet("kn-like-count-"+id,0);
+  const like=post.querySelector(".like-action");
+  if(like){
+   like.classList.toggle("liked",liked);
+   like.textContent=(liked?t("liked"):t("like"))+" ";
+   const span=commonSpan = document.createElement("span");
+   span.className="count";
+   span.textContent=count;
+   like.appendChild(span);
+  }
+  const c=post.querySelector(".comment-action");if(c)c.textContent=t("comment")+" ("+safeGet("kn-comments-"+id,[]).length+")";
+  const s=post.querySelector(".share-action");if(s)s.textContent=t("share");
+  drawComments(post);
+ });
+}
+
+function drawComments(post){
+ const id = post.dataset.postId;
+ const list=post.querySelector(".comment-list");if(!list)return;
+ const comments=safeGet("kn-comments-"+id,[]);
+ list.innerHTML="";
+ if(!comments.length){const li=document.createElement("li");li.textContent=t("noComments");list.appendChild(li);return}
+ comments.forEach(c=>{const li=document.createElement("li");li.textContent=c;list.appendChild(li)});
+}
+
+function toggleLike(post){
+ const id=post.dataset.postId;const wasLiked=!!safeGet("kn-like-"+id,false);const count=safeGet("kn-like-count-"+id,0);
+ localStorage.setItem("kn-like-"+id,JSON.stringify(!wasLiked));localStorage.setItem("kn-like-count-"+id,JSON.stringify(Math.max(0,count+(wasLiked?-1:1))));renderActionLabels();
+}
+
+async function sharePost(post){
+ const title=post.dataset.postTitle||"Khayalnama History";const text=post.innerText.slice(0,220);const data={title:"Khayalnama — "+title,text:text,url:location.href};
+ try{if(navigator.share)await navigator.share(data);else{await navigator.clipboard.writeText(data.title+"\n"+data.text+"\n"+data.url);showNotice(t("shared"))}}
+ catch(e){if(e.name!=="AbortError")showNotice(t("shareError"))}
+}
+
+setLanguage(localStorage.getItem("khayalnama-language")||"en");
+</script>
+</body>
+</html>
